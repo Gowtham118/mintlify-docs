@@ -1,0 +1,83 @@
+---
+description: SDK provides various methods and attributes to work with Fund Kit Widget
+---
+
+# Modal
+
+You can obtain the `AarcFundKitModal` object from `@aarc-xyz/fundkit-web-sdk`. This Class provides various methods and attributes for interacting with the widget, such as opening and closing it, setting a custom amount, and more.
+
+{% hint style="info" %}
+Learn more about custom types from [here](utility-types.md)
+{% endhint %}
+
+| Method/Attribute | Type                  | Description                             |
+| ---------------- | --------------------- | --------------------------------------- |
+| config           | FKConfig \| undefined | The configuration object for the modal. |
+| openModal        | Function              | Open modal iFrame view                  |
+| close            | Function              | Close modal iFrame view                 |
+| init             | Function              | Initialize the listeners                |
+
+### Example
+
+{% hint style="warning" %}
+Ensure `config` is properly configured before using `openModal`
+{% endhint %}
+
+```jsx
+import {
+    AarcFundKitModal,
+    FKConfig,
+    TransactionErrorData,
+    TransactionSuccessData,
+} from "@aarc-xyz/fundkit-web-sdk"
+
+const config: FKConfig = {
+    appName: "Dapp Name",
+    module: {
+        exchange: {
+            enabled: true,
+        },
+        onRamp: {
+            enabled: true,
+            onRampConfig: {
+                customerId: "323232323",
+                exchangeScreenTitle: "Deposit funds in your wallet",
+            },
+        },
+        bridgeAndSwap: {
+            enabled: true,
+            fetchOnlyDestinationBalance: false,
+            routeType: "Value",
+        },
+    },
+    destination: {
+        walletAddress: "0x0...2C2",
+    },
+    apiKeys: {
+        aarcSDK: import.meta.env.VITE_API_KEY,
+    },
+    events: {
+        onTransactionSuccess: (data: TransactionSuccessData) => {
+            console.log("client onTransactionSuccess", data)
+        },
+        onTransactionError: (data: TransactionErrorData) => {
+            console.log("client onTransactionError", data)
+        },
+        onWidgetClose: () => {
+            console.log("client onWidgetClose")
+        },
+        onWidgetOpen: () => {
+            console.log("client onWidgetOpen")
+        },
+    },
+    origin: window.location.origin,
+}
+
+const aarcModalRef = new AarcFundKitModal(config);
+const aarcModal = aarcModalRef.current;
+
+export default function Home() {
+    return <button onClick={aarcModal.openModal}> Open Modal </button>
+};
+```
+

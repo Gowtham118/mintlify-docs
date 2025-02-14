@@ -1,0 +1,42 @@
+---
+description: Function to check the transaction status.
+---
+
+# Transaction Status
+
+The `getTransactionStatus` function allows developers and users to monitor the progress and finality of transactions, enhancing transparency and trust in application processes.
+
+## Expected parameters
+
+* `taskId`: The task id received after initiating the transaction through Aarc SDK.
+
+## Function call
+
+```typescript
+let status = await aarcCoreSDK.getTransactionStatus(
+    "REQUEST_ID"
+);
+```
+
+## Response
+
+The response from the `getTransactionStatus` will be:
+
+```typescript
+{
+    "code": number,
+    "data": {
+        "txHash": string,
+        "taskId": string,
+        "txStatus": string,
+        "createAt": number,
+        "updatedAt": number,
+        "fee": number
+    },
+    "message": string
+}
+```
+
+## Support
+
+If you face any trouble, feel free to reach out to our engineers in the [Telegram support group](https://t.me/aarcxyz).

@@ -1,0 +1,203 @@
+---
+description: A tutorial on integrating Safe Smart Account for an EOA with Aarc SDK ❇️
+---
+
+# Safe Smart Account
+
+Setup Smart Account in **two steps using Aarc SDK:**
+
+1. Fetch the Smart Account address for the EOA.
+2. Deploy and transfer native funds to the Smart Account. &#x20;
+
+So, let's get started with this step-by-step guide. :rocket:
+
+***
+
+1. Create a new directory, initialize `npm` in it and install **Aarc Migrator Package** and **ethers**
+
+{% code overflow="wrap" %}
+```bash
+mkdir aarc_safeSW && cd aarc_safeSW  && npm init -y && npm i @aarc-xyz/migrator ethers@5.7.2
+```
+{% endcode %}
+
+2. Create a new file `index.js` in `src` folder.
+3. Import the dependencies.&#x20;
+
+```javascript
+const { ethers, BigNumber } = require("ethers");
+const {Migrator, WALLET_TYPE}= require("@aarc-xyz/migrator");
+```
+
+4. Get the Aarc API Key (you can learn how to get it from [here](broken-reference)), your EOA private key, and the RPC URL.
+5. Initialize the provider and Aarc SDK
+
+```javascript
+let provider = new ethers.providers.JsonRpcProvider("YOUR_RPC_URL");
+let signer = new ethers.Wallet("YOUR_PRIVATE_KEY", provider);
+let eoaAddress = signer.address;
+
+let aarcSDK = new Migrator({
+    rpcUrl: "YOUR_RPC_URL",
+    chainId: 11155111, // Sepolia Testnet
+    apiKey: "YOUR_AARC_API_KEY"
+});
+```
+
+6. Fetch the Smart Account addresses of the EOA.
+
+```javascript
+async function main() {
+    try {
+        const smartWalletAddresses = await aarcSDK.getSmartWalletAddresses(
+            WALLET_TYPE.SAFE, // WALLET_TYPE imported from @aarc-xyz/migrator
+            eoaAddress
+        );
+        console.log(' smartWalletAddresses ', smartWalletAddresses);
+    } catch (error) {
+        console.error(' error ', error);
+    }
+}
+```
+
+Here, we provide the `WALLET_TYPE.SAFE` to fetch the Smart Account addresses associated with the EOA.&#x20;
+
+In the response, we will see the addresses associated with the EOA for Safe's Smart Accounts. No Smart Account may be deployed, so it will only generate and return the Smart Account address, mentioning its deployment status and the `walletIndex`.
+
+<details>
+
+<summary>Example response when no Smart Account is deployed!</summary>
+
+{% code overflow="wrap" %}
+```bash
+ smartWalletAddresses  [
+  {
+    address: '0x1a6e27BE6d0902eBd2D6FE533790c6A06A892F63',
+    isDeployed: false,
+    walletIndex: 0
+  }
+]
+```
+{% endcode %}
+
+</details>
+
+7. Deploy the Smart Account.&#x20;
+
+To deploy the smart account, use `aarcSDK.transferNativeAndDeploy` This will take a few minutes, as shown below.
+
+{% hint style="info" %}
+NOTE:&#x20;
+
+* **`deploymentWalletIndex`** and **`receiver`** can be fetched from the above response.
+* **`amount`**&#x73;hould be in hex string, which can be easily done by using`BigNumbers` from ethers.
+{% endhint %}
+
+```javascript
+async function main() {
+    // ... Previous Code ...
+    try {
+        const reponse = await aarcSDK.transferNativeAndDeploy({
+            walletType: WALLET_TYPE.SAFE,
+            owner: eoaAddress,
+            receiver: "0x1a6e27BE6d0902eBd2D6FE533790c6A06A892F63",
+            signer: signer,
+            deploymentWalletIndex: 0,
+            amount: BigNumber.from("10000")._hex
+        });
+        console.log("Transfer and Deploy Response: ", reponse);
+    }catch(error){
+        console.error(' error ', error);
+    }
+}
+```
+
+8. Run the script.
+
+<details>
+
+<summary>Complete script!</summary>
+
+{% code overflow="wrap" %}
+```javascript
+const { ethers, BigNumber } = require("ethers");
+const {Migrator, WALLET_TYPE}= require("@aarc-xyz/migrator");
+
+let provider = new ethers.providers.JsonRpcProvider("YOUR_RPC_URL");
+let signer = new ethers.Wallet("YOUR_PRIVATE_KEY", provider);
+let eoaAddress = signer.address;
+
+let aarcSDK = new Migrator({
+    rpcUrl: "YOUR_RPC_URL",
+    chainId: 11155111, // Sepolia Testnet
+    apiKey: "YOUR_AARC_API_KEY"
+});
+
+async function main() {
+    try {
+        // get all the smart wallets associated with the eoaAddress
+        const smartWalletAddresses = await aarcSDK.getSmartWalletAddresses(
+            WALLET_TYPE.SAFE,
+            eoaAddress
+        );
+        console.log(' smartWalletAddresses ', smartWalletAddresses);
+
+    } catch (error) {
+        console.error(' error ', error);
+    }
+
+    try {
+        const response = await aarcSDK.transferNativeAndDeploy({
+            walletType: WALLET_TYPE.SAFE,
+            owner: eoaAddress,
+            receiver: "0x1a6e27BE6d0902eBd2D6FE533790c6A06A892F63", //Change the receiver address to the SA address
+            signer: signer,
+            deploymentWalletIndex: 0, // Change the index to the index of the SA
+            amount: BigNumber.from("10000")._hex // Change the string to the amount you want to transfer
+        });
+        console.log("Transfer and Deploy Response: ", response);
+    } catch (error) {
+        console.error(' error ', error);
+    }
+}
+
+main();
+```
+{% endcode %}
+
+</details>
+
+```bash
+node src/index.js
+```
+
+You will see the following response after deploying the Safe Smart Wallet.
+
+<details>
+
+<summary>Response after deploying the Smart Wallet</summary>
+
+```bash
+Transfer and Deploy Response:  [
+  {
+    tokenAddress: '',
+    amount: '0x00',
+    message: 'Deployment tx sent',
+    txHash: '0x173d9a177ca909f2c14e79cef8efecc99e07fdbb1fc2f9dd5166ac69ab16aa15'
+  },
+  {
+    tokenAddress: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    amount: '0x2710',
+    message: 'Token transfer tx sent',
+    txHash: '0xc2efc6fbd2b3394a1efac8d1bf8782a7f00379b7f080bda9fa0b0d7b5f5bcffa'
+  }
+]
+```
+
+</details>
+
+***
+
+> _Voila! You have successfully deployed and funded your Safe's Smart Account in **only two steps** using Aarc SDK❇️_
+
+If you have any doubts, you can contact us on [Telegram](https://t.me/aarcxyz).

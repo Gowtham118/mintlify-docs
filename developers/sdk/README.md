@@ -1,0 +1,47 @@
+---
+description: Aarc's core SDK lets you bridge funds and call smart contracts cross-chain.
+---
+
+# SDK
+
+### Getting Started
+
+1. Install the package and other dependencies.
+
+{% tabs %}
+{% tab title="ethers.js" %}
+```bash
+npm i @aarc-xyz/core
+```
+{% endtab %}
+
+{% tab title="viem" %}
+```bash
+npm i @aarc-xyz/core-viem
+```
+{% endtab %}
+{% endtabs %}
+
+2. Import the package.
+
+```typescript
+import { AarcCore } from "@aarc-xyz/core-viem";
+```
+
+3. Get the API KEY
+
+&#x20;Get your API key from [dashboard.aarc.xyz](https://dashboard.aarc.xyz)
+
+4. Initialize Aarc SDK
+
+```typescript
+let aarcCoreSDK = new AarcCore(
+    "YOU_AARC_API_KEY"
+);
+```
+
+5. Generate a deposit address to enable bridging and custom user operations on the destination chain.
+
+```typescript
+ const depositData = await aarcCoreSDK.getDepositAddress(payload); 
+```

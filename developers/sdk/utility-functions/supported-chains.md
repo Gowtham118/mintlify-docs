@@ -1,0 +1,57 @@
+---
+description: To get the list of the chains supported by Aarc SDK
+---
+
+# Supported Chains
+
+The `getSupportedChains` function provides a comprehensive list of all supported chains, facilitating developers in planning and developing applications that are compatible across multiple blockchain environments.
+
+## Function Call
+
+```typescript
+let supportedChains = await aarcCoreSDK.getSupportedChains();
+```
+
+## Response
+
+The response from the `getSupportedChains` will be:
+
+{% code overflow="wrap" %}
+```typescript
+{
+    "success": boolean,
+    "result": [
+        {
+            "chainId": number,
+            "name": string,
+            "isL1": boolean,
+            "sendingEnabled": boolean,
+            "icon": string,
+            "receivingEnabled": boolean,
+            "refuel": {
+              "sendingEnabled": boolean,
+              "receivingEnabled": boolean
+            };
+            "currency": {
+              "address": string,
+              "icon": string,
+              "name": string,
+              "symbol":: string,
+              "decimals": number,
+              "minNativeCurrencyForGas": string
+            },
+            "rpcs": [
+              string
+            ],
+            "explorers": [
+              string
+            ]
+        }
+    ]
+}
+```
+{% endcode %}
+
+## Support
+
+If you face any trouble, feel free to reach out to our engineers in the [Telegram support group](https://t.me/aarcxyz).

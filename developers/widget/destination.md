@@ -1,0 +1,70 @@
+# Destination
+
+Set destination details like the desired token and chain for your `walletAddress`. Additionally, configure `contract` details for cross-chain calls.
+
+Here are the methods and attributes to configure destination details using the `client` object from `AarcFundKitModal` Class.
+
+{% hint style="info" %}
+You can also configure destination details in `config` object
+{% endhint %}
+
+<table><thead><tr><th width="290">Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>updateDestinationToken</td><td>(address?: string, chainId?: number, amount?: number) => void</td><td>Updates the destination token, chainId and amount if provided</td></tr><tr><td>updateDestinationWalletAddress</td><td>(address: string) => void</td><td>Updates the destination wallet address</td></tr><tr><td>updateDestinationChainId</td><td>(chainId: number) => void</td><td>Updates the chain ID for the destination</td></tr><tr><td>updateDestinationContract</td><td>(contract: FKConfig["destination"]["contract"]) => void</td><td>Updates the contract information of the destination</td></tr><tr><td>updateRequestedAmount</td><td>number | undefined</td><td>Updates the requested amount for the transaction</td></tr><tr><td>updateRequestedAmountInUSD</td><td>number | undefined</td><td>Updates the requested amount in USD</td></tr></tbody></table>
+
+### Example (Using AarcFundKitModal Functions)
+
+```jsx
+import React from 'react';
+import {
+    AarcFundKitModal,
+    FKConfig
+} from "@aarc-xyz/fundkit-web-sdk"
+
+const config: FKConfig = {
+    appName: "Dapp Name",
+    // remaining config...
+}
+
+const aarcModalRef = new AarcFundKitModal(config)
+const aarcModal = aarcModalRef.current;
+
+export default function Home() {
+
+  const updateDestination = async () => {
+    aarcModal.updateDestinationToken(
+      "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+      42161,
+      10
+    )
+    
+    aarcModal.updateDestinationWalletAddress("3o2Xo9TTVwTfB4pd88zk9VeWHd416nqR8jxxeC9cxmiE")
+  };
+
+  return (
+    <button onClick={updateDestination}>
+      Update Destination
+    </button>
+  );
+}
+```
+
+### Example (Using config)
+
+```typescript
+  const config: FKConfig = {
+    appName: "Aarc",
+    // remaining config...
+    destination: {
+      chainId: polygon.id,
+      walletAddress: "0xeDa8Dec60B6C2055B61939dDA41E9173Bab372b2", //wallet address of the destination
+      requestedAmount: 1,
+      tokenAddress: "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359", //token to be transferred. If undefined, the user will be prompted to select a token
+      contract: { //contract to be interacted with. If undefined, the transaction will be a simple transfer
+        contractAddress: "YOUR_CONTRACT_ADDRESS",
+        contractName: "Aave",
+        contractPayload: "YOUR_CONTRACT_PAYLOAD",
+        contractGasLimit: "2000000",
+      }, // Use this when want to call a contract on destination chain
+    },
+    // remaining config... 
+  }
+```
