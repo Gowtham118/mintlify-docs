@@ -157,7 +157,7 @@ The response from the `getDepositAddress` is:
 
 
 
-For more comprehensive implementation, refer [cookbook](../cookbook/sdk-implementation-in-typescript-+-ethers.md) example.
+For more comprehensive implementation, refer [cookbook](../cookbook/sdk-implementation-in-typescript-+-ethers) example.
 
 ## Support
 

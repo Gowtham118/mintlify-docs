@@ -8,7 +8,7 @@ The `getDepositAddress` function allows developers to interact with contracts on
 
 ### Expected parameters
 
-`getDepositAddress` accepts following [parameters](buy-tokens.md#payload).
+`getDepositAddress` accepts following [parameters](buy-tokens#payload).
 
 ### Function Call
 
@@ -109,4 +109,4 @@ const url = await aarcCoreSDK.generateMoonpayOnrampUrl({
 const windowRef = window.open(url, "_blank");
 ```
 
-For more comprehensive implementation, refer [cookbook](../cookbook/sdk-implementation-in-typescript-+-ethers.md) example.  &#x20;
+For more comprehensive implementation, refer [cookbook](../cookbook/sdk-implementation-in-typescript-+-ethers) example.  &#x20;

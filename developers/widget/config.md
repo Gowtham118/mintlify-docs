@@ -4,7 +4,7 @@
 
 Configuration object which contains all information about widget. You can learn about sub types in each other their sections.&#x20;
 
-<table><thead><tr><th width="211">Name</th><th width="234">Type</th><th>Description</th></tr></thead><tbody><tr><td>appName</td><td>string</td><td>Application name</td></tr><tr><td>apiKeys</td><td>ApiKeys</td><td>API keys for services</td></tr><tr><td>appearance</td><td><a href="appearance.md">FKAppearance</a> (Optional)</td><td>Visual customisation options</td></tr><tr><td>destination</td><td><a href="destination.md">FKDestination</a></td><td>Transaction destination details</td></tr><tr><td>events</td><td><a href="events.md">FKEvents</a></td><td>Event callback functions</td></tr><tr><td>module</td><td><a href="module.md">FKModule</a></td><td>Module configurations</td></tr><tr><td>origin</td><td>string (URL)</td><td>Origin URL</td></tr></tbody></table>
+<table><thead><tr><th width="211">Name</th><th width="234">Type</th><th>Description</th></tr></thead><tbody><tr><td>appName</td><td>string</td><td>Application name</td></tr><tr><td>apiKeys</td><td>ApiKeys</td><td>API keys for services</td></tr><tr><td>appearance</td><td><a href="appearance">FKAppearance</a> (Optional)</td><td>Visual customisation options</td></tr><tr><td>destination</td><td><a href="destination">FKDestination</a></td><td>Transaction destination details</td></tr><tr><td>events</td><td><a href="events">FKEvents</a></td><td>Event callback functions</td></tr><tr><td>module</td><td><a href="module">FKModule</a></td><td>Module configurations</td></tr><tr><td>origin</td><td>string (URL)</td><td>Origin URL</td></tr></tbody></table>
 
 ### Example
 

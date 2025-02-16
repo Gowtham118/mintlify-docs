@@ -39,7 +39,7 @@ npm i @tanstack/react-query @rainbow-me/rainbowkit viem wagmi
 Configuring the component only includes defining your application needs.
 
 {% hint style="info" %}
-To learn more about the config type visit this [link](config.md)
+To learn more about the config type visit this [link](config)
 {% endhint %}
 
 {% hint style="info" %}
@@ -110,7 +110,7 @@ export const aarcConfig: FKConfig = {
 To open the widget, wrap your application with the necessary providers, create an `AarcFundKitModal` instance using the desired configuration, and then call `.openModal()` to display the widget.
 
 {% hint style="info" %}
-Learn more about `AarcFundKitModal` from [this](modal.md) guide.
+Learn more about `AarcFundKitModal` from [this](modal) guide.
 {% endhint %}
 
 ```jsx
@@ -165,8 +165,8 @@ export default function Home() {
 }
 ```
 
-You can also [preset](destination.md) the widget with specifics making it further easy for user
+You can also [preset](destination) the widget with specifics making it further easy for user
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-To effectively manage the widget's state across your application, we recommend using a custom context. This approach centralizes state management and ensures seamless integration. You can view an example implementation [here](../cookbook/widget-implementation-in-next.js-+-wagmi.md).
+To effectively manage the widget's state across your application, we recommend using a custom context. This approach centralizes state management and ensures seamless integration. You can view an example implementation [here](../cookbook/widget-implementation-in-next.js-+-wagmi).

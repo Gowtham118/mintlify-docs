@@ -16,8 +16,8 @@ There are different usecases of this API, some of them are:
 * Cross-chain Swaps&#x20;
 * Send funds to the same chain like a normal transfer
 
-{% content-ref url="buy-checkout-api.md" %}
-[buy-checkout-api.md](buy-checkout-api.md)
+{% content-ref url="buy-checkout-api" %}
+[buy-checkout-api](buy-checkout-api)
 {% endcontent-ref %}
 
 ## Migrator API

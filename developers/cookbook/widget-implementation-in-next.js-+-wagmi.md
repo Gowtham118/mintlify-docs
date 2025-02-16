@@ -25,7 +25,7 @@ npm i @aarc-xyz/fundkit-web-sdk @aarc-xyz/eth-connector
 <pre class="language-tsconfig"><code class="lang-tsconfig"><strong>NEXT_PUBLIC_API_KEY=your-aarc-api-key
 </strong></code></pre>
 
-5. Setup [config ](../widget/config.md)for the widget.
+5. Setup [config ](../widget/config)for the widget.
 
 `AarcConfig.ts`
 

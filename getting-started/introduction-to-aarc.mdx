@@ -1,173 +1,48 @@
 ---
-description: Aarc Widget to buy tokens.
+description: >-
+  This is an overview of the Aarc in general and our mission and vision for Web3
+  ecosystem.
+layout:
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
-# Widget
+# Introduction to Aarc
 
-Every web3 application struggles to get users on board with them for a very basic reason, i.e., users have to do too much work to use the embedded wallet provided by the application.
+Aarc is a modular network designed for unified, omnichain decentralized applications (dApps). Aarc developers can seamlessly unify users' accounts and liquidity from any blockchain without the complexities of multi-chain deployment, dApp migration, or contract modifications. Using our intuitive and use-case-specific SDKs, developers can create chain-agnostic dApps in just a few days. In today's multi-chain environment, Aarc aims to create a future where dApps can function without the burden of chain-specific considerations and quickly access a multi-chain user base. **Go live with Zerotouch integration:**  Our product stack offers a zero-touch solution for dApp integration. No changes to your dApp smart contracts are needed. Integrate the SDKs and APIs.
 
-Aarc SDK provides a very simple yet efficient way to solve this issue, the Aarc Fund Kit Widget.
+### Why Now? We Envision a Future Beyond Cross-Chain or Multi-Chain
 
-The Aarc Fund Kit Widget has all the necessary options an application needs to onboard new users, like:
+The rapid expansion of Ethereum and its shift towards a rollup-centric roadmap has led to multiple Layer 2 solutions, each operating independently. This fragmentation results in a complex maze of ecosystems with over 50 rollups and a total value locked (TVL) of $32 billion, creating significant barriers to scalability and user accessibility. The isolated nature of these developments complicates usability and hinders the overall potential of Web3 to onboard the next billion users.
 
-* Centralized Exchange Transfer
-* Fiat On-Ramp
-* Fund from an EOA
+<figure><img src=".gitbook/assets/65e8298255bb13d1b0e21df2_Frame 42 (1)-p-1080.png" alt/><figcaption><p>Aarc as the unification layer for L1 Blockchains and L2 Rollups</p></figcaption></figure>
 
-<figure>
-  <img src="../../.gitbook/assets/image (1).png" alt=""/>
-  <figcaption><p>Aarc widget</p></figcaption>
-</figure>
+### **Our Mission: Making Dapps Easy to Use and Onboard**
 
-Let's get started on how you can integrate THE WIDGET!
+We aim to simplify the process for developers to create modular, interoperable dapps that offer a unified user experience with minimal effort. We strive to eliminate the challenges posed by network silos, making dApp creation as straightforward as possible. We aim for dApps to be effective, universally compatible, and user-friendly.
+
+### **Our Vision: An Omnichain Future Where We Transcend All Chains**
+
+Our vision at Aarc is to create a future of integrated modularity, where liquidity, identity, and gas are unified across dapps, users, and chain ecosystems. We envision a future where dApps can operate seamlessly across all chains, not just their home ground network. With Aarc, dApps can scale effortlessly, transforming networks into mere settlement layers rather than isolated platforms.
+
+### Our Beliefs: Principles and Ethos
+
+1. **Permissionless and Modular:** We support fast, scalable development with permissionless, modular systems, removing unnecessary barriers.
+2. **Developer-Centric Approach**: Prioritizing the developer experience, our infrastructure is user-friendly, efficient, and custom-made for developers.
+3. **Agile and Responsive Development**: We ensure quick, quality delivery, valuing community and customer insights for relevant, superior offerings.
 
 ***
 
-## Install the packages
+## Get Started!
 
-```bash
-npm i @aarc-xyz/fundkit-web-sdk @aarc-xyz/eth-connector
-```
+[fund-kit](./getting-started/fund-kit)
 
-## Install the dependencies
-
-```bash
-npm i @tanstack/react-query @rainbow-me/rainbowkit viem wagmi
-```
-
-## Setting up the config
-
-Configuring the component only includes defining your application needs.
-
-<Info>
-To learn more about the config type visit this [link](config.md)
-</Info>
-
-<Info>
-If you add `contract` details in the destination then the widget will automatically enable `checkout` mode where it will call a smart contract.&#x20;
-</Info>
-
-In `aarcConfig.ts`:
-
-```jsx
-import {
-    AarcFundKitModal,
-    FKConfig,
-    ThemeName,
-    TransactionErrorData,
-    TransactionSuccessData,
-} from "@aarc-xyz/fundkit-web-sdk"
-
-export const aarcConfig: FKConfig = {
-    appName: "Aarc Stage",
-    module: {
-      exchange: {
-        enabled: false,
-      },
-      onRamp: {
-        enabled: true,
-        onRampConfig: {
-          customerId: "123", // replace with any unique id for the user
-        },
-      },
-      bridgeAndSwap: {
-        enabled: true,
-        fetchOnlyDestinationBalance: false,
-        routeType: "Value",
-        connectors: [SourceConnectorName.ETHEREUM],
-      },
-    },
-    destination: {
-      walletAddress: "0xeDa8Dec60B6C2055B61939dDA41E9173Bab372b2",
-    },
-    appearance: {
-      roundness: 42,
-      theme: ThemeName.DARK,
-    },
-
-    apiKeys: {
-      aarcSDK: process.env.NEXT_PUBLIC_API_KEY!,
-    },
-    events: {
-      onTransactionSuccess: (data: TransactionSuccessData) => {
-        console.log("onTransactionSuccess", data);
-      },
-      onTransactionError: (data: TransactionErrorData) => {
-        console.log("onTransactionError", data);
-      },
-      onWidgetClose: () => {
-        console.log("onWidgetClose");
-      },
-      onWidgetOpen: () => {
-        console.log("onWidgetOpen");
-      },
-    },
-    origin: window.location.origin 
-  };
-```
-
-### Use widget in root component
-
-To open the widget, wrap your application with the necessary providers, create an `AarcFundKitModal` instance using the desired configuration, and then call `.openModal()` to display the widget.
-
-<Info>
-Learn more about `AarcFundKitModal` from [this](modal.md) guide.
-</Info>
-
-```jsx
-import {
-    AarcFundKitModal,
-    FKConfig,
-    ThemeName,
-    TransactionErrorData,
-    TransactionSuccessData,
-} from "@aarc-xyz/fundkit-web-sdk"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { AarcEthWalletConnector } from "@aarc-xyz/eth-connector";
-import { aarcConfig } from "aarcConfig.ts"
-import "@aarc-xyz/eth-connector/styles.css";
-
-const queryClient = new QueryClient();
-
-function App({ children }) {
-  const aarcModalRef = useRef<AarcFundKitModal | null>(new AarcFundKitModal(aarcConfig));
-
-  const aarcModal = aarcModalRef.current;
-  
-  return (
-    <WagmiProvider config={wagmiConfig}>
-      <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
-          <AarcEthWalletConnector aarcWebClient={aarcModal}>
-              {children}
-          </AarcEthWalletConnector>
-        </RainbowKitProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
-
-  );
-}
-```
-
-**Open the widget**
-
-```typescript
-"use client";
-import { aarcConfig } from "aarcConfig.ts"
-
-export default function Home() {
-  const aarcModal  = new AarcFundKitModal(aarcConfig);
-
-  return (
-      <button onClick={() => {aarcModal?.openModal()}}>
-          Open Widget
-      </button>
-  );
-}
-```
-
-You can also [preset](destination.md) the widget with specifics making it further easy for user
-
-<figure><img src="../../.gitbook/assets/image.png" alt=""/><figcaption></figcaption></figure>
-
-To effectively manage the widget's state across your application, we recommend using a custom context. This approach centralizes state management and ensures seamless integration. You can view an example implementation [here](../cookbook/widget-implementation-in-next.js-+-wagmi.md).
+[quickstart](developers/quickstart)

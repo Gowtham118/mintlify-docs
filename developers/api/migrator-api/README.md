@@ -21,7 +21,7 @@ hidden: true
 
 After receiving the `calldata` from the `/migrate/forward-calldata`, it needs to be signed by the signer for different approvals.&#x20;
 
-To do that, you will need to get each item in the `forwardCallDataReponse` signed by the signer and then passed as `trxList` and the `txnIndexes` with it. Learn how to do this [here](signing-calldata-for-execution.md)[.](signing-calldata-for-execution.md#signing-the-forward-calldata)
+To do that, you will need to get each item in the `forwardCallDataReponse` signed by the signer and then passed as `trxList` and the `txnIndexes` with it. Learn how to do this [here](signing-calldata-for-execution)[.](signing-calldata-for-execution#signing-the-forward-calldata)
 
 {% swagger src="https://raw.githubusercontent.com/aarc-xyz/swagger-api/main/fdk/migrator/migrator.json" path="/migrate/forward-calldata-trx" method="post" %}
 [https://raw.githubusercontent.com/aarc-xyz/swagger-api/main/fdk/migrator/migrator.json](https://raw.githubusercontent.com/aarc-xyz/swagger-api/main/fdk/migrator/migrator.json)
@@ -39,7 +39,7 @@ To do that, you will need to get each item in the `forwardCallDataReponse` signe
 
 After receiving the `calldata` from the `/migrate/gasless-calldata`, it needs to be signed by the signer for different approvals.&#x20;
 
-To do that, you will need to get each item in the `forwardCallDataReponse` signed by the signer and then passed as `trxList` and the `txnIndexes` with it. Learn how to do this [here](signing-calldata-for-execution.md#gasless-transactions)[.](signing-calldata-for-execution.md#signing-the-forward-calldata)
+To do that, you will need to get each item in the `forwardCallDataReponse` signed by the signer and then passed as `trxList` and the `txnIndexes` with it. Learn how to do this [here](signing-calldata-for-execution#gasless-transactions)[.](signing-calldata-for-execution#signing-the-forward-calldata)
 
 {% swagger src="https://raw.githubusercontent.com/aarc-xyz/swagger-api/main/fdk/migrator/migrator.json" path="/migrate/gasless-calldata-trx" method="post" %}
 [https://raw.githubusercontent.com/aarc-xyz/swagger-api/main/fdk/migrator/migrator.json](https://raw.githubusercontent.com/aarc-xyz/swagger-api/main/fdk/migrator/migrator.json)

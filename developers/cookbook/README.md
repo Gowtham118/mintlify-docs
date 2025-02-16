@@ -17,9 +17,9 @@ layout:
 
 # Cookbook
 
-[Widget implementation in Next.js +wagmi](widget-implementation-in-next.js-+-wagmi.md)&#x20;
+[Widget implementation in Next.js +wagmi](widget-implementation-in-next.js-+-wagmi)&#x20;
 
-[SDK implementation in Typescript + ethers](sdk-implementation-in-typescript-+-ethers.md)
+[SDK implementation in Typescript + ethers](sdk-implementation-in-typescript-+-ethers)
 
 [Widget implementation in Reactjs](https://github.com/aarc-xyz/aarc-react-widget-demo/blob/main/src/App.tsx)
 
