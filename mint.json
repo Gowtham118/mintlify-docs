@@ -1,0 +1,77 @@
+{
+    "name": "Aarc Documentation",
+    "colors": {
+        "primary": "#000000",
+        "dark": "#EEFFB9",
+        "light": "#000000"
+    },
+    "navigation": [
+        {
+            "group": "Getting Started",
+            "pages": [
+                "getting-started/introduction-to-aarc",
+                "getting-started/fund-kit"
+            ]
+        },
+        {
+            "group": "Developers",
+            "pages": [
+                "developers/quickstart",
+                {
+                    "group": "Widget",
+                    "pages": [
+                        "developers/widget/config",
+                        "developers/widget/modal",
+                        "developers/widget/destination",
+                        "developers/widget/module",
+                        "developers/widget/appearance",
+                        "developers/widget/events"
+                    ]
+                },
+                {
+                    "group": "SDK",
+                    "pages": [
+                        "developers/sdk/buy-tokens",
+                        "developers/sdk/custom-cross-chain-call",
+                        "developers/sdk/utility-functions"
+                    ]
+                },
+                {
+                    "group": "API",
+                    "pages": [
+                        "developers/api/buy-checkout-api",
+                        "developers/api/verified-links",
+                        "developers/api/utility-apis"
+                    ]
+                },
+                {
+                    "group": "Cookbook",
+                    "pages": [
+                        "developers/cookbook/widget-implementation-nextjs-wagmi",
+                        "developers/cookbook/sdk-implementation-typescript-ethers"
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Opensource Auth",
+            "pages": [
+                "opensource-auth/introduction-and-use-cases",
+                "opensource-auth/using-openauth"
+            ]
+        },
+        {
+            "group": "Resources",
+            "pages": [
+                "resources/supported-networks",
+                "resources/get-support",
+                "resources/schedule-a-demo",
+                "resources/system-uptime-status",
+                "resources/brand-assets"
+            ]
+        }
+    ],
+    "footerSocials": {
+        "github": "https://github.com/aarc-xyz"
+    }
+}
