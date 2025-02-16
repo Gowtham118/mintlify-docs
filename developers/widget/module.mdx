@@ -28,9 +28,7 @@ You can set `enabled` to true which enables option to fund from Bank Account or 
 
 #### FKBridgeAndSwapModule
 
-{% hint style="info" %}
-RouteType can be Value, Fee or Time. It helps to optimise route for bridging and swapping.
-{% endhint %}
+> **Info:** RouteType can be Value, Fee or Time. It helps to optimise route for bridging and swapping.
 
 <table><thead><tr><th width="264">Property</th><th width="217">Type</th><th>Description</th></tr></thead><tbody><tr><td>enabled</td><td>boolean (optional)</td><td>Whether the bridge and swap module is enabled. Default is true.</td></tr><tr><td>fetchOnlyDestinationBalance</td><td>boolean (optional)</td><td>Whether to fetch only the destination chain's balance. Default is false.</td></tr><tr><td>routeType</td><td>"Fee" | "Time" | "Value"</td><td>The type of route to be used. Default is "Value". </td></tr><tr><td>connectors</td><td>SourceConnectorName | SourceConnectorName[] | undefined</td><td>Specifies source connector of the client.</td></tr></tbody></table>
 

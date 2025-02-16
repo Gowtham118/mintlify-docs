@@ -21,7 +21,8 @@ The configuration object allows you to customize the behavior and appearance of 
 
 ### Config Object
 
-<pre class="language-typescript"><code class="lang-typescript">interface AuthConfig {
+```typescript
+interface AuthConfig {
     Wallet?: Function; // JSX element imported from @aarc-xyz/wallet-auth
     callbacks: { 
         onSuccess: Function; 
@@ -36,8 +37,8 @@ The configuration object allows you to customize the behavior and appearance of 
     };
     authMethods: AuthMethod[]; // select authMethods from AuthMethod
     socialAuth: OAuthProvider[]; // select providers from OAuthProvider 
-<strong>    aarcApiKey: string; // get teh aarcApiKey from dashboard
-</strong>}
+    aarcApiKey: string; // get the aarcApiKey from dashboard
+}
 
 enum OAuthProvider {
     GOOGLE = 'google',
@@ -52,7 +53,7 @@ enum AuthMethod {
     WALLET = 'wallet',
     SMS = 'sms',
 }
-</code></pre>
+```
 
 This object defines the visual aspects of the widget, the authentication methods available, and the callbacks for various events. Adjusting these settings lets developers tailor the authentication experience to the specific needs of their application.
 
@@ -120,13 +121,9 @@ root.render(
 );
 ```
 
-{% hint style="info" %}
-Make sure you import the style.css for the widget UI to render properly
-{% endhint %}
+> **Note:** Make sure you import the style.css for the widget UI to render properly.
 
-{% hint style="info" %}
-For NextJS: Since the Aarc auth widget is meant to be used on the client side please make sure the code is running on the client side, by specifying 'use client' at the top of the file
-{% endhint %}
+> **Note:** For NextJS: Since the Aarc auth widget is meant to be used on the client side please make sure the code is running on the client side, by specifying 'use client' at the top of the file.
 
 The 'Provider' component wraps around your main app component, making the authentication functionality accessible throughout your application. This setup is essential for maintaining a consistent authentication state.
 
@@ -137,11 +134,11 @@ The 'Provider' component wraps around your main app component, making the authen
 
 The following component must be wrapped by the provider mentioned above
 
-<pre class="language-typescript"><code class="lang-typescript">//app.tsx
+```typescript
+//app.tsx
 
-<strong>function Auth() {
-</strong><strong>
-</strong>  const { openAuthWidget } = useAuthWidget()
+function Auth() {
+  const { openAuthWidget } = useAuthWidget()
   
   useEffect(() => {
     console.log('Auth widget mounted')
@@ -149,14 +146,14 @@ The following component must be wrapped by the provider mentioned above
     return () => {
       console.log('Auth widget unmounted')
     }
-  }
-    , [])
+  }, [])
+
   return (
-    &#x3C;div>
-    &#x3C;/div>
+    <div>
+    </div>
   )
 }
-</code></pre>
+```
 
 ## Send-Transaction Functionality
 

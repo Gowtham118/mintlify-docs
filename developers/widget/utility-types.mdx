@@ -1,0 +1,78 @@
+---
+hidden: true
+---
+
+# Utility Types
+
+Here's a list of all utility types that are used in Fund Kit Widget
+
+## DepositWidgetSDK
+
+| Property/Method | Type | Description |
+| -------------- | ---- | ----------- |
+| config | FKConfig | Configuration object for the widget |
+| navigation | FKNavigation | Navigation control for the widget |
+| reset | () => void | Resets the widget state |
+| getMeshIntegrationPlaforms | () => Promise | Retrieves mesh integration platforms |
+| openMeshLink | (integrationId?: string) => Promise | Opens a mesh link |
+| openOnRampFlowViaUrl | () => Promise | Opens the on-ramp flow via URL |
+| searchSupportedTokens | (searchString?: string, address?: string, chainId?: string) => Promise&lt;SupportedToken[]> | Searches for supported tokens |
+| updateDestinationTokenWithAddress | (tokenAddress: string, chainId: string, tokenAmount?: string) => Promise | Updates the destination token |
+| getSupportedTokens | () => Promise&lt;SupportedToken[]> | Retrieves all supported tokens |
+| getSupportedChains | () => Promise&lt;ChainInfo[]> | Retrieves all supported chains |
+| getMultichainBalance | (address: string, extendedBalances?: boolean) => Promise | Retrieves multichain balance |
+| getTokenPrice | (tokenSymbol?: string) => Promise | Retrieves token price |
+| getCheckoutRoute | () => Promise | Retrieves checkout route |
+| getDepositRoute | () => Promise<RouteResponse | undefined> | Retrieves deposit route |
+| handleApprove | ({ approvalTxs }: { approvalTxs: ApprovalTransaction[] }) => Promise<RelayedTxListResponse[]> | Handles approval transactions |
+| handleExecute | ({ executionTxs, provider }: { executionTxs: ExecutionTransaction[], provider?: string }) => Promise<RelayedTxListResponse[]> | Handles execution transactions |
+| getTransactionStatus | (txHash: string) => Promise | Retrieves transaction status |
+| addTxMetaDetails | (data: TxMetaDetails) => void | Adds transaction meta details |
+| updateChainId | (chainInfo: ChainInfo) => void | Updates the chain ID |
+| goToPreviousStep | () => void | Navigates to the previous step |
+| updateDestinationContract | (contract: FKDestination["contract"]) => void | Updates the destination contract |
+| updateDestinationToken | (token: SupportedToken, chainInfo?: ChainInfo) => void | Updates the destination token |
+
+## SupportedToken
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| address | string | Token address |
+| chainId | number | Chain ID where the token is supported |
+| name | string | Token name |
+| symbol | string | Token symbol |
+| decimals | number | Number of decimal places |
+| logoURI | string | URI of the token logo |
+| priority | number? | Priority of the token |
+| source | string[]? | Sources supporting the token |
+
+## ChainInfo
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| chainId | string | Chain ID |
+| name | string | Chain name |
+| logoURI | string | URI of the chain logo |
+| priority | number? | Priority of the chain |
+
+## FormattedToken
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| formattedBalance | string | Formatted token balance |
+| formattedUSDValue | string | Formatted USD value of the token |
+| contract | string? | Contract address |
+| name | string | Token name |
+| symbol | string | Token symbol |
+| address | string | Token address |
+| token_address | string | Token address (duplicate?) |
+| decimals | number | Number of decimal places |
+| logo | string | URI of the token logo |
+| native_token | boolean | Whether it's a native token |
+| type | string | Token type |
+| is_spam | boolean | Whether the token is considered spam |
+| balance | string | Raw balance |
+| usd_price | number | USD price of the token |
+| sourceAmount | string? | Source amount |
+| chainId | string | Chain ID |
+| chain | { id: string, logo: string } | Chain information |

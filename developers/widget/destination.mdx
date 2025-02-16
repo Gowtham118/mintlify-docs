@@ -4,9 +4,9 @@ Set destination details like the desired token and chain for your `walletAddress
 
 Here are the methods and attributes to configure destination details using the `client` object from `AarcFundKitModal` Class.
 
-{% hint style="info" %}
+<Info>
 You can also configure destination details in `config` object
-{% endhint %}
+</Info>
 
 <table><thead><tr><th width="290">Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>updateDestinationToken</td><td>(address?: string, chainId?: number, amount?: number) => void</td><td>Updates the destination token, chainId and amount if provided</td></tr><tr><td>updateDestinationWalletAddress</td><td>(address: string) => void</td><td>Updates the destination wallet address</td></tr><tr><td>updateDestinationChainId</td><td>(chainId: number) => void</td><td>Updates the chain ID for the destination</td></tr><tr><td>updateDestinationContract</td><td>(contract: FKConfig["destination"]["contract"]) => void</td><td>Updates the contract information of the destination</td></tr><tr><td>updateRequestedAmount</td><td>number | undefined</td><td>Updates the requested amount for the transaction</td></tr><tr><td>updateRequestedAmountInUSD</td><td>number | undefined</td><td>Updates the requested amount in USD</td></tr></tbody></table>
 

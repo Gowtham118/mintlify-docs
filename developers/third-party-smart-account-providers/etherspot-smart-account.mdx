@@ -15,11 +15,9 @@ So, let's get started with this step-by-step guide. :rocket:
 
 1. Create a new directory, initialize `npm` in it and install **Aarc Migrator Package** and **ethers**
 
-{% code overflow="wrap" %}
 ```bash
 mkdir aarc_etherspotSW && cd aarc_etherspotSW && npm init -y && npm i @aarc-xyz/migrator ethers@5.7.2
 ```
-{% endcode %}
 
 2. Create a new file `index.js` in `src` folder.
 3. Import the dependencies.&#x20;
@@ -84,12 +82,12 @@ In the response, we will see the addresses associated with the EOA for Etherspot
 
 To deploy the smart account, use `aarcSDK.transferNativeAndDeploy` this will take a few parameters, as shown below.
 
-{% hint style="info" %}
+<Info>
 NOTE:&#x20;
 
 * **`deploymentWalletIndex`** and **`receiver`** can be fetched from the above response.
 * **`amount`**&#x73;hould be in hex string, which can be easily done by using`BigNumbers` from ethers.
-{% endhint %}
+</Info>
 
 ```javascript
 async function main() {
@@ -116,7 +114,6 @@ async function main() {
 
 <summary>Complete script!</summary>
 
-{% code overflow="wrap" %}
 ```javascript
 const { ethers, BigNumber } = require("ethers");
 const {Migrator, WALLET_TYPE}= require("@aarc-xyz/migrator");
@@ -159,7 +156,6 @@ async function main() {
 
 main();
 ```
-{% endcode %}
 
 </details>
 

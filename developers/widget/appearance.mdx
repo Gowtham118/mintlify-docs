@@ -4,9 +4,9 @@ You can customize the widget's appearance by setting your own custom theme or us
 
 ### FKAppearance Interface
 
-{% hint style="info" %}
+<Info>
 All colors should be given in their hex value.
-{% endhint %}
+</Info>
 
 <table><thead><tr><th width="197">Property</th><th width="195">Type</th><th>Description</th></tr></thead><tbody><tr><td>themeColor</td><td>string | undefined</td><td>The primary theme color for the UI.</td></tr><tr><td>textColor</td><td>string | undefined</td><td>The color used for text elements.</td></tr><tr><td>backgroundColor</td><td>string | undefined</td><td>The background color for the UI.</td></tr><tr><td>highlightColor</td><td>string | undefined</td><td>The color used for highlighted or emphasized elements.</td></tr><tr><td>borderColor</td><td>string | undefined</td><td>The color used for borders in the UI.</td></tr><tr><td>logoUrl</td><td>string | null</td><td>URL for the logo to be displayed. Can be null if no logo is used.</td></tr><tr><td>dark</td><td>Colors | undefined</td><td>An object containing color configurations for dark mode.</td></tr><tr><td>roundness</td><td>number | undefined</td><td>A value determining the roundness of UI elements (e.g., button corners).</td></tr><tr><td>theme</td><td>ThemeName</td><td>The name of the theme to be used. </td></tr></tbody></table>
 
@@ -20,9 +20,9 @@ All colors should be given in their hex value.
 
 ### Colors Interface
 
-{% hint style="info" %}
+<Info>
 If you mention below color specifically it will overwrite the default theme of widget.
-{% endhint %}
+</Info>
 
 The `Colors` interface is used both in the main FKAppearance interface and in its `dark` property. It contains the following properties:
 

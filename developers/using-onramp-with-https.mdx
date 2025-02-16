@@ -14,7 +14,6 @@ Query Params
 | exchangeScreenTitle | string | title in header of widget                                      |
 | aarcApiKey          | string | Api key obtained from Aarc to make this request                |
 
-{% code overflow="wrap" %}
 ```typescript
 onrampWindow = window.open(`${onramp_base_url}?
 env=${env}
@@ -24,7 +23,6 @@ env=${env}
 &aarcApiKey=${aarc_api_key}
 `, '_blank')
 ```
-{% endcode %}
 
 ### For Contract interaction mode
 
@@ -53,7 +51,6 @@ CryptoCurrencyData {
 }
 ```
 
-{% code overflow="wrap" %}
 ```typescript
 onrampWindow = window.open(`
 ${onramp_base_url}?
@@ -68,7 +65,6 @@ env=${env}
 &aarcApiKey=${aarc_api_key}
 `, '_blank')
 ```
-{% endcode %}
 
 Create an event listner for listening to the onramp events
 
