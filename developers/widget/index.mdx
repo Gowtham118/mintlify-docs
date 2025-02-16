@@ -14,7 +14,7 @@ The Aarc Fund Kit Widget has all the necessary options an application needs to o
 * Fiat On-Ramp
 * Fund from an EOA
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>Aarc widget</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""/><figcaption><p>Aarc widget</p></figcaption></figure>
 
 Let's get started on how you can integrate THE WIDGET!
 
@@ -22,11 +22,9 @@ Let's get started on how you can integrate THE WIDGET!
 
 ## Install the packages
 
-{% code overflow="wrap" %}
 ```bash
 npm i @aarc-xyz/fundkit-web-sdk @aarc-xyz/eth-connector
 ```
-{% endcode %}
 
 ## Install the dependencies
 
@@ -38,13 +36,13 @@ npm i @tanstack/react-query @rainbow-me/rainbowkit viem wagmi
 
 Configuring the component only includes defining your application needs.
 
-{% hint style="info" %}
+<Info>
 To learn more about the config type visit this [link](config)
-{% endhint %}
+</Info>
 
-{% hint style="info" %}
+<Info>
 If you add `contract` details in the destination then the widget will automatically enable `checkout` mode where it will call a smart contract.&#x20;
-{% endhint %}
+</Info>
 
 In `aarcConfig.ts`:
 
@@ -109,9 +107,9 @@ export const aarcConfig: FKConfig = {
 
 To open the widget, wrap your application with the necessary providers, create an `AarcFundKitModal` instance using the desired configuration, and then call `.openModal()` to display the widget.
 
-{% hint style="info" %}
+<Info>
 Learn more about `AarcFundKitModal` from [this](modal) guide.
-{% endhint %}
+</Info>
 
 ```jsx
 import {
@@ -167,6 +165,6 @@ export default function Home() {
 
 You can also [preset](destination) the widget with specifics making it further easy for user
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""/><figcaption></figcaption></figure>
 
 To effectively manage the widget's state across your application, we recommend using a custom context. This approach centralizes state management and ensures seamless integration. You can view an example implementation [here](../cookbook/widget-implementation-in-next.js-+-wagmi).

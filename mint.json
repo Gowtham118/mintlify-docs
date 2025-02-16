@@ -25,6 +25,7 @@
             {
                 "group": "Widget",
                 "pages": [
+                    "developers/widget/index",
                     "developers/widget/config",
                     "developers/widget/modal",
                     "developers/widget/destination",
@@ -36,6 +37,7 @@
             {
                 "group": "SDK",
                 "pages": [
+                    "developers/sdk/index",
                     "developers/sdk/buy-tokens",
                     "developers/sdk/custom-cross-chain-call",
                     "developers/sdk/utility-functions"
@@ -44,6 +46,7 @@
             {
                 "group": "API",
                 "pages": [
+                    "developers/api/index",
                     "developers/api/buy-checkout-api",
                     "developers/api/verified-links",
                     "developers/api/utility-apis"
@@ -52,6 +55,7 @@
             {
                 "group": "Cookbook",
                 "pages": [
+                    "developers/cookbook/index",
                     "developers/cookbook/widget-implementation-nextjs-wagmi",
                     "developers/cookbook/sdk-implementation-typescript-ethers"
                 ]
