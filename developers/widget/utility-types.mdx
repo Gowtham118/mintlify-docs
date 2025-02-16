@@ -23,9 +23,9 @@ Here's a list of all utility types that are used in Fund Kit Widget
 | getMultichainBalance | (address: string, extendedBalances?: boolean) => Promise | Retrieves multichain balance |
 | getTokenPrice | (tokenSymbol?: string) => Promise | Retrieves token price |
 | getCheckoutRoute | () => Promise | Retrieves checkout route |
-| getDepositRoute | () => Promise<RouteResponse | undefined> | Retrieves deposit route |
-| handleApprove | ({ approvalTxs }: { approvalTxs: ApprovalTransaction[] }) => Promise<RelayedTxListResponse[]> | Handles approval transactions |
-| handleExecute | ({ executionTxs, provider }: { executionTxs: ExecutionTransaction[], provider?: string }) => Promise<RelayedTxListResponse[]> | Handles execution transactions |
+| getDepositRoute | () => Promise&lt;RouteResponse \| undefined&gt; | Retrieves deposit route |
+| handleApprove | (\{ approvalTxs \}: \{ approvalTxs: ApprovalTransaction[] \}) => Promise&lt;RelayedTxListResponse[]> | Handles approval transactions |
+| handleExecute | (\{ executionTxs, provider \}: \{ executionTxs: ExecutionTransaction[], provider?: string \}) => Promise&lt;RelayedTxListResponse[]> | Handles execution transactions |
 | getTransactionStatus | (txHash: string) => Promise | Retrieves transaction status |
 | addTxMetaDetails | (data: TxMetaDetails) => void | Adds transaction meta details |
 | updateChainId | (chainInfo: ChainInfo) => void | Updates the chain ID |
@@ -75,4 +75,4 @@ Here's a list of all utility types that are used in Fund Kit Widget
 | usd_price | number | USD price of the token |
 | sourceAmount | string? | Source amount |
 | chainId | string | Chain ID |
-| chain | { id: string, logo: string } | Chain information |
+| chain | \{ id: string, logo: string \} | Chain information |
