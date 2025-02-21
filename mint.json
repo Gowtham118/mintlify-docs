@@ -6,87 +6,166 @@
         "dark": "./logo.png"
     },
     "colors": {
-    "primary": "#EEFFB9",
-    "dark": "#EEFFB9",
-    "light": "#000000"
+        "primary": "#7E8D4B",
+        "light": "#EEFFB9",
+        "dark": "#7E8D4B",
+        "anchors": {
+            "from": "#7E8D4B",
+            "to": "#EEFFB9"
+        }
+    },
+    "topbarLinks": [
+        {
+            "name": "Support",
+            "url": "mailto:contact@aarc.xyz"
+        },
+        {
+            "name": "Schedule a Demo",
+            "url": "https://calendly.com/d/3f7-9gt-4pr/session-with-aarc-team"
+        }
+    ],
+    "topbarCtaButton": {
+        "name": "Dev Dashboard",
+        "url": "https://dashboard.aarc.xyz"
     },
     "tabs": [
         {
+            "name": "Developers",
+            "url": "developers"
+        },
+        {
             "name": "Execution API",
-            "url": "developers/execution-api"
+            "url": "execution-api"
+        },
+        {
+            "name": "SDK",
+            "url": "sdk"
+        },
+        {
+            "name": "Widget (FDK)",
+            "url": "widget"
+        },
+        {
+            "name": "Hosted pages",
+            "url": "hosted-pages"
+        },
+        {
+            "name": "Partner Integrations",
+            "url": "partner-integrations"
+        },
+        {
+            "name": "Resources",
+            "url": "resources"
         }
     ],
     "navigation": [
-    {
-        "group": "Getting Started",
-        "pages": [
-            "getting-started/introduction-to-aarc",
-            "getting-started/fund-kit"
-        ]
-    },
-    {
-        "group": "Developers",
-        "pages": [
-            "developers/quickstart",
-            {
-                "group": "Widget",
-                "pages": [
-                    "developers/widget/index",
-                    "developers/widget/config",
-                    "developers/widget/modal",
-                    "developers/widget/destination",
-                    "developers/widget/module",
-                    "developers/widget/appearance",
-                    "developers/widget/events"
-                ]
-            },
-            {
-                "group": "SDK",
-                "pages": [
-                    "developers/sdk/index",
-                    "developers/sdk/buy-tokens",
-                    "developers/sdk/custom-cross-chain-call",
-                    "developers/sdk/utility-functions"
-                ]
-            },
-            {
-                "group": "API",
-                "pages": [
-                    "developers/api/index",
-                    "developers/api/buy-checkout-api",
-                    "developers/api/verified-links",
-                    "developers/api/utility-apis"
-                ]
-            },
-            {
-                "group": "Cookbook",
-                "pages": [
-                    "developers/cookbook/index",
-                    "developers/cookbook/widget-implementation-nextjs-wagmi",
-                    "developers/cookbook/sdk-implementation-typescript-ethers"
-                ]
-            }
-        ]
-    },
-    {
-        "group": "Opensource Auth",
-        "pages": [
-            "opensource-auth/introduction-and-use-cases",
-            "opensource-auth/using-openauth"
-        ]
-    },
-    {
-        "group": "Resources",
-        "pages": [
-            "resources/supported-networks",
-            "resources/get-support",
-            "resources/schedule-a-demo",
-            "resources/system-uptime-status",
-            "resources/brand-assets"
-        ]
-    }
+        {
+            "group": "Getting Started",
+            "pages": [
+                "getting-started/introduction-to-aarc",
+                "getting-started/fund-kit"
+            ]
+        },
+        {
+            "group": "Developers",
+            "pages": [
+                "developers/quickstart",
+                {
+                    "group": "Cookbook",
+                    "pages": [
+                        "developers/cookbook/index",
+                        "developers/cookbook/widget-implementation-nextjs-wagmi",
+                        "developers/cookbook/sdk-implementation-typescript-ethers"
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Execution API",
+            "pages": [
+                "execution-api/introduction",
+                "execution-api/quickstart",
+                "execution-api/utility-apis"
+            ]
+        },
+        {
+            "group": "SDK",
+            "pages": [
+                "sdk/introduction",
+                "sdk/buy-tokens",
+                "sdk/custom-cross-chain-call",
+                "sdk/utility-functions"
+            ]
+        },
+        {
+            "group": "Widget",
+            "pages": [
+                "widget/introduction",
+                "widget/config",
+                "widget/modal",
+                "widget/destination",
+                "widget/module",
+                "widget/appearance",
+                "widget/events"
+            ]
+        },
+        {
+            "group": "Hosted Pages",
+            "pages": [
+                "hosted-pages/introduction",
+                "hosted-pages/quickstart"
+            ]
+        },
+        {
+            "group": "Partner Integrations",
+            "pages": [
+                {
+                    "group": "Embedded Wallets",
+                    "pages": [
+                        "partner-integrations/embedded-wallets/quickstart-for-dynamic"
+                    ]
+                },
+                {
+                    "group": "Smart Accounts",
+                    "pages": [
+                        "partner-integrations/smart-accounts/quickstart-for-biconomy",
+                        "partner-integrations/smart-accounts/quickstart-for-safe"
+                    ]
+                },
+                {
+                    "group": "AI Platforms and Agents",
+                    "pages": [
+                        "partner-integrations/ai-platforms-and-agents/quickstart-with-ai16z-eliza"
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Endpoint Examples",
+            "pages": [
+                "execution-api/endpoints/deposit-address",
+                "execution-api/endpoints/schedule-transaction",
+                "execution-api/endpoints/request-status",
+                "execution-api/endpoints/supported-chains",
+                "execution-api/endpoints/supported-tokens",
+                "execution-api/endpoints/balances",
+                "execution-api/endpoints/store-verified-link"
+            ]
+        },
+        {
+            "group": "Resources",
+            "pages": [
+                "resources/supported-networks",
+                "resources/get-support",
+                "resources/system-status",
+                "resources/brand-assets"
+            ]
+        }
     ],
     "footerSocials": {
-    "github": "https://github.com/aarc-xyz"
+        "github": "https://github.com/aarc-xyz",
+        "x": "https://x.com/0xAarc",
+        "telegram": "https://t.me/+0M32pfZf4PAzMzc1",
+        "discord": "https://discord.com/invite/mGU82E9xRG"
     }
 }
