@@ -15,10 +15,11 @@ The `getDepositAddress` function allows developers to interact with contracts on
 The `getDepositAddress` function generates an address based on the provided payload, which must then be funded and submitted on-chain.\
 
 
-{% tabs %}
-{% tab title="ethers.js" %}
-<pre class="language-typescript"><code class="lang-typescript"><strong>const provider = new ethers.BrowserProvider(window.ethereum);
-</strong>const signer = await provider.getSigner();
+<Tabs>
+<Tab title="ethers.js" >
+```typescript
+const provider = new ethers.BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
 
 const address = signer.getAddress();
 const contractInterface = new ethers.Interface(ABI); // create interface with your own ABI
@@ -39,15 +40,16 @@ const depositData = await aarcCoreSDK.getDepositAddress(payload);
 // make client sign the generated tx
 const { to, value, data, gasLimit, chainId, from } = depositData.txData;
 const txHash = await signer.sendTransaction({ to, value, data, gasLimit, chainId, from });
-</code></pre>
-{% endtab %}
+```
+</Tab>
 
-{% tab title="viem" %}
-<pre class="language-typescript"><code class="lang-typescript">import { createWalletClient, custom } from "viem";
+<Tab title="viem">
+```typescript
+import { createWalletClient, custom } from "viem";
 
 const getWalletClient = async () => {
-<strong>  const [account] = await window.ethereum.request({
-</strong>    method: "eth_requestAccounts",
+const [account] = await window.ethereum.request({
+method: "eth_requestAccounts",
   });
   const walletClient = createWalletClient({
     chain: arbitrum,
@@ -79,9 +81,9 @@ const { to, value, data, gasLimit, chainId, from } = depositData.txData;
 const txHash = await signer.sendTransaction({ to, value, data, gasLimit, chainId, from });
 
 console.log('tx', tx);
-</code></pre>
-{% endtab %}
-{% endtabs %}
+```
+</Tab>
+</Tabs>
 
 Using onramp for contract call
 

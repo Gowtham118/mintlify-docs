@@ -6,21 +6,22 @@ The `getDepositAddress` function generates a smart account address that facilita
 
 `getDepositAddress` accepts the following parameters:
 
-{% tabs %}
-{% tab title="payload" %}
+<Tabs>
+<Tab title="payload">
 <table><thead><tr><th width="316">Parameter</th><th width="137">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>destinationChainId</code></td><td>string</td><td> Destination chain id</td></tr><tr><td><code>destinationTokenAddress</code></td><td>string</td><td> Address of the final token on the destination chain</td></tr><tr><td><code>toAmount</code></td><td>BigInt</td><td>Desired amount on destination chain</td></tr><tr><td><code>destinationRecipient</code></td><td>string</td><td>Target contract address on destination chain</td></tr><tr><td><code>transferType</code></td><td>"onramp" | "cex" | "wallet"</td><td>Specifies the type of the transfer</td></tr><tr><td><code>routeType</code></td><td>string</td><td>Default route is <code>Value</code>. The type of route to be preferred. It can be <code>Value</code>,<code>Fee</code> and <code>Time</code></td></tr><tr><td><code>provider (optional)</code></td><td>"moonpay" | "mesh-connect" | "kado"</td><td>Specifies the provider used for execution</td></tr><tr><td><code>fromChainId (optional)</code></td><td>number</td><td>Source chain id</td></tr><tr><td><code>fromTokenAddress (optional)</code></td><td>string</td><td>Address of initial token on source chain</td></tr><tr><td><code>fromAddress (optional)</code></td><td>string</td><td>Address of the sender on the source chain</td></tr><tr><td><code>fromAmount (optional)</code></td><td>BigInt</td><td>Amount of the initial token on the source chain</td></tr><tr><td><code>slippage (optional)</code></td><td>string</td><td></td></tr><tr><td><code>transferOut (optional)</code></td><td>any[]</td><td></td></tr><tr><td><code>targetCalldata(optional)</code></td><td>string</td><td>Encoded calldata for execution on the destination chain</td></tr><tr><td><code>gasLimit (optional)</code></td><td>string</td><td>Custom gas limit</td></tr><tr><td><code>userOpHash (optional)</code></td><td>string</td><td></td></tr><tr><td><code>userOperations (optional)</code></td><td>string</td><td></td></tr></tbody></table>
-{% endtab %}
-{% endtabs %}
+</Tab>
+</Tabs>
 
 ## Function call
 
 The `getDepositAddress` function generates an address based on the provided payload, which must then be funded and submitted on-chain.
 
-{% tabs %}
-{% tab title="ethers.js" %}
-<pre class="language-typescript"><code class="lang-typescript"><strong>const provider = new ethers.BrowserProvider(window.ethereum);
-</strong><strong>const signer = await provider.getSigner();
-</strong>
+<Tabs>
+<Tab title="ethers.js">
+```typescript
+const provider = new ethers.BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
+
 const payload: any = {
         userOpHash: "",
         transferType: TransferType.WALLET,
@@ -38,10 +39,10 @@ const depositData = await aarcCoreSDK.getDepositAddress(payload);
 // make client sign the generated tx
 const { to, value, data, gasLimit, chainId, from } = depositData.txData;
 const { hash } = await signer.sendTransaction({ to, value, data, gasLimit, chainId, from });
-</code></pre>
-{% endtab %}
+```
+</Tab>
 
-{% tab title="viem" %}
+<Tab title="viem">
 ```typescript
 import { createWalletClient, custom } from 'viem'
 import { mainnet } from 'viem/chains'
@@ -73,8 +74,8 @@ const depositData = await aarcCoreSDK.getDepositAddress(payload);
 const { to, value, data, gasLimit, chainId, from } = depositData.txData;
 const txHash = await signer.sendTransaction({ to, value, data, gasLimit, chainId, from });
 ```
-{% endtab %}
-{% endtabs %}
+</Tab>
+</Tabs>
 
 ```typescript
 //OPTIONAL: postExecuteToAddress will update the aarc about the tx instanstly
@@ -123,7 +124,6 @@ const windowRef = window.open(url, "_blank");
 
 The response from the `getDepositAddress` is:
 
-{% code overflow="wrap" %}
 ```typescript
 {
     requestId: string; // helps tracking the order status
@@ -153,8 +153,6 @@ The response from the `getDepositAddress` is:
     };
 }
 ```
-{% endcode %}
-
 
 
 For more comprehensive implementation, refer [cookbook](../cookbook/sdk-implementation-in-typescript-+-ethers) example.

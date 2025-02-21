@@ -14,11 +14,11 @@ description: You can deploy Smart Wallets using aarcSDK.
 * `signer`: The **signer object** from ethers.
 * `deploymentWalletIndex`\[OPTIONAL]: An EOA can deploy multiple wallets. You can specify the index.
 
-{% hint style="info" %}
+<Info>
 **NOTE:**
 
 * If the wallet corresponding to the provided owner address (**`EOA_ADDRESS`**) and index (**`deploymentWalletIndex`**) is already deployed, the deployment process will not occur.
-{% endhint %}
+</Info>
 
 ## Deploy Smart Wallet
 
@@ -47,8 +47,8 @@ This will be the following output you will receive after deploying a Smart Walle
 }
 ```
 
-{% hint style="info" %}
+<Info>
 **NOTE:**
 
 * **`message`** only returns if the smart wallet is already deployed or an error occurred.
-{% endhint %}
+</Info>

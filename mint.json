@@ -10,6 +10,12 @@
     "dark": "#EEFFB9",
     "light": "#000000"
     },
+    "tabs": [
+        {
+            "name": "Execution API",
+            "url": "developers/execution-api"
+        }
+    ],
     "navigation": [
     {
         "group": "Getting Started",

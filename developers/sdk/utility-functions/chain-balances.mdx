@@ -8,16 +8,16 @@
 
 <table><thead><tr><th width="295">Parameters</th><th width="134">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>eoaAddress</code></td><td><code>string</code></td><td>The address for which balance information is needed.</td></tr><tr><td><code>chainId</code></td><td><code>number</code></td><td>The chain Id of the current network.</td></tr><tr><td><code>tokenAddresses[OPTIONAL]</code></td><td><code>string[]</code></td><td>Array of the token addresses for which the balances will be fetched.</td></tr><tr><td><code>fetchBalancesOnly</code></td><td><code>boolean</code></td><td>Default is set to <code>true.</code> If set to <code>false</code> then more details of the token are fetched.</td></tr></tbody></table>
 
-{% hint style="info" %}
+<Info>
 **NOTE:**&#x20;
 
 * If the **`tokenAddresses`** are not provided, then balances of all the tokens within the EOA will be fetched.
 * **`fetchBalancesOnly`**&#x69;s default to `true`.
-{% endhint %}
+</Info>
 
 ## Function Call
 
-{% code overflow="wrap" %}
+
 ```typescript
 let balances = await aarcCoreSDK.fetchBalances(
   "EOA_ADDRESS",
@@ -26,7 +26,6 @@ let balances = await aarcCoreSDK.fetchBalances(
   ["0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"] // [OPTIONAL] array of specific token
 );
 ```
-{% endcode %}
 
 ## Response
 
