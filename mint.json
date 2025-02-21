@@ -52,10 +52,6 @@
         {
             "name": "Partner Integrations",
             "url": "partner-integrations"
-        },
-        {
-            "name": "Resources",
-            "url": "resources"
         }
     ],
     "navigation": [
@@ -64,6 +60,15 @@
             "pages": [
                 "getting-started/introduction-to-aarc",
                 "getting-started/fund-kit"
+            ]
+        },
+        {
+            "group": "Resources",
+            "pages": [
+                "resources/supported-networks",
+                "resources/get-support",
+                "resources/system-status",
+                "resources/brand-assets"
             ]
         },
         {
@@ -150,15 +155,6 @@
                 "execution-api/endpoints/supported-tokens",
                 "execution-api/endpoints/balances",
                 "execution-api/endpoints/store-verified-link"
-            ]
-        },
-        {
-            "group": "Resources",
-            "pages": [
-                "resources/supported-networks",
-                "resources/get-support",
-                "resources/system-status",
-                "resources/brand-assets"
             ]
         }
     ],
