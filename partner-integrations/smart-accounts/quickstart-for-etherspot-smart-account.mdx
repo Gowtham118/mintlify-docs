@@ -1,8 +1,7 @@
 ---
-description: A tutorial on integrating ZeroDev Smart Account for an EOA with Aarc SDK ❇️
+title: Quickstart for Etherspot
+description: A tutorial on integrating Etherspot Smart Account for an EOA with Aarc SDK ❇️
 ---
-
-# ZeroDev Kernel
 
 Setup Smart Account in **two steps using Aarc SDK:**
 
@@ -15,9 +14,8 @@ So, let's get started with this step-by-step guide. :rocket:
 
 1. Create a new directory, initialize `npm` in it and install **Aarc Migrator Package** and **ethers**
 
-
 ```bash
-mkdir aarc_zeroDevSW && cd aarc_zeroDevSW && npm init -y && npm i @aarc-xyz/migrator ethers@5.7.2
+mkdir aarc_etherspotSW && cd aarc_etherspotSW && npm init -y && npm i @aarc-xyz/migrator ethers@5.7.2
 ```
 
 2. Create a new file `index.js` in `src` folder.
@@ -28,7 +26,7 @@ const { ethers, BigNumber } = require("ethers");
 const {Migrator, WALLET_TYPE}= require("@aarc-xyz/migrator");
 ```
 
-4. Get the Aarc API Key (you can learn how to get it from [here](broken-reference)), your EOA private key and the RPC URL.
+4. Get the Aarc API Key (you can learn how to get it from [here](broken-reference)), your EOA private key, and the RPC URL.
 5. Initialize the provider and Aarc SDK
 
 ```javascript
@@ -49,7 +47,7 @@ let aarcSDK = new Migrator({
 async function main() {
     try {
         const smartWalletAddresses = await aarcSDK.getSmartWalletAddresses(
-            WALLET_TYPE.ZERODEV_KERNEL, // WALLET_TYPE imported from @aarc-xyz/migrator
+            WALLET_TYPE.ETHERSPOT, // WALLET_TYPE imported from @aarc-xyz/migrator
             eoaAddress
         );
         console.log(' smartWalletAddresses ', smartWalletAddresses);
@@ -59,9 +57,9 @@ async function main() {
 }
 ```
 
-Here, we provide the `WALLET_TYPE.ZERODEV_KERNEL` to fetch the Smart Account addresses associated with the EOA.&#x20;
+Here, we provide the `WALLET_TYPE.ETHERSPOT` to fetch the Smart Account addresses associated with the EOA.&#x20;
 
-In the response, we will see the addresses associated with the EOA for ZeroDev's Smart Accounts. No Smart Account may be deployed, so it will only generate and return the Smart Account address, mentioning its deployment status and the `walletIndex`.
+In the response, we will see the addresses associated with the EOA for Etherspot's Smart Accounts. No Smart Account may be deployed, so it will only generate and return the Smart Account address, mentioning its deployment status and the `walletIndex`.
 
 <details>
 
@@ -70,7 +68,7 @@ In the response, we will see the addresses associated with the EOA for ZeroDev's
 ```bash
  smartWalletAddresses  [
   {
-    address: '0xa1A6dd310A45C4EDB53BF6512317093F820cbA65',
+    address: '0xF7Cb1d262ad3a71428b839110ba328378B01c921',
     isDeployed: false,
     walletIndex: 0
   }
@@ -95,7 +93,7 @@ async function main() {
     // ... Previous Code ...
     try {
         const response = await aarcSDK.transferNativeAndDeploy({
-            walletType: WALLET_TYPE.ZERODEV_KERNEL,
+            walletType: WALLET_TYPE.ETHERSPOT,
             owner: eoaAddress,
             receiver: "0xa1A6dd310A45C4EDB53BF6512317093F820cbA65",
             signer: signer,
@@ -132,7 +130,7 @@ let aarcSDK = new Migrator({
 async function main() {
     try {
         const smartWalletAddresses = await aarcSDK.getSmartWalletAddresses(
-            WALLET_TYPE.ZERODEV_KERNEL,
+            WALLET_TYPE.ETHERSPOT,
             eoaAddress
         );
         console.log(' smartWalletAddresses ', smartWalletAddresses);
@@ -142,7 +140,7 @@ async function main() {
 
     try {
         const response = await aarcSDK.transferNativeAndDeploy({
-            walletType: WALLET_TYPE.ZERODEV_KERNEL,
+            walletType: WALLET_TYPE.ETHERSPOT,
             owner: eoaAddress,
             receiver: "0xa1A6dd310A45C4EDB53BF6512317093F820cbA65", //Change the receiver address to the SA address
             signer: signer,
@@ -164,7 +162,7 @@ main();
 node src/index.js
 ```
 
-You will see the following response after deploying the ZeroDev Smart Wallet.
+You will see the following response after deploying the Etherspot Smart Wallet.
 
 <details>
 
@@ -176,13 +174,13 @@ Transfer and Deploy Response:  [
     tokenAddress: '',
     amount: '0x00',
     message: 'Deployment tx sent',
-    txHash: '0x0fa097eb8dbf14c16779aedcb3eea8cf0bb2b2c4cad266953bedc3fd37e270f9'
+    txHash: '0x6797639f26391e6d5335090df4984ce84e617908f0c1554756c4c60c0f678f28'
   },
   {
     tokenAddress: '0x0000000000000000000000000000000000001010',
     amount: '0x2710',
     message: 'Token transfer tx sent',
-    txHash: '0x4dca44d8468ac436b1ac4bcf4d2fca03cc7354ae8f925be73b749f94cec35594'
+    txHash: '0xd0f141776971f6a6211b514842b02c24c6fde53e9cb392a83e1489d65d9b53b7'
   }
 ]
 ```
@@ -191,6 +189,6 @@ Transfer and Deploy Response:  [
 
 ***
 
-> _Voila! You have successfully deployed and funded your ZeroDev's Smart Account in **only two steps** using Aarc SDK❇️_
+> _Voila! You have successfully deployed and funded your Etherspot's Smart Account in **only two steps** using Aarc SDK❇️_
 
 If you have any doubts, you can contact us on [Telegram](https://t.me/aarcxyz).

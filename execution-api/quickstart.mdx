@@ -2,8 +2,6 @@
 description: Enables buy or checkout usecase based on the request.
 ---
 
-# Buy/Checkout API
-
 <table><thead><tr><th width="334">Scenarios</th><th>API Response</th></tr></thead><tbody><tr><td>Users have <strong>TokenA</strong> on <strong>ChainA</strong> </td><td>Calldata generated for <strong>Direct Transfer</strong></td></tr><tr><td>Users have <strong>TokenB</strong> on <strong>ChainA</strong></td><td>Calldata generated for <strong>Swap on ChainA</strong></td></tr><tr><td>Users have <strong>TokenA</strong> on <strong>ChainB</strong></td><td>Calldata generated for bridging <strong>TokenA from ChainB to ChainA</strong></td></tr><tr><td>Users have <strong>TokenB</strong> on <strong>ChainB</strong></td><td>Calldata generated for <strong>swapping and bridging the TokenB from ChainB to TokenA on ChainA.</strong></td></tr></tbody></table>
 
 **Steps to follow**:

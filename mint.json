@@ -98,8 +98,19 @@
             "pages": [
                 "sdk/introduction",
                 "sdk/buy-tokens",
-                "sdk/custom-cross-chain-call",
-                "sdk/utility-functions"
+                "sdk/custom-cross-chain-call"
+            ]
+        },
+        {
+            "group": "Utility functions",
+            "pages": [
+                "sdk/utility-functions/introduction",
+                "sdk/utility-functions/chain-balances",
+                "sdk/utility-functions/multichain-balances",
+                "sdk/utility-functions/supported-tokens",
+                "sdk/utility-functions/supported-chains",
+                "sdk/utility-functions/token-compatibility",
+                "sdk/utility-functions/transaction-status"
             ]
         },
         {
@@ -122,27 +133,27 @@
             ]
         },
         {
-            "group": "Partner Integrations",
+            "group": "Embedded Wallets",
             "pages": [
-                {
-                    "group": "Embedded Wallets",
-                    "pages": [
-                        "partner-integrations/embedded-wallets/quickstart-for-dynamic"
-                    ]
-                },
-                {
-                    "group": "Smart Accounts",
-                    "pages": [
-                        "partner-integrations/smart-accounts/quickstart-for-biconomy",
-                        "partner-integrations/smart-accounts/quickstart-for-safe"
-                    ]
-                },
-                {
-                    "group": "AI Platforms and Agents",
-                    "pages": [
-                        "partner-integrations/ai-platforms-and-agents/quickstart-with-ai16z-eliza"
-                    ]
-                }
+                "partner-integrations/embedded-wallets/quickstart-for-dynamic",
+                "partner-integrations/embedded-wallets/quickstart-for-openauth"
+            ]
+        },
+        {
+            "group": "Smart Accounts",
+            "pages": [
+                "partner-integrations/smart-accounts/quickstart-for-biconomy",
+                "partner-integrations/smart-accounts/quickstart-for-safe",
+                "partner-integrations/smart-accounts/quickstart-for-alchemy-light-account",
+                "partner-integrations/smart-accounts/quickstart-for-etherspot-smart-account",
+                "partner-integrations/smart-accounts/quickstart-for-zerodev-kernel-smart-account"
+            ]
+        },
+        {
+            "group": "AI Platforms and Agents",
+            "pages": [
+                "partner-integrations/ai-platforms-and-agents/quickstart-with-ai16z-eliza",
+                "partner-integrations/ai-platforms-and-agents/quickstart-with-game-by-virtuals"
             ]
         },
         {
