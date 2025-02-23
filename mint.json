@@ -6,11 +6,11 @@
         "dark": "./logo.png"
     },
     "colors": {
-        "primary": "#7E8D4B",
-        "light": "#EEFFB9",
-        "dark": "#7E8D4B",
+        "primary": "#A5E547",
+        "light": "#A5E547",
+        "dark": "#A5E547",
         "anchors": {
-            "from": "#7E8D4B",
+            "from": "#A5E547",
             "to": "#EEFFB9"
         }
     },
