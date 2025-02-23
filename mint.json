@@ -22,11 +22,15 @@
         {
             "name": "Schedule a Demo",
             "url": "https://calendly.com/d/3f7-9gt-4pr/session-with-aarc-team"
+        },
+        {
+            "name": "Dev Dashboard",
+            "url": "https://dashboard.aarc.xyz"
         }
     ],
     "topbarCtaButton": {
-        "name": "Dev Dashboard",
-        "url": "https://dashboard.aarc.xyz"
+        "name": "Try Aarc",
+        "url": "https://buy.aarc.xyz/"
     },
     "tabs": [
         {
@@ -136,7 +140,7 @@
             "group": "Embedded Wallets",
             "pages": [
                 "partner-integrations/embedded-wallets/quickstart-for-dynamic",
-                "partner-integrations/embedded-wallets/quickstart-for-openauth"
+                "partner-integrations/embedded-wallets/quickstart-with-openauth"
             ]
         },
         {

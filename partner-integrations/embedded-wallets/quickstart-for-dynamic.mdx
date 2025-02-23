@@ -1,0 +1,143 @@
+---
+title: Quickstart for Dynamic
+description: A tutorial on integrating Aarc's FundKit with Dynamic's Web3 Authentication ❇️
+---
+
+Learn how to integrate Aarc's FundKit with Dynamic's authentication in **3 simple steps:**
+
+1. Setup a React project and install dependencies
+2. Configure the providers
+3. Create the integration component
+
+Let's dive into this step-by-step guide 🚀
+
+***
+
+1. Create a new project and install the required dependencies
+
+```bash
+# Create a new Vite project
+npm create vite@latest dynamic-aarc -- --template react-ts
+cd dynamic-aarc
+
+# Install dependencies
+npm install @dynamic-labs/sdk-react-core @dynamic-labs/ethereum @aarc-xyz/fundkit-web-sdk @aarc-xyz/eth-connector @tanstack/react-query wagmi
+```
+
+2. Set up your environment variables in `.env`:
+
+```env
+VITE_DYNAMIC_ENVIRONMENT_ID=your_dynamic_environment_id
+VITE_AARC_API_KEY=your_aarc_api_key
+```
+
+3. Create the Aarc Provider (`src/context/AarcProvider.tsx`):
+
+```typescript
+import React from 'react';
+import { AarcEthWalletConnector, wagmiConfig } from "@aarc-xyz/eth-connector";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { WagmiProvider } from 'wagmi';
+
+const queryClient = new QueryClient();
+
+export const AarcProvider = ({ aarcModal, children }) => {
+    return (
+        <WagmiProvider config={wagmiConfig}>
+            <QueryClientProvider client={queryClient}>
+                <AarcEthWalletConnector aarcWebClient={aarcModal} />
+                {children}
+            </QueryClientProvider>
+        </WagmiProvider>
+    );
+};
+```
+
+4. Create the main component (`src/components/DynamicAarcApp.tsx`):
+
+```typescript
+import { DynamicWidget, useDynamicContext, useIsLoggedIn } from "@dynamic-labs/sdk-react-core";
+
+const DynamicAarcApp = ({ aarcModal }) => {
+    const isLoggedIn = useIsLoggedIn();
+    const { primaryWallet } = useDynamicContext();
+
+    const handleFundWallet = () => {
+        if (primaryWallet?.address) {
+            aarcModal?.updateDestinationWalletAddress(primaryWallet?.address);
+            aarcModal.openModal();
+        }
+    };
+
+    return (
+        <div>
+            <DynamicWidget />
+            {isLoggedIn && primaryWallet && (
+                <button onClick={handleFundWallet}>
+                    Fund Wallet
+                </button>
+            )}
+        </div>
+    );
+};
+
+export default DynamicAarcApp;
+```
+
+5. Put it all together in `App.tsx`:
+  
+   For `aarcConfig`, refer [config](/widget/introduction#setting-up-the-config).
+
+```typescript
+import React, { useRef } from 'react';
+import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
+import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+import { AarcProvider } from './context/AarcProvider';
+import DynamicAarcApp from './components/DynamicAarcApp';
+import { AarcFundKitModal } from '@aarc-xyz/fundkit-web-sdk';
+
+// Import your Aarc config from the documentation
+import { aarcConfig } from './config/aarcConfig';
+
+const App = () => {
+  const aarcModal = useRef(new AarcFundKitModal(aarcConfig)).current;
+
+  return (
+    <DynamicContextProvider
+      settings={{
+        environmentId: import.meta.env.VITE_DYNAMIC_ENVIRONMENT_ID,
+        walletConnectors: [EthereumWalletConnectors],
+      }}
+    >
+      <AarcProvider aarcModal={aarcModal}>
+        <DynamicAarcApp aarcModal={aarcModal} />
+      </AarcProvider>
+    </DynamicContextProvider>
+  );
+};
+
+export default App;
+```
+
+6. Run your app:
+
+```bash
+npm run dev
+```
+
+Visit `http://localhost:5173` to see your integration in action!
+
+***
+
+> _Congratulations! You've successfully integrated Dynamic's authentication with Aarc's FundKit. Users can now connect their wallets and fund them seamlessly! ❇️_
+
+Key Features:
+- One-click wallet connection through Dynamic
+- Seamless wallet funding with Aarc's FundKit
+- Support for multiple funding methods (onramp, bridge, swap)
+
+For detailed configuration options and customization, check out:
+- [Aarc FundKit Documentation](https://docs.aarc.xyz)
+- [Dynamic Authentication Documentation](https://docs.dynamic.xyz)
+
+Need help? Reach out to us on [Telegram](https://t.me/aarcxyz).
