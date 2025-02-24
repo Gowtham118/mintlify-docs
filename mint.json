@@ -32,11 +32,14 @@
         "name": "Try Aarc",
         "url": "https://buy.aarc.xyz/"
     },
-    "tabs": [
+    "anchors": [
         {
             "name": "Developers",
+            "icon": "code",
             "url": "developers"
-        },
+        }
+    ],
+    "tabs": [
         {
             "name": "Execution API",
             "url": "execution-api"
@@ -60,10 +63,59 @@
     ],
     "navigation": [
         {
-            "group": "Getting Started",
+            "group": "Introduction",
             "pages": [
-                "getting-started/introduction-to-aarc",
-                "getting-started/fund-kit"
+                "introduction/what-is-aarc",
+                "introduction/mission-and-vision"
+            ]
+        },
+        {
+            "group": "How it works",
+            "pages": [
+                "how-it-works/atomic-execution-cloud",
+                "how-it-works/orchestration-engine",
+                "how-it-works/relayer-mesh",
+                "how-it-works/contract-compatibility",
+                "how-it-works/deposit-addresses",
+                "how-it-works/fees",
+                "how-it-works/retry-and-refunds",
+                "how-it-works/security",
+                "how-it-works/using-onramps-and-exchanges",
+                "how-it-works/webapp-ui",
+                "how-it-works/supported-networks",
+                "how-it-works/smart-contract-addresses"
+            ]
+        },
+        {
+            "group": "Use Cases",
+            "pages": [
+                "use-cases/reverse-routing-and-orchestration",
+                "use-cases/atomic-cross-chain-transactions",
+                {
+                    "group": "Arbitrary Onchain Actions",
+                    "pages": [
+                        "use-cases/arbitrary-onchain-actions",
+                        "use-cases/action-links"
+                    ]
+                },
+                {
+                    "group": "Funding",
+                    "pages": [
+                        "use-cases/funding",
+                        "use-cases/deposits",
+                        "use-cases/earn"
+                    ]
+                },
+                "use-cases/payments",
+                {
+                    "group": "Checkouts",
+                    "pages": [
+                        "use-cases/checkouts",
+                        "use-cases/buy",
+                        "use-cases/mint"
+                    ]
+                },
+                "use-cases/hosted-pages"
             ]
         },
         {
@@ -82,9 +134,7 @@
                 {
                     "group": "Cookbook",
                     "pages": [
-                        "developers/cookbook/index",
-                        "developers/cookbook/widget-implementation-nextjs-wagmi",
-                        "developers/cookbook/sdk-implementation-typescript-ethers"
+                        "developers/cookbook/index"
                     ]
                 }
             ]
@@ -101,8 +151,14 @@
             "group": "SDK",
             "pages": [
                 "sdk/introduction",
-                "sdk/buy-tokens",
-                "sdk/custom-cross-chain-call"
+                "sdk/quickstart",
+                "sdk/guide",
+                {
+                    "group": "Advanced Topics",
+                    "pages": [
+                        "sdk/advanced-topics"
+                    ]
+                }
             ]
         },
         {
@@ -121,7 +177,13 @@
             "group": "Widget",
             "pages": [
                 "widget/introduction",
-                "widget/config",
+                "widget/quickstart",
+                "widget/guide"
+            ]
+        },
+        {
+            "group": "Advanced Topics",
+            "pages": [
                 "widget/modal",
                 "widget/destination",
                 "widget/module",
