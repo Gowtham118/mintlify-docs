@@ -156,7 +156,7 @@
                 {
                     "group": "Advanced Topics",
                     "pages": [
-                        "sdk/advanced-topics"
+                        "sdk/advanced-topics/custom-cross-chain-call"
                     ]
                 }
             ]
