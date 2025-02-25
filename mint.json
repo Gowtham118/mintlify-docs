@@ -16,32 +16,28 @@
     },
     "topbarLinks": [
         {
-            "name": "Support",
-            "url": "mailto:contact@aarc.xyz"
-        },
-        {
-            "name": "Schedule a Demo",
+            "name": "Book a call",
             "url": "https://calendly.com/d/3f7-9gt-4pr/session-with-aarc-team"
         },
         {
-            "name": "Dev Dashboard",
-            "url": "https://dashboard.aarc.xyz"
+            "name": "Buy with Aarc",
+            "url": "https://buy.aarc.xyz/"
         }
     ],
     "topbarCtaButton": {
-        "name": "Try Aarc",
-        "url": "https://buy.aarc.xyz/"
+        "name": "Dashboard",
+        "url": "https://dashboard.aarc.xyz"
     },
     "anchors": [
         {
-            "name": "Developers",
-            "icon": "code",
-            "url": "developers"
+            "name": "Support",
+            "icon": "headset",
+            "url": "https://t.me/aarcxyz"
         }
     ],
     "tabs": [
         {
-            "name": "Execution API",
+            "name": "API Reference",
             "url": "execution-api"
         },
         {
@@ -49,7 +45,7 @@
             "url": "sdk"
         },
         {
-            "name": "Widget (FDK)",
+            "name": "Widget",
             "url": "widget"
         },
         {
@@ -122,25 +118,13 @@
             "group": "Resources",
             "pages": [
                 "resources/supported-networks",
-                "resources/get-support",
                 "resources/system-status",
                 "resources/brand-assets"
             ]
         },
+
         {
-            "group": "Developers",
-            "pages": [
-                "developers/quickstart",
-                {
-                    "group": "Cookbook",
-                    "pages": [
-                        "developers/cookbook/index"
-                    ]
-                }
-            ]
-        },
-        {
-            "group": "Execution API",
+            "group": "API Reference",
             "pages": [
                 "execution-api/introduction",
                 "execution-api/quickstart",
@@ -184,11 +168,11 @@
         {
             "group": "Advanced Topics",
             "pages": [
-                "widget/modal",
-                "widget/destination",
-                "widget/module",
-                "widget/appearance",
-                "widget/events"
+                "widget/advanced-topics/modal",
+                "widget/advanced-topics/destination",
+                "widget/advanced-topics/module",
+                "widget/advanced-topics/appearance",
+                "widget/advanced-topics/events"
             ]
         },
         {
