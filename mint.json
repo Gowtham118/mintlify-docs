@@ -122,7 +122,6 @@
                 "resources/brand-assets"
             ]
         },
-
         {
             "group": "API Reference",
             "pages": [
@@ -185,18 +184,14 @@
         {
             "group": "Embedded Wallets",
             "pages": [
-                "partner-integrations/embedded-wallets/quickstart-for-dynamic",
-                "partner-integrations/embedded-wallets/quickstart-with-openauth"
+                "partner-integrations/embedded-wallets/quickstart-for-dynamic"
             ]
         },
         {
             "group": "Smart Accounts",
             "pages": [
                 "partner-integrations/smart-accounts/quickstart-for-biconomy",
-                "partner-integrations/smart-accounts/quickstart-for-safe",
-                "partner-integrations/smart-accounts/quickstart-for-alchemy-light-account",
-                "partner-integrations/smart-accounts/quickstart-for-etherspot-smart-account",
-                "partner-integrations/smart-accounts/quickstart-for-zerodev-kernel-smart-account"
+                "partner-integrations/smart-accounts/quickstart-for-safe"
             ]
         },
         {
