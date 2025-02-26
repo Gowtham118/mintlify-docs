@@ -14,6 +14,10 @@
             "to": "#EEFFB9"
         }
     },
+    "font": {
+        "family": "DM Sans",
+        "color": "#a4b"
+    },
     "topbarLinks": [
         {
             "name": "Book a call",
