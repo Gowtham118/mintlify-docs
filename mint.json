@@ -127,7 +127,7 @@
             "pages": [
                 "execution-api/introduction",
                 "execution-api/quickstart",
-                "execution-api/utility-apis"
+                "execution-api/guide"
             ]
         },
         {
@@ -178,27 +178,20 @@
             "group": "Hosted Pages",
             "pages": [
                 "hosted-pages/introduction",
-                "hosted-pages/quickstart"
+                "hosted-pages/quickstart",
+                "hosted-pages/guide"
             ]
         },
         {
             "group": "Embedded Wallets",
             "pages": [
-                "partner-integrations/embedded-wallets/quickstart-for-dynamic"
-            ]
-        },
-        {
-            "group": "Smart Accounts",
-            "pages": [
-                "partner-integrations/smart-accounts/quickstart-for-biconomy",
-                "partner-integrations/smart-accounts/quickstart-for-safe"
-            ]
-        },
-        {
-            "group": "AI Platforms and Agents",
-            "pages": [
-                "partner-integrations/ai-platforms-and-agents/quickstart-with-ai16z-eliza",
-                "partner-integrations/ai-platforms-and-agents/quickstart-with-game-by-virtuals"
+                {
+                    "group": "Dynamic",
+                    "pages": [
+                        "partner-integrations/embedded-wallets/dynamic/introduction",
+                        "partner-integrations/embedded-wallets/dynamic/quickstart"
+                    ]
+                }
             ]
         },
         {
