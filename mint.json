@@ -109,9 +109,9 @@
                 {
                     "group": "Checkouts",
                     "pages": [
-                        "use-cases/checkouts",
-                        "use-cases/buy",
-                        "use-cases/mint"
+                        "use-cases/checkouts/introduction",
+                        "use-cases/checkouts/buy",
+                        "use-cases/checkouts/mint"
                     ]
                 },
                 "use-cases/hosted-pages"
