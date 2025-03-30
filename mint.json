@@ -51,7 +51,7 @@
         },
         {
             "name": "SDK Reference",
-            "url": "sdk"
+            "url": "execution-sdk"
         },
         {
             "name": "UI Kits",
@@ -139,13 +139,21 @@
         {
             "group": "Execution SDK",
             "pages": [
-                "sdk/get-started",
-                "sdk/config",
-                "sdk/guide",
+                "execution-sdk/get-started",
+                "execution-sdk/config",
                 {
-                    "group": "Advanced Topics",
+                    "group": "Guides",
                     "pages": [
-                        "sdk/advanced-topics/custom-cross-chain-call"
+                        "execution-sdk/guides/corss-chain-swap",
+                        "execution-sdk/guides/cross-chain-checkout"
+                    ]
+                },
+                {
+                    "group": "Core Methods",
+                    "pages": [
+                        "execution-sdk/core-methods/create-intent",
+                        "execution-sdk/core-methods/execute-intent",
+                        "execution-sdk/core-methods/check-transaction-status"
                     ]
                 }
             ]
@@ -153,13 +161,11 @@
         {
             "group": "Utility functions",
             "pages": [
-                "sdk/utility-functions/introduction",
-                "sdk/utility-functions/chain-balances",
-                "sdk/utility-functions/multichain-balances",
-                "sdk/utility-functions/supported-tokens",
-                "sdk/utility-functions/supported-chains",
-                "sdk/utility-functions/token-compatibility",
-                "sdk/utility-functions/transaction-status"
+                "execution-sdk/utility-functions/chain-balances",
+                "execution-sdk/utility-functions/multichain-balances",
+                "execution-sdk/utility-functions/supported-tokens",
+                "execution-sdk/utility-functions/supported-chains",
+                "execution-sdk/utility-functions/token-compatibility"
             ]
         },
         {
