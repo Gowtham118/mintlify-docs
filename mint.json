@@ -117,7 +117,7 @@
                         "use-cases/checkouts/mint"
                     ]
                 },
-                "use-cases/hosted-pages"
+                "use-cases/linktree-for-checkouts"
             ]
         },
         {
@@ -188,11 +188,10 @@
             ]
         },
         {
-            "group": "Hosted Pages",
+            "group": "Linktree for Checkouts (Memes/TGEs/Campaigns/Chains)",
             "pages": [
-                "widget/hosted-pages/introduction",
-                "widget/hosted-pages/quickstart",
-                "widget/hosted-pages/guide"
+                "widget/linktree-for-checkouts/get-started",
+                "widget/linktree-for-checkouts/guide"
             ]
         },
         {

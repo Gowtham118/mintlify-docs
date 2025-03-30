@@ -1,0 +1,95 @@
+---
+title: "Creating a Linktree Checkout"
+description: "A step-by-step guide to create and customize your Linktree checkout page"
+---
+
+## Prerequisites
+
+Before creating your Linktree checkout, ensure you have:
+- An Aarc account with an active API key
+- Your token contract address and chain ID
+- Token metadata (name, symbol)
+- Project assets (logo, banner, chart URLs)
+- Project description and community links
+
+<Warning>
+You need to get your token address whitelisted with Aarc. Contact our [support team](/introduction/support) to request whitelisting.
+</Warning>
+
+## Step-by-Step Guide
+
+### 1. Prepare Your Project Data
+
+First, gather all the necessary information about your project:
+
+```json
+{
+  "identifier": "your-project-name", // Unique identifier for your project
+  "name": "Your Project Name",
+  "symbol": "TKN",
+  "tokenAddress": "0x...", // Your token's contract address
+  "chainId": 1, // The chain where your token is deployed
+  "description": "A brief description of your project",
+  "logoUrl": "https://your-domain.com/logo.png",
+  "bannerUrl": "https://your-domain.com/banner.png",
+  "chartUrl": "https://your-domain.com/chart.png",
+  "community": {
+    "twitter": "https://twitter.com/yourproject",
+    "telegram": "https://t.me/yourproject",
+    "discord": "https://discord.gg/yourproject"
+  }
+}
+```
+
+### 2. Create the Linktree Page
+
+Send a POST request to the `v3/store-verified-link` endpoint:
+
+```bash
+curl -X POST https://bridge-swap.aarc.xyz/v3/store-verified-link \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{
+    "identifier": "your-project-name",
+    "name": "Your Project Name",
+    "symbol": "TKN",
+    "tokenAddress": "0x...",
+    "chainId": 1,
+    "description": "A brief description of your project",
+    "logoUrl": "https://your-domain.com/logo.png",
+    "bannerUrl": "https://your-domain.com/banner.png",
+    "chartUrl": "https://your-domain.com/chart.png",
+    "community": {
+      "twitter": "https://twitter.com/yourproject",
+      "telegram": "https://t.me/yourproject",
+      "discord": "https://discord.gg/yourproject"
+    }
+  }'
+```
+
+### 3. Access Your Page
+
+Once created, your Linktree page will be available at:
+```
+https://link.aarc.xyz/[your-project-name]
+```
+
+## Troubleshooting
+
+If you encounter issues:
+
+1. **Page Not Loading**
+   - Verify your API key is valid
+   - Check if all required fields are provided
+   - Ensure URLs are accessible and properly formatted
+   - Verify token contract accessibility
+
+2. **Payment Issues**
+   - Verify token liquidity
+   - Check supported payment methods
+   - Ensure correct chain configuration
+   - Verify token contract permissions
+
+## Support
+
+Need help? Contact our [support team](/introduction/support) for any assistance.
