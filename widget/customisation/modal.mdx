@@ -28,50 +28,9 @@ import {
     TransactionErrorData,
     TransactionSuccessData,
 } from "@aarc-xyz/fundkit-web-sdk"
+import {aarcConfig} from "./config";
 
-const config: FKConfig = {
-    appName: "Dapp Name",
-    module: {
-        exchange: {
-            enabled: true,
-        },
-        onRamp: {
-            enabled: true,
-            onRampConfig: {
-                customerId: "323232323",
-                exchangeScreenTitle: "Deposit funds in your wallet",
-            },
-        },
-        bridgeAndSwap: {
-            enabled: true,
-            fetchOnlyDestinationBalance: false,
-            routeType: "Value",
-        },
-    },
-    destination: {
-        walletAddress: "0x0...2C2",
-    },
-    apiKeys: {
-        aarcSDK: import.meta.env.VITE_API_KEY,
-    },
-    events: {
-        onTransactionSuccess: (data: TransactionSuccessData) => {
-            console.log("client onTransactionSuccess", data)
-        },
-        onTransactionError: (data: TransactionErrorData) => {
-            console.log("client onTransactionError", data)
-        },
-        onWidgetClose: () => {
-            console.log("client onWidgetClose")
-        },
-        onWidgetOpen: () => {
-            console.log("client onWidgetOpen")
-        },
-    },
-    origin: window.location.origin,
-}
-
-const aarcModalRef = new AarcFundKitModal(config);
+const aarcModalRef = new AarcFundKitModal(aarcConfig);
 const aarcModal = aarcModalRef.current;
 
 export default function Home() {

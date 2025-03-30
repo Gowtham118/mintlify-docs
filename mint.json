@@ -36,15 +36,12 @@
         {
             "name": "Support",
             "icon": "headset",
-            "url": "https://t.me/aarcxyz"
+            "url": "introduction/support"
         },
         {
             "name": "Developer Dashboard & API Keys",
             "icon": "code",
-            "pages": [
-                "developers/developer-dashboard"
-            ],
-            "url": "https://dashboard.aarc.xyz/"
+            "url": "introduction/developer-dashboard"
         }
     ],
     "tabs": [
@@ -61,10 +58,6 @@
             "url": "widget"
         },
         {
-            "name": "Hosted pages",
-            "url": "hosted-pages"
-        },
-        {
             "name": "Partner Integrations",
             "url": "partner-integrations"
         }
@@ -74,7 +67,9 @@
             "group": "Introduction",
             "pages": [
                 "introduction/what-is-aarc",
-                "introduction/mission-and-vision"
+                "introduction/mission-and-vision",
+                "introduction/support",
+                "introduction/developer-dashboard"
             ]
         },
         {
@@ -90,7 +85,6 @@
                 "how-it-works/security",
                 "how-it-works/using-onramps-and-exchanges",
                 "how-it-works/webapp-ui",
-                "how-it-works/supported-networks",
                 "how-it-works/smart-contract-addresses"
             ]
         },
@@ -169,29 +163,36 @@
             ]
         },
         {
-            "group": "Widget",
+            "group": "iframe Widget (aka FDK)",
             "pages": [
-                "widget/introduction",
-                "widget/quickstart",
-                "widget/guide"
-            ]
-        },
-        {
-            "group": "Advanced Topics",
-            "pages": [
-                "widget/advanced-topics/modal",
-                "widget/advanced-topics/destination",
-                "widget/advanced-topics/module",
-                "widget/advanced-topics/appearance",
-                "widget/advanced-topics/events"
+                "widget/get-started",
+                "widget/config",
+                {
+                    "group": "Guides",
+                    "pages": [
+                        "widget/guides/buy-tokens",
+                        "widget/guides/cross-chain-deposits",
+                        "widget/guides/cross-chain-nft-mint"
+                    ]
+                },
+                {
+                    "group": "Customisation",
+                    "pages": [
+                        "widget/customisation/modal",
+                        "widget/customisation/styling",
+                        "widget/customisation/destination",
+                        "widget/customisation/module",
+                        "widget/customisation/event-handling"
+                    ]
+                }
             ]
         },
         {
             "group": "Hosted Pages",
             "pages": [
-                "hosted-pages/introduction",
-                "hosted-pages/quickstart",
-                "hosted-pages/guide"
+                "widget/hosted-pages/introduction",
+                "widget/hosted-pages/quickstart",
+                "widget/hosted-pages/guide"
             ]
         },
         {

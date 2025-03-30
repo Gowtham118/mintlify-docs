@@ -1,3 +1,27 @@
+---
+title: "Config"
+description: "Learn how to configure the iframe widget for your needs"
+---
+
+The iframe widget requires configuration to define its behavior and appearance. Below are the required and optional settings.
+
+### Required Configuration
+
+- **`apiKey`** (string): Your Aarc API key for authentication.
+- **`intent`** (object): The transaction intent details, such as:
+    - `token`: The token to transact (e.g., `'USDC'`).
+    - `amount`: The transaction amount (e.g., `'100'`).
+    - `fromChain`: The source blockchain (e.g., `'Ethereum'`).
+    - `toChain`: The destination blockchain (e.g., `'Polygon'`).
+    - `destination`: The recipient address or contract (e.g., `'0xDeFiContract'`).
+
+### Optional Configuration
+
+- **`theme`** (object): Customize the widget's appearance (e.g., colors, fonts).
+- **`language`** (string): Set the widget's language (default: `'en'`).
+- **`onSuccess`** (function): Callback triggered on successful transaction execution.
+- **`onError`** (function): Callback triggered on transaction failure.
+
 ### FKConfig
 
 Configuration object which contains all information about widget. You can learn about sub types in each other their sections.&#x20;
