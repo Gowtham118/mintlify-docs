@@ -1,0 +1,228 @@
+---
+title: Cross-Chain NFT Minting
+description: A step-by-step guide to implementing cross-chain NFT minting using the Execution API. This guide shows how to enable users to mint NFTs on any chain using funds from any supported source.
+---
+
+## Prerequisites
+
+Ensure you have the following:
+- An Aarc API key from the [developer dashboard](https://dashboard.aarc.xyz)
+- Basic understanding of blockchain transactions and NFT smart contracts
+- The NFT contract address and ABI of the collection you want to mint from
+
+<Warning>
+You need to get your NFT contract address whitelisted with Aarc. Contact our [support team](/introduction/support) to request whitelisting.
+</Warning>
+
+## Setup
+
+1. Create a new project directory and initialize it:
+```bash
+mkdir cross-chain-nft-mint
+cd cross-chain-nft-mint
+npm init -y
+```
+
+2. Install required dependencies:
+```bash
+npm install ethers node-fetch dotenv
+```
+
+3. Create a `.env` file with your Aarc API key:
+```env
+AARC_API_KEY=your_api_key_here
+```
+
+4. Create an `index.js` file for your implementation:
+```js
+require('dotenv').config();
+const { ethers } = require('ethers');
+const fetch = require('node-fetch');
+
+// Your implementation code will go here
+```
+
+## Implementation Steps
+
+<Steps>
+  <Step title="Setup Environment">
+    First, set up your development environment with the necessary configurations:
+
+    ```js
+    const AARC_API_KEY = process.env.AARC_API_KEY;
+    const API_BASE_URL = 'https://bridge-swap.aarc.xyz/v3';
+
+    // Headers for API calls
+    const headers = {
+      'Content-Type': 'application/json',
+      'x-api-key': AARC_API_KEY
+    };
+
+    // Example NFT contract details
+    const NFT_CONTRACT = {
+      address: '0xNFTContractAddress',
+      chainId: '8453', // Example: Base network
+      mintPrice: '0.1', // Price in native token or ERC20
+      mintCurrency: '0x833589fCD6eDb6E08f4c7c32D4f71b54bdA02913' // USDC on Base
+    };
+    ```
+  </Step>
+
+  <Step title="Generate Mint Call Data">
+    Before getting the deposit address, generate the calldata for the NFT mint:
+
+    ```js
+    function generateMintCallData({
+      nftContract,
+      userAddress,
+      quantity = 1
+    }) {
+      // Example for standard NFT mint function
+      const nftInterface = new ethers.utils.Interface([
+        "function mint(address to, uint256 quantity) payable"
+      ]);
+
+      return nftInterface.encodeFunctionData("mint", [
+        userAddress,    // recipient address
+        quantity        // number of NFTs to mint
+      ]);
+    }
+
+    // Example usage
+    const mintCallData = generateMintCallData({
+      nftContract: NFT_CONTRACT,
+      userAddress: '0x...', // User's wallet address
+      quantity: 1
+    });
+    ```
+
+    <Note>
+    The mint function signature may vary depending on your NFT contract.
+    </Note>
+  </Step>
+
+  <Step title="Get Deposit Address">
+    Get a deposit address with the NFT minting details:
+
+    ```js
+    async function getDepositAddress({
+      fromToken,
+      userAddress,
+      mintCallData,
+      quantity = 1
+    }) {
+      const mintAmount = (
+        Number(NFT_CONTRACT.mintPrice) * quantity
+      ).toString();
+
+      const queryParams = new URLSearchParams({
+        // Required parameters
+        destinationChainId: NFT_CONTRACT.chainId,
+        destinationTokenAddress: NFT_CONTRACT.mintCurrency,
+        toAmount: mintAmount,
+        destinationRecipient: NFT_CONTRACT.address, // NFT contract address
+        transferType: 'wallet',
+        
+        // Optional parameters
+        fromChainId: fromToken.chainId,
+        fromTokenAddress: fromToken.address,
+        fromAddress: userAddress,
+        targetCalldata: mintCallData, // NFT mint interaction data
+        slippage: '1' // 1% default slippage
+      });
+
+      const response = await fetch(
+        `${API_BASE_URL}/deposit-address?${queryParams}`,
+        {
+          method: 'GET',
+          headers
+        }
+      );
+
+      return await response.json();
+    }
+
+    // Example usage
+    const depositData = await getDepositAddress({
+      fromToken: {
+        chainId: '1', // Ethereum
+        address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48' // USDC
+      },
+      userAddress: '0x...', // User's address
+      mintCallData,
+      quantity: 1
+    });
+    ```
+
+    <Warning>
+    Users must send the exact amount specified in the deposit instructions. Sending less than the required amount will result in a failed transaction.
+    </Warning>
+  </Step>
+
+  <Step title="Handle User Deposit and Monitor Mint">
+    After getting the deposit address, handle the user deposit and monitor the minting process:
+
+    ```js
+    async function handleNFTMint(depositData) {
+      try {
+        // 1. Show deposit instructions to user
+        const instructions = displayDepositInstructions(depositData);
+        console.log('Please send funds to:', instructions);
+
+        // 2. Monitor deposit and mint status
+        const status = await pollTransactionStatus(depositData.requestId);
+        
+        switch (status.data.status) {
+          case 'INITIALISED':
+            console.log('Waiting for deposit...');
+            break;
+          case 'DEPOSIT_RECEIVED':
+            console.log('Deposit confirmed, bridging funds...');
+            break;
+          case 'PROCESSING':
+            console.log('Minting NFT...');
+            break;
+          case 'COMPLETED':
+            console.log('Successfully minted NFT');
+            // You can fetch the minted tokenId from the transaction receipt
+            return status.data;
+          case 'FAILED':
+            throw new Error(`Mint failed: ${status.data.error}`);
+          default:
+            console.log('Current status:', status.data.status);
+        }
+
+        return status;
+      } catch (error) {
+        console.error('Error during NFT mint:', error);
+        throw error;
+      }
+    }
+    ```
+  </Step>
+</Steps>
+
+## Error Handling
+
+Handle NFT-specific errors in addition to standard bridge errors:
+
+```js
+function handleNFTError(error) {
+  switch (error.code) {
+    case 'MAX_SUPPLY_REACHED':
+      return 'NFT collection is sold out';
+    case 'INVALID_MINT_AMOUNT':
+      return 'Invalid mint quantity requested';
+    case 'INSUFFICIENT_PAYMENT':
+      return 'Insufficient payment for mint';
+    case 'NOT_ON_ALLOWLIST':
+      return 'Address not on allowlist';
+    default:
+      return handleSwapError(error); // Handle standard bridge errors
+  }
+}
+```
+
+<Note>
+For additional support or questions, refer to our [support](/introduction/support) documentation.
+</Note>

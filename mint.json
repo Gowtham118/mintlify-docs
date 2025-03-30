@@ -131,9 +131,38 @@
         {
             "group": "Execution API",
             "pages": [
-                "execution-api/introduction",
-                "execution-api/quickstart",
-                "execution-api/guide"
+                "execution-api/get-started",
+                {
+                    "group": "Guides",
+                    "pages": [
+                        "execution-api/guides/cross-chain-deposits",
+                        "execution-api/guides/cross-chain-nft-mint",
+                        "execution-api/guides/cross-chain-swaps"
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Endpoint Examples",
+            "pages": [
+                "execution-api/endpoints/deposit-address",
+                "execution-api/endpoints/schedule-transaction",
+                "execution-api/endpoints/request-status"
+            ]
+        },
+        {
+            "group": "Linktree for Checkouts",
+            "pages": [
+                "execution-api/link-tree-for-checkouts/get-started",
+                "execution-api/link-tree-for-checkouts/store-verified-link"
+            ]
+        },
+        {
+            "group": "Utility APIs",
+            "pages": [
+                "execution-api/utility-endpoints/supported-chains",
+                "execution-api/utility-endpoints/supported-tokens",
+                "execution-api/utility-endpoints/balances"
             ]
         },
         {
@@ -209,18 +238,6 @@
                         "partner-integrations/embedded-wallets/dynamic/quickstart"
                     ]
                 }
-            ]
-        },
-        {
-            "group": "Endpoint Examples",
-            "pages": [
-                "execution-api/endpoints/deposit-address",
-                "execution-api/endpoints/schedule-transaction",
-                "execution-api/endpoints/request-status",
-                "execution-api/endpoints/supported-chains",
-                "execution-api/endpoints/supported-tokens",
-                "execution-api/endpoints/balances",
-                "execution-api/endpoints/store-verified-link"
             ]
         }
     ],
