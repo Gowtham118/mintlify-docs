@@ -129,7 +129,7 @@
             ]
         },
         {
-            "group": "API Reference",
+            "group": "Execution API",
             "pages": [
                 "execution-api/introduction",
                 "execution-api/quickstart",
@@ -137,10 +137,10 @@
             ]
         },
         {
-            "group": "SDK",
+            "group": "Execution SDK",
             "pages": [
-                "sdk/introduction",
-                "sdk/quickstart",
+                "sdk/get-started",
+                "sdk/config",
                 "sdk/guide",
                 {
                     "group": "Advanced Topics",
