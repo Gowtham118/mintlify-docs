@@ -1,229 +1,113 @@
-Here is a step-by-step guide to integrating the [SDK](../sdk/) into your dApp seamlessly to `checkout`, cross-chain custom `mint` function,  you can find the complete implementation in this [repo](https://github.com/aarc-xyz/Aarc-Core-SDK-Contract-Call-Example)
+---
+title: Cross-Chain Swap
+description: Call your contract with custom payload on different destination chain
+---
 
-1. &#x20; Setup Prerequisites
+The `getDepositAddress` function allows developers to interact with contracts on a different destination chain. For instance, if a user holds funds on \`Arbitrum\` but needs to call a contract on `Polygon`, they can achieve this seamlessly by generating a deposit address with `getDepositAddress` and submitting the payload on-chain.
 
-Ensure you have the following:
+### Expected parameters
 
-* Node.js (v16 or higher) installed
-* TypeScript and `ts-node` installed
-* Environment variables configured
+`getDepositAddress` accepts following [parameters](buy-tokens#payload).
 
-2. Initialize a Node.js project:
+### Function Call
 
-```bash
-mkdir contract-call-example
-cd contract-call-example
-npm init -y
-```
+The `getDepositAddress` function generates an address based on the provided payload, which must then be funded and submitted on-chain.\
 
-3. Install required dependencies:
 
-```bash
-npm install ethers dotenv @aarc-xyz/core-viem
-npm install --save-dev typescript ts-node
-```
-
-4. &#x20;Create a `tsconfig.json` file with the following:
-
-```json
-{
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "strict": true,
-    "esModuleInterop": true
-  }
-}
-```
-
-5. &#x20;Create a `.env` file in the root directory:
-
-```plaintext
-API_KEY=your_aarc_api_key
-PRIVATE_KEY=your_private_key
-RPC_URL=your_rpc_url
-```
-
-* Ensure `dotenv` is loaded in your script to access these variables.
-
-6. &#x20;Create a new file `contract-call-example.ts`.
-
-* **Load environment variables**:
-
+<Tabs>
+<Tab title="ethers.js" >
 ```typescript
-import { config } from 'dotenv';
-import { ethers } from 'ethers';
-import { AarcCore } from '@aarc-xyz/core-viem';
+const provider = new ethers.BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
 
-config();
-const API_KEY = process.env.API_KEY!;
-const PRIVATE_KEY = process.env.PRIVATE_KEY!;
-const RPC_URL = process.env.RPC_URL!;
-```
+const address = signer.getAddress();
+const contractInterface = new ethers.Interface(ABI); // create interface with your own ABI
 
-* **Initialize Aarc Core SDK and wallet**:
+const destinationPayload = contractInterface.encodeFunctionData("mint", [
+  address,
+  1000000000000,
+]); // Replace with your own function name and parameters
 
-```typescript
-const aarcCoreSDK = new AarcCore(API_KEY);
-const walletProvider = ethers.getDefaultProvider(RPC_URL);
-const wallet = new ethers.Wallet(PRIVATE_KEY, walletProvider);
-```
-
-* **Example destination token:**
-
-```typescript
-const destinationWalletAddress = "0x45c0470ef627a30efe30c06b13d883669b8fd3a8";
-const destinationToken = {
-  decimals: 6,
-  chainId: 8453,
-  address: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+const payload: any = {
+        // ... remaining params
+        destinationRecipient : YOUR_CONTRACT_ADDRESS, 
+        targetCalldata: destinationPayload
 };
+
+const depositData = await aarcCoreSDK.getDepositAddress(payload); 
+
+// make client sign the generated tx
+const { to, value, data, gasLimit, chainId, from } = depositData.txData;
+const txHash = await signer.sendTransaction({ to, value, data, gasLimit, chainId, from });
 ```
+</Tab>
 
-* **Fetch wallet balances**:
-
+<Tab title="viem">
 ```typescript
-async function getMultichainBalance(address: string) {
-// this will fetch balances of user in terms of destination token
-  return await aarcCoreSDK.fetchMultiChainBalances(address, {
-      tokenAddress: destinationToken.address,
-      tokenChainId: destinationToken.chainId,
-      tokenAmount: requestedAmount,
-    });
-}
-const balances = await getMultichainBalance(wallet.address);
-console.log('Balances:', balances);
-```
+import { createWalletClient, custom } from "viem";
 
-* **Generate transaction call data**:
-
-```typescript
-function generateCheckoutCallData(
-  token: string,
-  toAddress: string,
-  amount: string
-): string {
-  const simpleDappInterface = new ethers.Interface([
-    "function mint(address token, address to, uint256 amount) external",
-  ]);
-
-  return simpleDappInterface.encodeFunctionData("mint", [
-    token,
-    toAddress,
-    amount,
-  ]);
-}
-
- const contractPayload = generateCheckoutCallData(
-      destinationToken.address,
-      destinationWalletAddress,
-      "10000"
- );
-```
-
-* **Fetch deposit address**:
-
-```typescript
-async function getDepositAddress(contractPayload, fromToken, fromAmount) {
-    const transferType = TransferType.WALLET; // decides the transfer method
-    const provider = undefined; // defined in case of onramp or cex
-
-    const payload: any = {
-      userOpHash: "",
-      transferType,
-      destinationChainId: destinationToken.chainId?.toString() ?? "",
-      destinationTokenAddress: destinationToken.address ?? "",
-      toAmount: baseToAmount,
-      destinationRecipient: destinationWalletAddress ?? "",
-      targetCalldata: contractPayload,
-      // destructure and format the input from fromtoken
-      fromAmount,
-      fromChainId,
-      fromTokenAddress,
-      fromAddress
-    };
-    
-  return aarcCoreSDK.getDepositAddress(payload);
-}
-
-const depositData = await getDepositAddress({
-  contractPayload: callData,
-  fromToken: { decimals: 18, chainId: 1, address: 'fromTokenAddress' },
-  fromTokenAmount: '0.01',
-});
-
-console.log('Deposit Address:', depositData);
-```
-
-* **Execute transaction**:
-
-```typescript
-const tx = {
-  to: depositData.depositAddress,
-  value: ethers.utils.parseEther('0.01'),
-  data: depositData.txData,
+const getWalletClient = async () => {
+const [account] = await window.ethereum.request({
+method: "eth_requestAccounts",
+  });
+  const walletClient = createWalletClient({
+    chain: arbitrum,
+    account,
+    transport: custom(window.ethereum!),
+  });
+  return walletClient;
 };
-const txResponse = await wallet.sendTransaction(tx);
-console.log('Transaction Hash:', txResponse.hash);
 
- // Notify Aarc about the transaction hash (this is optional, but recommended to get the status of the transaction faster)
-await aarcCoreSDK.postExecuteToAddress({
-  depositData,
-  trxHash: txResponse.hash,
-});
+const wallet = await getWalletClient();
+
+const [address] = await wallet.requestAddresses();
+
+const destinationPayload = encodeFunctionData({
+  abi: ABI, // Replace with your ABI
+  functionName: "mint",
+  args: [address, 1000000000000],
+}); // Replace with your own function name and parameters
+
+const payload: any = {
+        // ... remaining params
+        targetCalldata: destinationPayload
+};
+
+const depositData = await aarcCoreSDK.getDepositAddress(payload); 
+
+// make client sign the generated tx
+const { to, value, data, gasLimit, chainId, from } = depositData.txData;
+const txHash = await signer.sendTransaction({ to, value, data, gasLimit, chainId, from });
+
+console.log('tx', tx);
 ```
+</Tab>
+</Tabs>
 
-* **Poll transaction status:**
+Using onramp for contract call
 
 ```typescript
-async function pollRequestStatus(requestId: string) {
-  let status;
-  do {
-    status = await aarcCoreSDK.getRequestStatus(requestId);
-    console.log('Polling status:', status);
+// Using moonpay for onramp (you can also use kado)
+const payload = {
+    // rest of the payload,
+    transferType: "onramp",  
+};
 
-    if (status.pollStatus === 'success') {
-      break;
-    }
+const provider = "moonpay"; 
 
-    // Wait for 10 seconds before the next iteration
-    await new Promise(resolve => setTimeout(resolve, 10000));
-  } while (status.pollStatus !== 'success');
-}
+const url = await aarcCoreSDK.generateMoonpayOnrampUrl({
+        walletAddress: depositAddressData.depositAddress,
+        defaultCryptoCurrencyCode: depositAddressData.depositTokenSymbol,
+        fiatAmount: fromToken.amount_required,
+        fiatCurrencyCode: "USD",
+        network: "BASE",
+        cryptoTokenData: {
+          tokenAmount: fromToken.amount_required,
+          tokenCode: depositAddressData.depositTokenSymbol ?? "ETH",
+        },
+      });
 
-// Call the function with the requestId
-pollRequestStatus(depositData.requestId);
+const windowRef = window.open(url, "_blank");
 ```
 
-for more comprehensive implementation of polling refer [this](https://github.com/aarc-xyz/Aarc-Core-SDK-Contract-Call-Example/blob/main/polling-example.ts)
-
-7. Run the script&#x20;
-
-```bash
-npx ts-node contract-call-example.ts
-```
-
-8. Output Logs:
-
-* Wallet balances.
-* Generated call data.
-* Deposit address.
-* Transaction hash.
-* Polling status updates until completion.
-
-9. Handle Errors
-
-* Use `try...catch` blocks to manage errors like invalid API keys, insufficient balances, or unavailable routes.
-* Log descriptive error messages for debugging.
-* Do input validation and vanity checks.
-
-**Notes**
-
-*   **Disable transaction execution for testing**: Uncomment the `throw new Error()` line to prevent actual transactions.
-
-    ```typescript
-    throw new Error("Transaction execution is disabled for now. Remove this line to proceed.");
-    ```
-* **Modify configuration**: Adjust the script to your specific use case (e.g., token address, destination chain).
-
-Now you can `checkout` to a cross-chain contract call with different payment methods. :tada:
+For more comprehensive implementation, refer [cookbook](../cookbook/sdk-implementation-in-typescript-+-ethers) example.  &#x20;

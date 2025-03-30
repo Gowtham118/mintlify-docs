@@ -1,0 +1,105 @@
+---
+description: Function to get the deposit address for cross-chain transactions.
+---
+
+The `getDepositAddress` function allows developers to obtain a deposit address for cross-chain transactions, enabling seamless transfer of assets between different blockchain networks.
+
+## Expected parameters
+
+<table>
+  <thead>
+    <tr>
+      <th width="295">Parameters</th>
+      <th width="134">Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>contractPayload</code></td>
+      <td><code>string</code></td>
+      <td>The encoded contract call data for the transaction.</td>
+    </tr>
+    <tr>
+      <td><code>fromToken</code></td>
+      <td><code>object</code></td>
+      <td>
+        Object containing details about the source token:
+        <ul>
+          <li><code>decimals</code>: Number of decimal places for the token</li>
+          <li><code>chainId</code>: Chain ID of the source network</li>
+          <li><code>address</code>: Contract address of the source token</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><code>fromAmount</code></td>
+      <td><code>string</code></td>
+      <td>Amount of tokens to transfer.</td>
+    </tr>
+    <tr>
+      <td><code>transferType</code></td>
+      <td><code>TransferType</code></td>
+      <td>Type of transfer (e.g., WALLET).</td>
+    </tr>
+    <tr>
+      <td><code>destinationChainId</code></td>
+      <td><code>string</code></td>
+      <td>Chain ID of the destination network.</td>
+    </tr>
+    <tr>
+      <td><code>destinationTokenAddress</code></td>
+      <td><code>string</code></td>
+      <td>Contract address of the destination token.</td>
+    </tr>
+    <tr>
+      <td><code>toAmount</code></td>
+      <td><code>string</code></td>
+      <td>Amount of tokens to receive on destination chain.</td>
+    </tr>
+    <tr>
+      <td><code>destinationRecipient</code></td>
+      <td><code>string</code></td>
+      <td>Address to receive the tokens on destination chain.</td>
+    </tr>
+    <tr>
+      <td><code>targetCalldata</code></td>
+      <td><code>string</code></td>
+      <td>Contract call data for the transaction.</td>
+    </tr>
+    <tr>
+      <td><code>fromAddress</code></td>
+      <td><code>string</code></td>
+      <td>Source wallet address.</td>
+    </tr>
+  </tbody>
+</table>
+
+## Function call
+
+```typescript
+const depositData = await aarcCoreSDK.getDepositAddress({
+  contractPayload: callData,
+  fromToken: { 
+    decimals: 18, 
+    chainId: 1, 
+    address: 'fromTokenAddress' 
+  },
+  fromAmount: '0.01',
+  transferType: TransferType.WALLET,
+  destinationChainId: destinationToken.chainId?.toString() ?? "",
+  destinationTokenAddress: destinationToken.address ?? "",
+  toAmount: baseToAmount,
+  destinationRecipient: destinationWalletAddress ?? "",
+  targetCalldata: contractPayload,
+  fromAddress: fromAddress
+});
+```
+
+## Response
+
+The response from the `getDepositAddress` will contain the deposit address and related information for the cross-chain transaction.
+
+## Support
+
+If you face any trouble, feel free to reach out to our engineers in the [Telegram support group](https://t.me/aarcxyz).

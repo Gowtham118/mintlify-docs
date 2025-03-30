@@ -144,15 +144,14 @@
                 {
                     "group": "Guides",
                     "pages": [
-                        "execution-sdk/guides/corss-chain-swap",
+                        "execution-sdk/guides/cross-chain-swap",
                         "execution-sdk/guides/cross-chain-checkout"
                     ]
                 },
                 {
                     "group": "Core Methods",
                     "pages": [
-                        "execution-sdk/core-methods/create-intent",
-                        "execution-sdk/core-methods/execute-intent",
+                        "execution-sdk/core-methods/get-deposit-address",
                         "execution-sdk/core-methods/check-transaction-status"
                     ]
                 }
