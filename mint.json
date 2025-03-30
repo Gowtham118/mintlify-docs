@@ -17,13 +17,14 @@
     "font": {
         "family": "DM Sans"
     },
+    "customCss": "./styles.css",
     "topbarLinks": [
         {
-            "name": "Book a call",
-            "url": "https://calendly.com/d/3f7-9gt-4pr/session-with-aarc-team"
+            "name": "Build with Aarc",
+            "url": "https://docs.google.com/forms/d/e/1FAIpQLSd3SWqEWZMDBirMTw2y7t2Vxl7vIVK_Cy9aNlegJN_enF_XTg/viewform?pli=1"
         },
         {
-            "name": "Buy with Aarc",
+            "name": "Try Aarc",
             "url": "https://buy.aarc.xyz/"
         }
     ],
@@ -36,6 +37,14 @@
             "name": "Support",
             "icon": "headset",
             "url": "https://t.me/aarcxyz"
+        },
+        {
+            "name": "Developer Dashboard & API Keys",
+            "icon": "code",
+            "pages": [
+                "developers/developer-dashboard"
+            ],
+            "url": "https://dashboard.aarc.xyz/"
         }
     ],
     "tabs": [
@@ -44,11 +53,11 @@
             "url": "execution-api"
         },
         {
-            "name": "SDK",
+            "name": "SDK Reference",
             "url": "sdk"
         },
         {
-            "name": "Widget",
+            "name": "UI Kits",
             "url": "widget"
         },
         {
