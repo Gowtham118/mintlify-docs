@@ -1,0 +1,1899 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "BridgeSwapController_getHealth",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/users": {
+            "post": {
+                "operationId": "UsersController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Users"
+                ]
+            },
+            "get": {
+                "operationId": "UsersController_getUser",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Users"
+                ]
+            },
+            "put": {
+                "operationId": "UsersController_update",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Users"
+                ]
+            }
+        },
+        "/users/api-key": {
+            "post": {
+                "operationId": "UsersController_createApiKey",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Users"
+                ]
+            }
+        },
+        "/users/api-key-v2": {
+            "post": {
+                "operationId": "UsersController_createApiKeyV2",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Users"
+                ]
+            }
+        },
+        "/users/sign-in": {
+            "post": {
+                "operationId": "UsersController_signIn",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Users"
+                ]
+            }
+        },
+        "/users/deposit": {
+            "post": {
+                "operationId": "UsersController_deposit",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Users"
+                ]
+            },
+            "get": {
+                "operationId": "UsersController_getUserDeposits",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Users"
+                ]
+            }
+        },
+        "/users/balance/{chainEnv}": {
+            "get": {
+                "operationId": "UsersController_getUserBalance",
+                "parameters": [
+                    {
+                        "name": "chainEnv",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Users"
+                ]
+            }
+        },
+        "/add-credentials": {
+            "post": {
+                "operationId": "OpenAuthController_addCredentials",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/callback-url/{provider}": {
+            "get": {
+                "operationId": "OpenAuthController_getCallBackUrl",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/resolve": {
+            "post": {
+                "operationId": "OpenAuthController_resolveAccount",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/claim": {
+            "post": {
+                "operationId": "OpenAuthController_claimAccount",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/authenticate": {
+            "post": {
+                "operationId": "OpenAuthController_authenticate",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/sign-message": {
+            "post": {
+                "operationId": "OpenAuthController_signMessage",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/sign-transaction": {
+            "post": {
+                "operationId": "OpenAuthController_signTransaction",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/send-transaction": {
+            "post": {
+                "operationId": "OpenAuthController_sendTransaction",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/passcode/{mode}/{contact}": {
+            "get": {
+                "operationId": "OpenAuthController_passcode",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/poll-session/{provider}/{session_identifier}": {
+            "get": {
+                "operationId": "OpenAuthController_poll_session",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/external-wallet": {
+            "post": {
+                "operationId": "OpenAuthController_addExternalWallet",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/get-pkp-txns/{address}": {
+            "get": {
+                "operationId": "OpenAuthController_get_pkp_txns",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/x-token": {
+            "get": {
+                "operationId": "OpenAuthController_get_x_req_token",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/webauthn-register-options/{session_identifier}": {
+            "get": {
+                "operationId": "OpenAuthController_getWebAuthnRegisterOptions",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/register-webauthn": {
+            "post": {
+                "operationId": "OpenAuthController_registerWebAuthn",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "OpenAuth"
+                ]
+            }
+        },
+        "/migrator/balances": {
+            "post": {
+                "operationId": "MigratorController_getBalanceFromCovalent",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Migrator"
+                ]
+            }
+        },
+        "/migrator/balances-as": {
+            "post": {
+                "operationId": "MigratorController_getBalanceFromAirStack",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Migrator"
+                ]
+            }
+        },
+        "/migrator/migrate/gasless": {
+            "post": {
+                "operationId": "MigratorController_migrateGaslessTransaction",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Migrator"
+                ]
+            }
+        },
+        "/migrate/non-gasless-calldata": {
+            "post": {
+                "operationId": "MigratorController_generateNonGaslessCallData",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Migrator"
+                ]
+            }
+        },
+        "/migrate/gasless-calldata": {
+            "post": {
+                "operationId": "MigratorController_generateGaslessCallData",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Migrator"
+                ]
+            }
+        },
+        "/migrate/gasless-calldata-trx": {
+            "post": {
+                "operationId": "MigratorController_executeGaslessCallData",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Migrator"
+                ]
+            }
+        },
+        "/migrate/forward-calldata": {
+            "post": {
+                "operationId": "MigratorController_generateForwardCallData",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Migrator"
+                ]
+            }
+        },
+        "/migrate/forward-calldata-trx": {
+            "post": {
+                "operationId": "MigratorController_executeForwardCallData",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Migrator"
+                ]
+            }
+        },
+        "/migrator/migrate/forward": {
+            "post": {
+                "operationId": "MigratorController_migrateForwardTransaction",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Migrator"
+                ]
+            }
+        },
+        "/migrator/tx/status/{taskId}": {
+            "get": {
+                "operationId": "MigratorController_getTransactionStatus",
+                "parameters": [
+                    {
+                        "name": "taskId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Migrator"
+                ]
+            }
+        },
+        "/migrator/price/{chainId}": {
+            "get": {
+                "operationId": "MigratorController_getNativeValueInUsd",
+                "parameters": [
+                    {
+                        "name": "chainId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Migrator"
+                ]
+            }
+        },
+        "/migrator/gas-price/{chainId}": {
+            "get": {
+                "operationId": "MigratorController_getGasPrice",
+                "parameters": [
+                    {
+                        "name": "chainId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Migrator"
+                ]
+            }
+        },
+        "/bridge-swap/tx": {
+            "post": {
+                "operationId": "BridgeSwapController_addTransaction",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/bridge-swap/tx-detail": {
+            "post": {
+                "operationId": "BridgeSwapController_getBridgeTxDetail",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/bridge-swap/token-supported": {
+            "get": {
+                "operationId": "BridgeSwapController_isTokenSupported",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/bridge-swap/supported-tokens": {
+            "get": {
+                "operationId": "BridgeSwapController_getSupportedTokens",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/bridge-swap/supported-chains": {
+            "get": {
+                "operationId": "BridgeSwapController_getSupportedChains",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/v3/supported-tokens": {
+            "get": {
+                "operationId": "BridgeSwapController_getSupportedTokensV3",
+                "parameters": [
+                    {
+                        "name": "chainId",
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "symbol",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of supported tokens",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "symbol": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "address": {
+                                                "type": "string"
+                                            },
+                                            "decimals": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/v3/supported-chains": {
+            "get": {
+                "operationId": "BridgeSwapController_getSupportedChainsV3",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "List of supported chains",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "chainId": {
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "nativeCurrency": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "symbol": {
+                                                        "type": "string"
+                                                    },
+                                                    "decimals": {
+                                                        "type": "integer"
+                                                    }
+                                                }
+                                            },
+                                            "rpcUrls": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/bridge-swap/balances/{walletAddress}": {
+            "get": {
+                "operationId": "BridgeSwapController_getMultiChainBalances",
+                "parameters": [
+                    {
+                        "name": "walletAddress",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/v3/balances/{walletAddress}": {
+            "get": {
+                "operationId": "BridgeSwapController_getMultiChainBalancesV3",
+                "parameters": [
+                    {
+                        "name": "walletAddress",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/bridge-swap/balances/{walletAddress}/{extendedBalances}": {
+            "get": {
+                "operationId": "BridgeSwapController_getMultiChainExtendedBalances",
+                "parameters": [
+                    {
+                        "name": "walletAddress",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "extendedBalances",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/deposit-calldata": {
+            "get": {
+                "operationId": "BridgeSwapController_getWalletDepositCalldata",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/checkout-contract-calldata": {
+            "get": {
+                "operationId": "BridgeSwapController_getWalletDepositContractCalldata",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/token-price/{tokenSymbol}": {
+            "get": {
+                "operationId": "BridgeSwapController_getTokenPrice",
+                "parameters": [
+                    {
+                        "name": "tokenSymbol",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/v3/estimate-gas": {
+            "post": {
+                "operationId": "BridgeSwapController_getEstimateGas",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/store-onramp-data": {
+            "post": {
+                "operationId": "BridgeSwapController_storeOnrampData",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/transak-webhook": {
+            "post": {
+                "operationId": "BridgeSwapController_transakOrderWebhook",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/tx-analytics": {
+            "post": {
+                "operationId": "BridgeSwapController_createTxAnalytics",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/moonpay-webhook": {
+            "post": {
+                "operationId": "BridgeSwapController_moonpayOrderWebhook",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/mesh-connect-link-token": {
+            "post": {
+                "operationId": "BridgeSwapController_getMeshConnectLinkToken",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/mesh-connect-link-sandbox-token": {
+            "post": {
+                "operationId": "BridgeSwapController_getMeshConnectLinkSandboxToken",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/mesh-connect-networks": {
+            "get": {
+                "operationId": "BridgeSwapController_getMeshConnectNetworks",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/mesh-connect-integrations": {
+            "get": {
+                "operationId": "BridgeSwapController_getMeshConnectIntegrations",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/v3/moonpay-widget-url": {
+            "post": {
+                "operationId": "BridgeSwapController_getMoonpayWidgetUrl",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/v3/deposit-address": {
+            "get": {
+                "operationId": "BridgeSwapController_getDepositContractAddress",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "destinationChainId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "destinationTokenAddress",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "toAmount",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "destinationRecipient",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "transferType",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "onramp",
+                                "cex",
+                                "wallet"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "routeType",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "time",
+                                "fee",
+                                "value"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "fromChainId",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fromTokenAddress",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fromAddress",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "slippage",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "transferOut",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "token": {
+                                        "type": "string"
+                                    },
+                                    "recipient": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "targetCalldata",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "gasLimit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deposit address details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "depositAddress": {
+                                            "type": "string"
+                                        },
+                                        "onChainID": {
+                                            "type": "string"
+                                        },
+                                        "depositTokenName": {
+                                            "type": "string"
+                                        },
+                                        "depositTokenSymbol": {
+                                            "type": "string"
+                                        },
+                                        "depositTokenAddress": {
+                                            "type": "string"
+                                        },
+                                        "depositTokenDecimals": {
+                                            "type": "string"
+                                        },
+                                        "depositTokenUsdPrice": {
+                                            "type": "number"
+                                        },
+                                        "amount": {
+                                            "type": "string"
+                                        },
+                                        "executionTime": {
+                                            "type": "string"
+                                        },
+                                        "gasFee": {
+                                            "type": "string"
+                                        },
+                                        "txData": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/kado-webhook": {
+            "post": {
+                "operationId": "BridgeSwapController_kadoOrderWebhook",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/meshconnect-webhook": {
+            "post": {
+                "operationId": "BridgeSwapController_meshConnectOrderWebhook",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/v3/request-status/{requestId}": {
+            "get": {
+                "operationId": "BridgeSwapController_getRequestStatus",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "requestId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Request status",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "transactionSteps": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/v3/schedule-transaction": {
+            "post": {
+                "operationId": "BridgeSwapController_scheduleTransaction",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "fromAddress": {
+                                        "type": "string"
+                                    },
+                                    "toAddress": {
+                                        "type": "string"
+                                    },
+                                    "token": {
+                                        "type": "string"
+                                    },
+                                    "amount": {
+                                        "type": "string"
+                                    },
+                                    "scheduleTime": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Transaction scheduled successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "transactionId": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/v3/store-verified-link": {
+            "post": {
+                "operationId": "BridgeSwapController_storeVerifiedLink",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "identifier": {
+                                        "type": "string"
+                                    },
+                                    "cmcid": {
+                                        "type": "string"
+                                    },
+                                    "apiKey": {
+                                        "type": "string"
+                                    },
+                                    "bannerUrl": {
+                                        "type": "string"
+                                    },
+                                    "logoUrl": {
+                                        "type": "string"
+                                    },
+                                    "chartUrl": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "symbol": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "tokenAddress": {
+                                        "type": "string"
+                                    },
+                                    "chainId": {
+                                        "type": "number"
+                                    },
+                                    "community": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/v3/get-verified-link/{idKey}": {
+            "get": {
+                "operationId": "BridgeSwapController_getVerifiedLink",
+                "parameters": [
+                    {
+                        "name": "idKey",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/v3/token": {
+            "post": {
+                "operationId": "BridgeSwapController_addFdkToken",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        },
+        "/deposit-address": {
+            "get": {
+                "operationId": "BridgeSwapController_getDepositAddress",
+                "parameters": [
+                    {
+                        "name": "destinationChainId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "destinationTokenAddress",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "toAmount",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "destinationRecipient",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "transferType",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deposit address details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "depositAddress": {
+                                            "type": "string"
+                                        },
+                                        "onChainID": {
+                                            "type": "string"
+                                        },
+                                        "depositTokenName": {
+                                            "type": "string"
+                                        },
+                                        "depositTokenSymbol": {
+                                            "type": "string"
+                                        },
+                                        "depositTokenAddress": {
+                                            "type": "string"
+                                        },
+                                        "depositTokenDecimals": {
+                                            "type": "string"
+                                        },
+                                        "depositTokenUsdPrice": {
+                                            "type": "number"
+                                        },
+                                        "amount": {
+                                            "type": "string"
+                                        },
+                                        "executionTime": {
+                                            "type": "string"
+                                        },
+                                        "gasFee": {
+                                            "type": "string"
+                                        },
+                                        "txData": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "BridgeSwap"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "Aarc API Documentation",
+        "description": "Makes it easy to bring assets cross chain for devs",
+        "version": "3.0",
+        "contact": {}
+    },
+    "tags": [],
+    "servers": [],
+    "components": {
+        "schemas": {}
+    }
+}

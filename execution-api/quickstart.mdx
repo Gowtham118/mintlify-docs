@@ -1,0 +1,27 @@
+---
+description: Enables buy or checkout usecase based on the request.
+---
+
+<table><thead><tr><th width="334">Scenarios</th><th>API Response</th></tr></thead><tbody><tr><td>Users have <strong>TokenA</strong> on <strong>ChainA</strong> </td><td>Calldata generated for <strong>Direct Transfer</strong></td></tr><tr><td>Users have <strong>TokenB</strong> on <strong>ChainA</strong></td><td>Calldata generated for <strong>Swap on ChainA</strong></td></tr><tr><td>Users have <strong>TokenA</strong> on <strong>ChainB</strong></td><td>Calldata generated for bridging <strong>TokenA from ChainB to ChainA</strong></td></tr><tr><td>Users have <strong>TokenB</strong> on <strong>ChainB</strong></td><td>Calldata generated for <strong>swapping and bridging the TokenB from ChainB to TokenA on ChainA.</strong></td></tr></tbody></table>
+
+**Steps to follow**:
+
+1. **Generate Deposit Address**
+
+* Use the [`deposit-address`](./endpoints/deposit-address) endpoint to:
+  * Obtain a precise quote for the requested buy/checkout parameters.
+  * Determine if the current configuration is viable.
+  * Receive deposit parameters and a `requestId` for tracking purposes.
+
+2. **Transaction Notification for Transfers from EOAs**
+
+* If transferring funds from an Externally Owned Account (EOA), inform the Aarc system by calling the [`schedule-transaction`](./endpoints/schedule-transaction) endpoint. Provide transaction details along with the `requestId`.
+
+
+3. **Track Transaction Status**
+
+* Use the [`request-status`](./endpoints/request-status) endpoint to monitor the progress of your transaction. The endpoint returns detailed information about the transaction state, allowing for real-time tracking.
+
+4. **Check Supported Tokens and Chains (optional)**
+
+* Before initiating a transaction, verify if the token and chain are supported by Aarc using the [`v3/supported-chains`](./endpoints/supported-chains.mdx) and [`v3/supported-tokens`](./endpoints/supported-tokens.mdx) endpoints. This ensures compatibility with the Aarc system.

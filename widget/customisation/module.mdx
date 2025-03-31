@@ -1,0 +1,57 @@
+The module allows you to display different funding options in the widget. Currently, there are three options available: Fund from Exchange, Fund from Card or Bank Account, and Fund from EOA.
+
+You can configure which `Funding` options you want to show in `config`
+
+### FKModule Interface
+
+This is the main interface of `FKModule` type which you have to provide while defining `config`.&#x20;
+
+<table><thead><tr><th width="169">Property</th><th width="250">Type</th><th>Description</th></tr></thead><tbody><tr><td>exchange</td><td>ExchangeModule (optional)</td><td>The exchange module configuration. If undefined, the exchange module will be disabled.</td></tr><tr><td>onRamp</td><td>OnRampModule (optional)</td><td>The on-ramp module configuration. If undefined, the on-ramp module will be disabled. If enabled, the onRampConfig must be provided.</td></tr><tr><td>bridgeAndSwap</td><td>FKBridgeAndSwapModule</td><td>The bridge and swap module configuration. If undefined, the bridge and swap module will be disabled.</td></tr></tbody></table>
+
+#### ExchangeModule
+
+By setting `enabled` true or false, you can enable or disable option to Fund from centralised exchanges.&#x20;
+
+<table><thead><tr><th width="164">Property</th><th width="173">Type</th><th>Description</th></tr></thead><tbody><tr><td>enabled</td><td>boolean (optional)</td><td>Whether the exchange module is enabled. Default is  true.</td></tr></tbody></table>
+
+#### OnRampModule
+
+You can set `enabled` to true which enables option to fund from Bank Account or Card.&#x20;
+
+<table><thead><tr><th width="172">Property</th><th width="204">Type</th><th>Description</th></tr></thead><tbody><tr><td>enabled</td><td>boolean | undefined</td><td>Whether the on-ramp module is enabled. Default is true.</td></tr><tr><td>onRampConfig</td><td>OnRampBase</td><td>Configuration for the on-ramp module.</td></tr></tbody></table>
+
+**OnRampConfig**
+
+<table><thead><tr><th width="192">Property</th><th width="175">Type</th><th>Description</th></tr></thead><tbody><tr><td>customerId</td><td>string</td><td>To uniquely identify the user.</td></tr><tr><td>exchangeScreenTitle</td><td>string | undefined</td><td>Custom copy to show in widget.</td></tr></tbody></table>
+
+#### FKBridgeAndSwapModule
+
+> **Info:** RouteType can be Value, Fee or Time. It helps to optimise route for bridging and swapping.
+
+<table><thead><tr><th width="264">Property</th><th width="217">Type</th><th>Description</th></tr></thead><tbody><tr><td>enabled</td><td>boolean (optional)</td><td>Whether the bridge and swap module is enabled. Default is true.</td></tr><tr><td>fetchOnlyDestinationBalance</td><td>boolean (optional)</td><td>Whether to fetch only the destination chain's balance. Default is false.</td></tr><tr><td>routeType</td><td>"Fee" | "Time" | "Value"</td><td>The type of route to be used. Default is "Value". </td></tr><tr><td>connectors</td><td>SourceConnectorName | SourceConnectorName[] | undefined</td><td>Specifies source connector of the client.</td></tr></tbody></table>
+
+### Example
+
+```typescript
+const config: FKConfig = {
+    appName: "Aarc",
+    module: {
+      exchange: {
+        enabled: false,
+      },
+      onRamp: {
+        enabled: true,
+        onRampConfig: {
+          customerId: 123
+        },
+      },
+      bridgeAndSwap: {
+        enabled: true,
+        fetchOnlyDestinationBalance: false,
+        routeType: "Value",
+        connectors: [SourceConnectorName.ETHEREUM],
+      },
+    },
+    // remaining config...
+  };
+```

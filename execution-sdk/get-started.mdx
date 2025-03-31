@@ -1,0 +1,126 @@
+---
+title: Get Started
+---
+
+### Introduction
+
+### What is Aarc?
+
+Aarc's Intent Execution Protocol is a destination-first solution that enables atomic cross-chain transactions through a single API. It simplifies complex cross-chain operations by abstracting away the complexities of bridging, swapping, and executing transactions across different networks.
+
+### Why use Aarc SDK?
+
+The Aarc SDK simplifies interactions with the Intent Execution Protocol, enabling developers to:
+
+<CardGroup cols={2}>
+  <Card title="Cross-Chain Transaction Management" icon="link">
+    Create and manage cross-chain transaction intents with ease, handling complex multi-chain operations seamlessly.
+  </Card>
+  <Card title="Atomic Transactions" icon="shield-check">
+    Execute transactions with guaranteed outcomes, ensuring your NFT mints are either fully completed or safely reverted.
+  </Card>
+  <Card title="Real-time Monitoring" icon="chart-line">
+    Monitor transaction progress and handle refunds efficiently with comprehensive status tracking and automated recovery.
+  </Card>
+  <Card title="Developer Friendly" icon="code">
+    Reduces developer efforts with simple integration and provides an intuitive user onboarding experience.
+  </Card>
+</CardGroup>
+
+This reference provides a comprehensive guide to the SDK's methods, utilities, and best practices for integration.
+
+## Setup
+
+<Steps>
+  <Step title="Install Dependencies">
+    Install the package and other dependencies:
+
+    <Tabs>
+      <Tab title="ethers.js">
+        ```bash
+        npm i @aarc-xyz/core
+        ```
+      </Tab>
+
+      <Tab title="viem">
+        ```bash
+        npm i @aarc-xyz/core-viem
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Import Package">
+    Import the Aarc package in your code:
+
+    <Tabs>
+      <Tab title="ethers.js">
+        ```typescript
+        import { AarcCore } from "@aarc-xyz/core";
+        ```
+      </Tab>
+
+      <Tab title="viem">
+        ```typescript
+        import { AarcCore } from "@aarc-xyz/core-viem";
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Get API Key">
+    Get your API key from [dashboard.aarc.xyz](https://dashboard.aarc.xyz)
+  </Step>
+
+  <Step title="Initialize SDK">
+    Initialize the Aarc SDK with your API key:
+
+    <Tabs>
+      <Tab title="ethers.js">
+        ```typescript
+        const aarcCoreSDK = new AarcCore("YOUR_AARC_API_KEY");
+        ```
+      </Tab>
+
+      <Tab title="viem">
+        ```typescript
+        const aarcCoreSDK = new AarcCore("YOUR_AARC_API_KEY");
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Generate Deposit Address">
+    Generate [payload](./config) to enable bridging and custom user operations on the destination chain:
+
+    <Tabs>
+      <Tab title="ethers.js">
+        ```typescript
+        const depositData = await aarcCoreSDK.getDepositAddress(payload);
+        ```
+      </Tab>
+
+      <Tab title="viem">
+        ```typescript
+        const depositData = await aarcCoreSDK.getDepositAddress(payload);
+        ```
+      </Tab>
+    </Tabs>
+
+    <Note>
+    The deposit address generated will be active only for 30 minutes.
+    </Note>
+  </Step>
+
+  <Step title="Wait for user deposit">
+    Display the deposit details so the user can deposit funds.
+  </Step>
+
+  <Step title="Get transaction status">
+    Get the status of the transaction
+
+        ```typescript
+        const depositStatus = await aarcCoreSDK.getRequestStatus(requestId);
+        ```
+  </Step>
+</Steps>

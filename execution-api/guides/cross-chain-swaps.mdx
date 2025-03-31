@@ -1,0 +1,233 @@
+---
+title: Cross-Chain Swaps
+description: A step-by-step guide to implementing cross-chain swaps using the Execution API.
+---
+
+## Prerequisites
+
+Ensure you have the following:
+- An Aarc API key from the [developer dashboard](https://dashboard.aarc.xyz)
+- Basic understanding of blockchain transactions and web3 development
+
+## Setup
+
+1. Create a new project directory and initialize it:
+```bash
+mkdir cross-chain-nft-mint
+cd cross-chain-nft-mint
+npm init -y
+```
+
+2. Install required dependencies:
+```bash
+npm install ethers node-fetch dotenv
+```
+
+3. Create a `.env` file with your Aarc API key:
+```env
+AARC_API_KEY=your_api_key_here
+```
+
+4. Create an `index.js` file for your implementation:
+```js
+require('dotenv').config();
+const { ethers } = require('ethers');
+const fetch = require('node-fetch');
+
+// Your implementation code will go here
+```
+
+## Implementation Steps
+
+<Steps>
+  <Step title="Setup Environment">
+    First, set up your development environment with the necessary configurations:
+
+    ```js
+    const AARC_API_KEY = process.env.AARC_API_KEY;
+    const API_BASE_URL = 'https://bridge-swap.aarc.xyz/v3';
+
+    // Headers for API calls
+    const headers = {
+      'Content-Type': 'application/json',
+      'x-api-key': AARC_API_KEY
+    };
+    ```
+  </Step>
+
+  <Step title="Get Quote and Deposit Address">
+    Before initiating a swap, you'll need to get a quote and deposit address:
+
+    ```js
+    async function getDepositAddress({
+      fromToken,
+      toToken,
+      toAmount,
+      recipientAddress,
+      transferType = 'wallet',
+      routeType = 'value', // 'time', 'fee', or 'value'
+      slippage = '1' // 1% default slippage
+    }) {
+      const queryParams = new URLSearchParams({
+        destinationChainId: toToken.chainId,
+        destinationTokenAddress: toToken.address,
+        toAmount,
+        destinationRecipient: recipientAddress,
+        transferType,
+        routeType,
+        slippage,
+        fromChainId: fromToken.chainId,
+        fromTokenAddress: fromToken.address
+      });
+
+      const response = await fetch(
+        `${API_BASE_URL}/deposit-address?${queryParams}`,
+        {
+          method: 'GET',
+          headers
+        }
+      );
+
+      return await response.json();
+    }
+    ```
+
+    The response includes:
+    - `requestId`: Unique identifier for this swap
+    - `depositAddress`: Where to send funds
+    - `amount`: How much to send (in fromToken decimals)
+    - `depositTokenDetails`: Symbol, decimals, etc.
+    - `executionTime`: Estimated time
+    - `gasFee`: Estimated gas cost
+
+    <Note>
+    The deposit address generated will be active only for 30 minutes.
+    </Note>
+  </Step>
+
+  <Step title="Handle User Deposit">
+    After getting the deposit details, the user can send funds through various methods:
+    - EOA (External Owned Account) wallet
+    - Centralized Exchange withdrawal
+    - Smart Contract wallet
+    - Embedded wallet
+    - Any other valid source
+
+    <Warning>
+    Users must send atleast the amount specified in the deposit instructions. Sending less than the required amount will result in a failed transaction.
+    </Warning>
+
+    ```js
+    async function handleCrossChainSwap(depositData) {
+      try {
+        // 1. Show deposit instructions to user
+        const instructions = displaySwapInstructions(depositData);
+        console.log('Please send funds to:', instructions);
+
+        // 2. Start monitoring for deposit
+        const isDeposited = await monitorDeposit(depositData);
+        
+        if (!isDeposited) {
+          throw new Error('Deposit not received within timeout period');
+        }
+
+        // 3. Continue monitoring until swap completion
+        const finalStatus = await pollTransactionStatus(depositData.requestId);
+        return finalStatus;
+      } catch (error) {
+        console.error('Error during swap process:', error);
+        throw error;
+      }
+    }
+    ```
+  </Step>
+
+  <Step title="Monitor Transaction Status">
+    After the user has initiated their deposit, implement status polling to track the progress:
+
+    ```js
+    async function pollTransactionStatus(requestId) {
+      const maxAttempts = 30; // 5 minutes with 10s intervals
+      let attempts = 0;
+
+      while (attempts < maxAttempts) {
+        const response = await fetch(
+          `${API_BASE_URL}/request-status/${requestId}`,
+          { headers }
+        );
+        
+        const status = await response.json();
+        
+        switch (status.data.status) {
+          case 'INITIALISED':
+            console.log('Waiting for deposit...');
+            break;
+          case 'DEPOSIT_RECEIVED':
+            console.log('Deposit confirmed, processing swap...');
+            break;
+          case 'PROCESSING':
+            console.log('Executing cross-chain swap...');
+            break;
+          case 'COMPLETED':
+            return {
+              success: true,
+              message: 'Swap completed successfully',
+              data: status.data
+            };
+          case 'FAILED':
+            return {
+              success: false,
+              message: 'Swap failed',
+              error: status.data.error
+            };
+          default:
+            console.log('Current status:', status.data.status);
+        }
+        
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        attempts++;
+      }
+
+      return {
+        success: false,
+        message: 'Polling timed out',
+        error: 'Transaction took too long to complete'
+      };
+    }
+    ```
+  </Step>
+</Steps>
+
+## Error Handling
+
+Implement proper error handling for various scenarios:
+
+```js
+function handleSwapError(error) {
+  switch (error.code) {
+    case 'INSUFFICIENT_BALANCE':
+      return 'Insufficient balance for swap';
+    case 'PRICE_IMPACT_TOO_HIGH':
+      return 'Price impact too high, try a smaller amount';
+    case 'NO_ROUTE_FOUND':
+      return 'No valid route found for this swap';
+    case 'USER_REJECTED':
+      return 'Transaction rejected by user';
+    default:
+      return 'An unexpected error occurred';
+  }
+}
+```
+
+## Troubleshooting
+
+Common issues and solutions:
+
+- **Transaction Stuck**: Check gas price and limits
+- **Invalid Route**: Verify token pair is supported
+- **High Slippage**: Adjust amount or try different route
+- **Failed Status**: Check transaction details on block explorer
+
+<Note>
+For additional support or questions, refer to our [support](/introduction/support) documentation.
+</Note>

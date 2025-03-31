@@ -1,0 +1,44 @@
+---
+description: To get the addresses of the Smart Wallet.
+---
+
+# Get your Smart Wallet Addresses
+
+## Parameters
+
+`getSmartWalletAddresses` accepts the following parameters:
+
+* `walletType`: The provider of the Smart Wallet you are fetching the address for. \
+  &#xNAN;_&#x43;heck the supported wallet providers_ [_here_](broken-reference)_._
+* `owner`: The owner of the Smart Wallet.
+
+## Get Smart Wallet Addresses
+
+```typescript
+import { WALLET_TYPE } from "aarc-sdk/dist/utils/AarcTypes";
+
+await aarcSDK.getSmartWalletAddresses({
+  walletType: WALLET_TYPE.SAFE, // Smart Contract Wallet Provider
+  owner: OWNER_ADDRESS // Smart Wallet Owner's address
+});
+```
+
+## Output
+
+This will return all the Smart Wallets whose owner is `owner`.
+
+```bash
+[
+    {
+      address: string;
+      isDeployed: boolean;
+      walletIndex?: number;
+    }
+]
+```
+
+<Info>
+**NOTE:**
+
+* If no Smart Wallet is deployed, then it will return the generated Smart Wallet address to the **`owner`** will have, with the **`isDeployed`** set to **false** and respective **`walletIndex.`**
+</Info>

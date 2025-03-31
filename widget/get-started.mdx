@@ -1,0 +1,122 @@
+---
+title: Get Started
+---
+
+The Aarc iframe widget is a powerful tool that allows developers to embed cross-chain transaction functionality directly into their decentralized applications (dApps) or websites. It simplifies the user experience by enabling seamless interactions—such as funding intents, executing cross-chain transactions, or managing wallets—without requiring users to leave the application interface.
+
+## Introduction
+
+The iframe widget integrates Aarc's **Intent Execution Protocol** into your application, providing users with a streamlined interface for:
+
+<CardGroup cols={3}>
+  <Card title="Transaction Intent Management" icon="person">
+    Create and manage transaction intents with ease, handling complex cross-chain operations seamlessly.
+  </Card>
+  <Card title="Cross-Chain Operations" icon="link">
+    Execute cross-chain deposits, swaps, or payments with guaranteed outcomes and atomic transactions.
+  </Card>
+  <Card title="Flexible Funding Options" icon="wallet">
+    Interact with various funding sources including wallets and fiat onramps for seamless transactions.
+  </Card>
+</CardGroup>
+
+***
+
+## Setup Guide (Using SDK Recommended)
+
+<Steps>
+  <Step title="Install Core Packages">
+    Install the required Aarc packages:
+    ```bash
+    npm i @aarc-xyz/fundkit-web-sdk @aarc-xyz/eth-connector
+    ```
+  </Step>
+
+  <Step title="Install Dependencies">
+    Install additional required dependencies:
+    ```bash
+    npm i @tanstack/react-query @rainbow-me/rainbowkit viem wagmi
+    ```
+  </Step>
+
+  <Step title="Configure Widget">
+    Create an `aarcConfig.ts` file with your application configuration:
+
+    <Info>
+    To learn more about the config type visit this [link](config)
+    </Info>
+
+    <Info>
+    If you add `contract` details in the destination then the widget will automatically enable `checkout` mode where it will call a smart contract.
+    </Info>
+  </Step>
+
+  <Step title="Setup Root Component">
+    Wrap your application with the necessary providers and create an `AarcFundKitModal` instance:
+
+    <Info>
+    Learn more about `AarcFundKitModal` from [this](modal) guide.
+    </Info>
+
+    ```jsx
+    import {
+        AarcFundKitModal,
+        FKConfig,
+        ThemeName,
+        TransactionErrorData,
+        TransactionSuccessData,
+    } from "@aarc-xyz/fundkit-web-sdk"
+    import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+    import { AarcEthWalletConnector } from "@aarc-xyz/eth-connector";
+    import { aarcConfig } from "aarcConfig.ts"
+    import "@aarc-xyz/eth-connector/styles.css";
+
+    const queryClient = new QueryClient();
+
+    function App({ children }) {
+      const aarcModalRef = useRef<AarcFundKitModal | null>(new AarcFundKitModal(aarcConfig));
+      const aarcModal = aarcModalRef.current;
+      
+      return (
+        <WagmiProvider config={wagmiConfig}>
+          <QueryClientProvider client={queryClient}>
+            <RainbowKitProvider>
+              <AarcEthWalletConnector aarcWebClient={aarcModal}>
+                  {children}
+              </AarcEthWalletConnector>
+            </RainbowKitProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
+      );
+    }
+    ```
+  </Step>
+
+  <Step title="Add Widget Trigger">
+    Create a component to open the widget:
+    ```typescript
+    "use client";
+    import { aarcConfig } from "aarcConfig.ts"
+
+    export default function Home() {
+      const aarcModal = new AarcFundKitModal(aarcConfig);
+
+      return (
+          <button onClick={() => {aarcModal?.openModal()}}>
+              Open Widget
+          </button>
+      );
+    }
+    ```
+  </Step>
+
+  <Step title="Optional: Preset Configuration">
+    You can [preset](destination) the widget with specific configurations to enhance user experience.
+
+    <figure><img src="../../.gitbook/assets/image.png" alt=""/><figcaption></figcaption></figure>
+  </Step>
+
+  <Step title="State Management">
+    For effective widget state management across your application, we recommend using a custom context. This approach centralizes state management and ensures seamless integration. You can view an example implementation [here](../cookbook/widget-implementation-in-next.js-+-wagmi).
+  </Step>
+</Steps>

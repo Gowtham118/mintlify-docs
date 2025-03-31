@@ -1,0 +1,74 @@
+---
+hidden: true
+---
+
+# Wallet Manager
+
+Aarc makes it easy for users to access their accounts and provides a seamless UI for interacting with their assets.&#x20;
+
+User Wallets authenticated with any of the social login methods can use the Wallet Manager to take actions on their assets like sending tokens, importing custom ERC20 tokens on EVM chains, etc.
+
+<Tip>
+The wallet manager extracts a user's session key from the browser local storage which is generated when a user successfully authenticates with the Open Auth.
+</Tip>
+
+## Installation
+
+To install the Wallet manager widget, open your terminal and run the following command:
+
+```bash
+npm i @aarc-xyz/wallet-manager
+```
+
+### Configuring the wallet manager
+
+```typescript
+const config = {
+    appearance: {
+      // darkMode: true,
+      themeColor: 'black',
+      textColor: 'white'
+    },
+    walletAddress: '0x...',
+    apiKey: 'aarc_api_key',
+    profileURL: "https://...",
+  }
+```
+
+### Integration
+
+```typescript
+import { useWalletManager, Provider as WalletManagerProvider } from '@aarc-xyz/wallet-manager';
+import '@aarc-xyz/wallet-manager/dist/style.css';
+import config from './config';
+import { Button } from 'antd';
+
+function App() {
+  return (
+    <div>
+      <WalletManagerProvider config={config}>
+        <WalletManager />
+      </WalletManagerProvider>
+    </div>
+  )
+}
+
+function WalletManager() {
+  const { openWalletManager } = useWalletManager()
+  return (
+    <div>
+      <Button onClick={() => { 
+          console.log("openWalletManager"); 
+          openWalletManager();
+        }
+        }>Open Wallet Manager</Button>
+    </div>
+  )
+}
+export default App;
+```
+
+![](<../.gitbook/assets/wallet manager 2.jpeg>)  Wallet Manager for an Authenticated user wallet.
+
+Adding custom tokens for the user's wallet ![](<../.gitbook/assets/image (2) (1).png>)
+

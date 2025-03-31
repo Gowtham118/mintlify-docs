@@ -1,0 +1,253 @@
+---
+title: Cross-Chain DeFi Deposits
+description: A step-by-step guide to implementing cross-chain deposits into DeFi protocols using the Execution API.
+---
+
+## Prerequisites
+
+Ensure you have the following:
+- An Aarc API key from the [developer dashboard](https://dashboard.aarc.xyz)
+- Basic understanding of blockchain transactions and DeFi protocols
+- The contract address and ABI of the DeFi protocol you want to interact with
+
+<Warning>
+You need to get your contract address whitelisted with Aarc. Contact our [support team](/introduction/support) to request whitelisting.
+</Warning>
+
+## Setup
+
+Create a new project directory and initialize it:
+```bash
+mkdir cross-chain-nft-mint
+cd cross-chain-nft-mint
+npm init -y
+```
+
+2. Install required dependencies:
+```bash
+npm install ethers node-fetch dotenv
+```
+
+3. Create a `.env` file with your Aarc API key:
+```env
+AARC_API_KEY=your_api_key_here
+```
+
+4. Create an `index.js` file for your implementation:
+```js
+require('dotenv').config();
+const { ethers } = require('ethers');
+const fetch = require('node-fetch');
+
+// Your implementation code will go here
+```
+
+## Implementation Steps
+
+<Steps>
+  <Step title="Setup Environment">
+    First, set up your development environment with the necessary configurations:
+
+    ```js
+    const AARC_API_KEY = process.env.AARC_API_KEY;
+    const API_BASE_URL = 'https://bridge-swap.aarc.xyz/v3';
+
+    // Headers for API calls
+    const headers = {
+      'Content-Type': 'application/json',
+      'x-api-key': AARC_API_KEY
+    };
+
+    // Example protocol details
+    const PROTOCOL = {
+      // Aave V3 on Base
+      address: '0xDefiProtocolAddress',
+      chainId: '8453',
+    };
+    ```
+  </Step>
+
+  <Step title="Generate Protocol Call Data">
+    Before getting the deposit address, generate the calldata for the protocol interaction:
+
+    ```js
+    function generateProtocolCallData({
+      protocol,
+      token,
+      amount,
+      userAddress
+    }) {
+      // Example for Aave V3 supply function
+      const aaveInterface = new ethers.utils.Interface([
+        "function supply(address asset, uint256 amount, address onBehalfOf, uint16 referralCode)"
+      ]);
+
+      return aaveInterface.encodeFunctionData("supply", [
+        token,          // asset address
+        amount,         // amount to supply
+        userAddress,    // on behalf of
+        0              // referral code
+      ]);
+    }
+
+    // Example usage
+    const protocolCallData = generateProtocolCallData({
+      protocol: PROTOCOL,
+      token: '0x833589fCD6eDb6E08f4c7c32D4f71b54bdA02913', // USDC on Base
+      amount: '1000000', // 1 USDC (6 decimals)
+      userAddress: '0x...' // User's wallet address
+    });
+    ```
+
+    <Note>
+    The deposit address will remain active for only 30 minutes.
+    </Note>
+  </Step>
+
+  <Step title="Get Deposit Address">
+    Get a deposit address with the protocol interaction details:
+
+    ```js
+    async function getDepositAddress({
+      fromToken,
+      destinationToken,
+      amount,
+      userAddress,
+      protocolCallData
+    }) {
+      const queryParams = new URLSearchParams({
+        // Required parameters
+        destinationChainId: PROTOCOL.chainId,
+        destinationTokenAddress: destinationToken.address,
+        toAmount: amount,
+        destinationRecipient: PROTOCOL.address, // Protocol contract address
+        transferType: 'wallet',
+        
+        // Optional parameters
+        fromChainId: fromToken.chainId,
+        fromTokenAddress: fromToken.address,
+        fromAddress: userAddress,
+        targetCalldata: protocolCallData, // Protocol interaction data
+        slippage: '1' // 1% default slippage
+      });
+
+      const response = await fetch(
+        `${API_BASE_URL}/deposit-address?${queryParams}`,
+        {
+          method: 'GET',
+          headers
+        }
+      );
+
+      return await response.json();
+    }
+
+    // Example usage
+    const depositData = await getDepositAddress({
+      fromToken: {
+        chainId: '1', // Ethereum
+        address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48' // USDC
+      },
+      destinationToken: {
+        chainId: '8453', // Base
+        address: '0x833589fCD6eDb6E08f4c7c32D4f71b54bdA02913' // USDC
+      },
+      amount: '1000000', // 1 USDC
+      userAddress: '0x...', // User's address
+      protocolCallData // Generated in previous step
+    });
+    ```
+
+    <Note>
+    The `targetCalldata` parameter tells Aarc how to interact with the protocol after bridging the funds.
+    </Note>
+  </Step>
+
+  <Step title="Handle User Deposit and Monitor Status">
+    After getting the deposit address, handle the user deposit and monitor the transaction:
+
+    ```js
+    async function handleProtocolDeposit(depositData) {
+      try {
+        // 1. Show deposit instructions to user
+        const instructions = displayDepositInstructions(depositData);
+        console.log('Please send funds to:', instructions);
+
+        // 2. Monitor deposit and protocol interaction
+        const status = await pollTransactionStatus(depositData.requestId);
+        
+        switch (status.data.status) {
+          case 'INITIALISED':
+            console.log('Waiting for deposit...');
+            break;
+          case 'DEPOSIT_RECEIVED':
+            console.log('Deposit confirmed, bridging funds...');
+            break;
+          case 'PROCESSING':
+            console.log('Executing protocol deposit...');
+            break;
+          case 'COMPLETED':
+            console.log('Successfully deposited into protocol');
+            return status.data;
+          case 'FAILED':
+            throw new Error(`Deposit failed: ${status.data.error}`);
+          default:
+            console.log('Current status:', status.data.status);
+        }
+
+        return status;
+      } catch (error) {
+        console.error('Error during protocol deposit:', error);
+        throw error;
+      }
+    }
+    ```
+
+    <Warning>
+    Users must send atleast the amount specified in the deposit instructions. Sending less than the required amount will result in a failed transaction.
+    </Warning>
+  </Step>
+</Steps>
+
+## Example Implementations
+
+Here are examples for popular DeFi protocols:
+
+### Aave V3 Supply
+
+```js
+const AAVE_V3 = {
+  address: '0x0...',
+  abi: ["function supply(address,uint256,address,uint16)"]
+};
+
+const aaveCallData = generateProtocolCallData({
+  protocol: AAVE_V3,
+  token: USDC_ADDRESS,
+  amount: '1000000',
+  userAddress: USER_ADDRESS
+});
+```
+
+## Error Handling
+
+Handle protocol-specific errors in addition to standard bridge errors:
+
+```js
+function handleProtocolError(error) {
+  switch (error.code) {
+    case 'INSUFFICIENT_ALLOWANCE':
+      return 'Protocol requires token approval';
+    case 'POOL_FULL':
+      return 'Protocol pool has reached capacity';
+    case 'PRICE_SLIPPAGE':
+      return 'Price slippage too high, try increasing tolerance';
+    default:
+      return handleSwapError(error); // Handle standard bridge errors
+  }
+}
+```
+
+<Note>
+For additional support or questions, refer to our [support](/introduction/support) documentation.
+</Note>

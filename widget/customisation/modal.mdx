@@ -1,0 +1,40 @@
+---
+description: SDK provides various methods and attributes to work with Execution Cloud Widget
+---
+
+You can obtain the `AarcFundKitModal` object from `@aarc-xyz/fundkit-web-sdk`. This Class provides various methods and attributes for interacting with the widget, such as opening and closing it, setting a custom amount, and more.
+
+<Info>
+Learn more about custom types from [here](utility-types)
+</Info>
+
+| Method/Attribute | Type                  | Description                             |
+| ---------------- | --------------------- | --------------------------------------- |
+| config           | FKConfig \| undefined | The configuration object for the modal. |
+| openModal        | Function              | Open modal iFrame view                  |
+| close            | Function              | Close modal iFrame view                 |
+| init             | Function              | Initialize the listeners                |
+
+### Example
+
+<Warning>
+Ensure `config` is properly configured before using `openModal`
+</Warning>
+
+```jsx
+import {
+    AarcFundKitModal,
+    FKConfig,
+    TransactionErrorData,
+    TransactionSuccessData,
+} from "@aarc-xyz/fundkit-web-sdk"
+import {aarcConfig} from "./config";
+
+const aarcModalRef = new AarcFundKitModal(aarcConfig);
+const aarcModal = aarcModalRef.current;
+
+export default function Home() {
+    return <button onClick={aarcModal.openModal}> Open Modal </button>
+};
+```
+

@@ -1,0 +1,250 @@
+{
+    "name": "Aarc Documentation",
+    "favicon": "./logo.png",
+    "logo": {
+        "light": "./logo.png",
+        "dark": "./logo.png"
+    },
+    "colors": {
+        "primary": "#A5E547",
+        "light": "#A5E547",
+        "dark": "#A5E547",
+        "anchors": {
+            "from": "#A5E547",
+            "to": "#EEFFB9"
+        }
+    },
+    "font": {
+        "family": "DM Sans"
+    },
+    "customCss": "./styles.css",
+    "topbarLinks": [
+        {
+            "name": "Build with Aarc",
+            "url": "https://docs.google.com/forms/d/e/1FAIpQLSd3SWqEWZMDBirMTw2y7t2Vxl7vIVK_Cy9aNlegJN_enF_XTg/viewform?pli=1"
+        },
+        {
+            "name": "Try Aarc",
+            "url": "https://buy.aarc.xyz/"
+        }
+    ],
+    "topbarCtaButton": {
+        "name": "Dashboard",
+        "url": "https://dashboard.aarc.xyz"
+    },
+    "anchors": [
+        {
+            "name": "Support",
+            "icon": "headset",
+            "url": "introduction/support"
+        },
+        {
+            "name": "Developer Dashboard & API Keys",
+            "icon": "code",
+            "url": "introduction/developer-dashboard"
+        }
+    ],
+    "tabs": [
+        {
+            "name": "API Reference",
+            "url": "execution-api"
+        },
+        {
+            "name": "SDK Reference",
+            "url": "execution-sdk"
+        },
+        {
+            "name": "UI Kits",
+            "url": "widget"
+        },
+        {
+            "name": "Partner Integrations",
+            "url": "partner-integrations"
+        }
+    ],
+    "navigation": [
+        {
+            "group": "Introduction",
+            "pages": [
+                "introduction/what-is-aarc",
+                "introduction/mission-and-vision",
+                "introduction/support",
+                "introduction/developer-dashboard"
+            ]
+        },
+        {
+            "group": "How it works",
+            "pages": [
+                "how-it-works/atomic-execution-cloud",
+                "how-it-works/orchestration-engine",
+                "how-it-works/relayer-mesh",
+                "how-it-works/contract-compatibility",
+                "how-it-works/deposit-addresses",
+                "how-it-works/fees",
+                "how-it-works/retry-and-refunds",
+                "how-it-works/security",
+                "how-it-works/using-onramps-and-exchanges",
+                "how-it-works/webapp-ui",
+                "how-it-works/smart-contract-addresses"
+            ]
+        },
+        {
+            "group": "Use Cases",
+            "pages": [
+                "use-cases/reverse-routing-and-orchestration",
+                "use-cases/atomic-cross-chain-transactions",
+                {
+                    "group": "Arbitrary Onchain Actions",
+                    "pages": [
+                        "use-cases/arbitrary-onchain-actions",
+                        "use-cases/action-links"
+                    ]
+                },
+                {
+                    "group": "Funding",
+                    "pages": [
+                        "use-cases/funding",
+                        "use-cases/deposits",
+                        "use-cases/earn"
+                    ]
+                },
+                "use-cases/payments",
+                {
+                    "group": "Checkouts",
+                    "pages": [
+                        "use-cases/checkouts/introduction",
+                        "use-cases/checkouts/buy",
+                        "use-cases/checkouts/mint"
+                    ]
+                },
+                "use-cases/linktree-for-checkouts"
+            ]
+        },
+        {
+            "group": "Resources",
+            "pages": [
+                "resources/supported-networks",
+                "resources/system-status",
+                "resources/brand-assets"
+            ]
+        },
+        {
+            "group": "Execution API",
+            "pages": [
+                "execution-api/get-started",
+                {
+                    "group": "Guides",
+                    "pages": [
+                        "execution-api/guides/cross-chain-deposits",
+                        "execution-api/guides/cross-chain-nft-mint",
+                        "execution-api/guides/cross-chain-swaps"
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Endpoint Examples",
+            "pages": [
+                "execution-api/endpoints/deposit-address",
+                "execution-api/endpoints/schedule-transaction",
+                "execution-api/endpoints/request-status"
+            ]
+        },
+        {
+            "group": "Linktree for Checkouts",
+            "pages": [
+                "execution-api/link-tree-for-checkouts/get-started",
+                "execution-api/link-tree-for-checkouts/store-verified-link"
+            ]
+        },
+        {
+            "group": "Utility APIs",
+            "pages": [
+                "execution-api/utility-endpoints/supported-chains",
+                "execution-api/utility-endpoints/supported-tokens",
+                "execution-api/utility-endpoints/balances"
+            ]
+        },
+        {
+            "group": "Execution SDK",
+            "pages": [
+                "execution-sdk/get-started",
+                "execution-sdk/config",
+                {
+                    "group": "Guides",
+                    "pages": [
+                        "execution-sdk/guides/cross-chain-swap",
+                        "execution-sdk/guides/cross-chain-checkout"
+                    ]
+                },
+                {
+                    "group": "Core Methods",
+                    "pages": [
+                        "execution-sdk/core-methods/get-deposit-address",
+                        "execution-sdk/core-methods/check-transaction-status"
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Utility functions",
+            "pages": [
+                "execution-sdk/utility-functions/chain-balances",
+                "execution-sdk/utility-functions/multichain-balances",
+                "execution-sdk/utility-functions/supported-tokens",
+                "execution-sdk/utility-functions/supported-chains",
+                "execution-sdk/utility-functions/token-compatibility"
+            ]
+        },
+        {
+            "group": "iframe Widget (aka FDK)",
+            "pages": [
+                "widget/get-started",
+                "widget/config",
+                {
+                    "group": "Guides",
+                    "pages": [
+                        "widget/guides/buy-tokens",
+                        "widget/guides/cross-chain-deposits",
+                        "widget/guides/cross-chain-nft-mint"
+                    ]
+                },
+                {
+                    "group": "Customisation",
+                    "pages": [
+                        "widget/customisation/modal",
+                        "widget/customisation/styling",
+                        "widget/customisation/destination",
+                        "widget/customisation/module",
+                        "widget/customisation/event-handling"
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Linktree for Checkouts (Memes/TGEs/Campaigns/Chains)",
+            "pages": [
+                "widget/linktree-for-checkouts/get-started",
+                "widget/linktree-for-checkouts/guide"
+            ]
+        },
+        {
+            "group": "Embedded Wallets",
+            "pages": [
+                {
+                    "group": "Dynamic",
+                    "pages": [
+                        "partner-integrations/embedded-wallets/dynamic/introduction",
+                        "partner-integrations/embedded-wallets/dynamic/quickstart"
+                    ]
+                }
+            ]
+        }
+    ],
+    "footerSocials": {
+        "github": "https://github.com/aarc-xyz",
+        "x": "https://x.com/0xAarc",
+        "telegram": "https://t.me/+0M32pfZf4PAzMzc1",
+        "discord": "https://discord.com/invite/mGU82E9xRG"
+    }
+}
