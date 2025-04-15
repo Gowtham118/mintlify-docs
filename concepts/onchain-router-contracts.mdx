@@ -1,0 +1,49 @@
+---
+title: Onchain Router Contracts
+---
+
+The **Liquidity Router Contract** is a core component of Aarc's **execution infrastructure**. It manages bridging, swaps, and final contract interactions on the destination chain, delivering exactly the tokens and amounts users specify or providing an **automatic refund** if transaction fails.
+
+## Core Functions
+
+---
+
+### Execution & Security
+
+- **Controlled Access -** Only **whitelisted Aarc relayers** can call the router, preventing unauthorized access to user deposits.
+- **Intent Validation -** Each transaction uses an **EIP-712** signature to verify it matches the user's deposit intent precisely. There are no hidden steps or redirections.
+- **Single-Use Logic -** Using **unique deposit addresses**, funds are never pooled. Every transaction operates independently, isolating risk and eliminating the need for token allowances.
+
+These safeguards ensure tokens arrive on the correct chain in exactly the amounts requested.
+
+### Transaction Guarantees
+
+- **Exact Delivery -** The router guarantees that final output on the destination chain matches the user's specified asset and amount, essential for DeFi actions (e.g., vault deposits) or NFT purchases.
+- **Atomic Execution -** Transactions either **fully complete** or **revert**. When slippage limits or liquidity constraints aren't met, the router stops the process and initiates a refund, preventing partial executions and stuck tokens.
+
+### Supported Assets & Sources
+
+- **ERC-20 Tokens & Native Assets -** Includes common EVM tokens (USDT, USDC, DAI) and chain-native coins like ETH or MATIC.
+- **Multi-Channel Funding -** Deposits can come from on-chain wallets (e.g., MetaMask), centralized exchanges (e.g., Coinbase, Binance), or fiat onramps, without additional steps.
+
+Users don't need separate approvals or chain-native gas on the destination; Aarc handles these details for a true **one-click** experience.
+
+### Fee Handling
+
+- **No Extra Protocol Fee -** Aarc charges no additional protocol fees beyond standard **network** and **liquidity provider** costs.
+- **Transparent Costs -** All **bridging** and **swap fees** are displayed upfront before confirmation. Network gas fees vary with chain congestion; LP and Slippage fees typically range from **0.05%–0.3%**.
+- **Minimal Overhead -** By combining bridging, swaps, and final calls into one transaction, the Router's total fees are often lower than executing steps separately.
+
+### Failures & Refunds
+
+If a transaction cannot complete within **30 minutes** (due to insufficient liquidity, network delays, or route failures), the Router automatically initiates a refund:
+
+- **Refund Chain & Asset**Users receive refunds on the chain where the transaction failed, typically in stable tokens (e.g., USDC/USDT) or ETH. For failures before bridging, users receive their original asset.
+- **Partial Gas Costs**While pre-failure gas fees aren't recoverable, Aarc's aggregator logic minimizes these costs.
+- **Guaranteed Outcome**Users always receive either their exact requested amount on the destination chain or a refund, eliminating uncertainty and stuck funds.
+
+---
+
+### Need Help?
+
+If you need help, visit our [Support](introduction/support) page.

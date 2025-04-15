@@ -21,10 +21,10 @@
     "topbarLinks": [
         {
             "name": "Build with Aarc",
-            "url": "https://docs.google.com/forms/d/e/1FAIpQLSd3SWqEWZMDBirMTw2y7t2Vxl7vIVK_Cy9aNlegJN_enF_XTg/viewform?pli=1"
+            "url": "https://rebrand.ly/form-build-with-aarc"
         },
         {
-            "name": "Try Aarc",
+            "name": "Try Demo",
             "url": "https://buy.aarc.xyz/"
         }
     ],
@@ -37,11 +37,6 @@
             "name": "Support",
             "icon": "headset",
             "url": "introduction/support"
-        },
-        {
-            "name": "Developer Dashboard & API Keys",
-            "icon": "code",
-            "url": "introduction/developer-dashboard"
         }
     ],
     "tabs": [
@@ -66,65 +61,50 @@
         {
             "group": "Introduction",
             "pages": [
-                "introduction/what-is-aarc",
-                "introduction/mission-and-vision",
-                "introduction/support",
-                "introduction/developer-dashboard"
-            ]
-        },
-        {
-            "group": "How it works",
-            "pages": [
-                "how-it-works/atomic-execution-cloud",
-                "how-it-works/orchestration-engine",
-                "how-it-works/relayer-mesh",
-                "how-it-works/contract-compatibility",
-                "how-it-works/deposit-addresses",
-                "how-it-works/fees",
-                "how-it-works/retry-and-refunds",
-                "how-it-works/security",
-                "how-it-works/using-onramps-and-exchanges",
-                "how-it-works/webapp-ui",
-                "how-it-works/smart-contract-addresses"
+                "introduction/about-aarc",
+                "introduction/transaction-lifecycle",
+                "introduction/developer-dashboard",
+                "introduction/support"
             ]
         },
         {
             "group": "Use Cases",
             "pages": [
-                "use-cases/reverse-routing-and-orchestration",
-                "use-cases/atomic-cross-chain-transactions",
-                {
-                    "group": "Arbitrary Onchain Actions",
-                    "pages": [
-                        "use-cases/arbitrary-onchain-actions",
-                        "use-cases/action-links"
-                    ]
-                },
-                {
-                    "group": "Funding",
-                    "pages": [
-                        "use-cases/funding",
-                        "use-cases/deposits",
-                        "use-cases/earn"
-                    ]
-                },
-                "use-cases/payments",
-                {
-                    "group": "Checkouts",
-                    "pages": [
-                        "use-cases/checkouts/introduction",
-                        "use-cases/checkouts/buy",
-                        "use-cases/checkouts/mint"
-                    ]
-                },
-                "use-cases/linktree-for-checkouts"
+                "use-cases/defi-apps",
+                "use-cases/agents",
+                "use-cases/trading-bots",
+                "use-cases/token-issuers",
+                "use-cases/gaming-and-quests"
+            ]
+        },
+        {
+            "group": "Concepts",
+            "pages": [
+                "concepts/deposit-addresses",
+                "concepts/orchestration-engine",
+                "concepts/transaction-coprocessor",
+                "concepts/relayers",
+                "concepts/onchain-router-contracts",
+                "concepts/retry-and-refunds",
+                "concepts/fees",
+                "concepts/security",
+                "concepts/using-onramps-and-exchanges"
             ]
         },
         {
             "group": "Resources",
             "pages": [
                 "resources/supported-networks",
-                "resources/system-status",
+                "resources/contract-addresses",
+                "resources/uptime-status",
+                {
+                    "group": "Community",
+                    "pages": [
+                        "resources/community/x",
+                        "resources/community/telegram-builders",
+                        "resources/community/discord"
+                    ]
+                },
                 "resources/brand-assets"
             ]
         },
@@ -222,10 +202,10 @@
             ]
         },
         {
-            "group": "Linktree for Checkouts (Memes/TGEs/Campaigns/Chains)",
+            "group": "Linktree with Checkouts (URLs)",
             "pages": [
-                "widget/linktree-for-checkouts/get-started",
-                "widget/linktree-for-checkouts/guide"
+                "widget/linktree-width-checkouts/get-started",
+                "widget/linktree-width-checkouts/guide"
             ]
         },
         {
@@ -244,7 +224,7 @@
     "footerSocials": {
         "github": "https://github.com/aarc-xyz",
         "x": "https://x.com/0xAarc",
-        "telegram": "https://t.me/+0M32pfZf4PAzMzc1",
-        "discord": "https://discord.com/invite/mGU82E9xRG"
+        "telegram": "https://rebrand.ly/tg-builders-aarc",
+        "discord": "https://rebrand.ly/join-aarc-discord"
     }
 }

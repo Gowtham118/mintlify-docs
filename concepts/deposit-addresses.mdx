@@ -1,0 +1,35 @@
+---
+title: Deposit Addresses
+---
+
+Aarc's **Deposit Addresses** are **single-use** smart contracts that securely receive funds for each cross-chain transaction. They power our **one-click deposit** flow, ensuring transactions are isolated, safe, and trackable, without requiring token allowances or manual bridging.
+
+## Core Functions
+
+---
+
+### **Single-Use & Ephemeral**
+
+Each transaction, defined by its source chain, asset, and destination, generates a **unique deposit address**. After completion or refund, the address is disabled and cannot be reused. This prevents fund mixing, reduces security risks, and maximizes user safety.
+
+### **On-Demand Deployment**
+
+Deposit addresses are created through a **factory contract** when a new deposit intent is initiated. This **lightweight** approach eliminates the need for users to maintain allowances or manage multiple addresses, while enabling isolated deposit tracking.
+
+### **One-to-One Transaction Mapping**
+
+Every intent has its own unique address. This **one-to-one mapping** ensures precise fund routing and prevents interference between transactions. The flow is clear and predictable, funds arriving at a deposit address belong **only** to that specific transaction.
+
+### **Single Asset Handling**
+
+Each deposit address processes **one asset type** per deposit. This focused approach simplifies tracking and eliminates the complexity of multi-token transactions. By handling single assets, we minimize errors and optimize the deposit process.
+
+### **Security**
+
+Deposit addresses are programmed to only send funds to the liquidity router to prevent unauthorized transfer of funds or potential security breaches. 
+
+---
+
+### Need Help?
+
+If you need help, visit our [Support](introduction/support) page.

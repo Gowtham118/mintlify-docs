@@ -1,0 +1,47 @@
+---
+title: Relayers
+---
+
+Aarc's **Relayers** form the foundation of our one-click deposit infrastructure. They manage **final execution** across multiple blockchains, ensuring deposits either deliver the exact intended assets or trigger an **automatic refund** if completion isn't possible.
+
+## Core Functions
+
+---
+
+### On-chain Execution
+
+When users send funds to a **unique deposit address**, the Relayers receive instructions from Aarc's Coprocessor (off-chain logic) to perform these actions:
+
+- **Token Swaps** via integrated DEX routes
+- **Bridging** through cross-chain protocols
+- **Smart Contract Interactions** on the destination chain
+
+The Relayers ensure all transactions strictly follow the user's deposit intent, without partial fills or unexpected changes.
+
+### Dynamic Gas Management
+
+If a transaction fails (due to network congestion or gas price spikes), Relayers automatically **retry with updated gas fees** or other parameters to complete the existing call data. They do **not** fetch new quotes or change the outcome; that's handled by Aarc's Coprocessor when a deposit needs a different route.
+
+- **Retries** happen at set intervals to maximize success during temporary network issues.
+- **Refund Fallback**: If completion isn't possible within 30 minutes, users receive an immediate refund, eliminating stuck funds and manual recovery.
+
+### Controlled Operations
+
+Currently, Aarc maintains a **centralized relayer infrastructure** to ensure consistent execution and security. This provides:
+
+- **High Reliability**: Aarc oversees relayer performance, upgrades, and monitoring.
+- **Tight Security Controls**: Only trusted entities can operate relayers, minimizing risks from malicious actors.
+- **Future Roadmap**: Plans to **decentralize** relayer operations while maintaining security through staking, slashing, and other incentive mechanisms.
+
+### Finality Assurance
+
+Every deposit through the Aarc Relayers reaches one of two outcomes:
+
+- **Exact Outcome**: Funds arrive on the destination chain in the correct amount, completing the user's intended action (e.g., staking, margin deposit).
+- **Auto Refund**: If the transaction can't complete exactly as intended within 30 minutes, the user receives a refund in the source or a stable token on the chain of failure, without any manual claim process.
+
+---
+
+### Need Help?
+
+If you need help, visit our [Support](introduction/support) page.

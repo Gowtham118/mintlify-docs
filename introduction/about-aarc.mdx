@@ -1,0 +1,45 @@
+---
+title: About Aarc
+---
+
+Aarc is a deposit infrastructure that enables DeFi apps to accept one-click deposits from any chain, centralized exchange, or fiat source. For apps, this drives higher trading volumes, increased TVL, and a growing user base. For users, it provides one-click access to DeFi without the complexity of swaps, bridging, or needed gas tokens. By generating unique deposit address for each transaction, users can send funds directly, bypassing approvals while experiencing seamless, guaranteed composability across multi-chain DeFi.
+
+## Key Features
+
+### 1. One-Click Deposits
+Aarc combines bridging, swapping, and contract execution into a single flow for one-click deposits. No separate bridging and swap transactions, token approvals, or gas token management.
+
+### 2. Unique Deposit Addresses
+For each transaction, we create a **single-use deposit address.** Users simply send funds to this address, eliminating ERC-20 approvals and enhancing security, while Aarc manages all execution logic behind the scenes, ensuring a fast experience.
+
+### 3. Retry and Refunds
+Typically, all transactions execute end-to-end in 10s-2min based on the chain. If any step fails, whether from liquidity constraints, network delays, or other issues, Aarc automatically retries for up to 30 mins, otherwise refunds the user in ETH or USDC on the affected chain. No stuck funds, no hassle.
+
+### 4. Multi-Channel Funding
+Aarc unifies **CEX withdrawals, fiat onramps, and browser wallets** into a **single deposit flow**, broadening your user base. Users can seamlessly onboard and deposit into your dApp whether they're using a centralized exchange, holding funds on another chain, or paying by card.
+
+### 5. Low-Code Integration
+Launch in as little as **30 minutes**. Aarc **APIs and widget flows** can be easily programmed to execute custom use cases, allowing you to concentrate on your core product.
+
+### 6. Custom Fees
+Aarc enables apps to generate additional revenue through deposit streams by allowing developers to set custom markup fees on transaction amounts.
+
+## We've taken a differentiated approach
+
+We focus on **deposits only**, enabling end-users to fund your DeFi app with just **one transaction** from any source. After swaps, deposits are the most common action web3 users take.
+
+| **Aspect** | **Other Options** | **Aarc** |
+|------------|-------------------|----------|
+| **User Flow** | Multiple approvals, manual bridging steps | Single deposit address, one-click flow |
+| **Gas on Destination** | Required from the user | Covered by Aarc, no chain-native gas needed |
+| **Refund & Retry** | Often manual or partial | Automatic retry for 30 mins, then full refund |
+| **Source Coverage** | Mostly on-chain bridging | CEX, fiat, or any chain in one unified deposit |
+| **Dev Integration** | May need contract changes | No contract changes, Minimal code |
+
+## Looking Forward
+
+Our goal is to make DeFi as intuitive as a centralised exchange (CEX). By removing the complexities of token approvals, swaps, and bridging, we enable anyone to fund their favourite dApps quickly and securely. You can deposit funds from any chain, CEX, or fiat source, turning complex, multi-step deposits into one-click transfers.
+
+## Need Help?
+
+If you need help, visit our [Support page](/support).

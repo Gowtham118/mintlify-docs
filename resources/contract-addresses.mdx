@@ -1,5 +1,37 @@
 ---
-hidden: true
+title: Core Contracts
 ---
 
+These are the **core Aarc contracts** deployed across supported chains.
 
+## Liquidity Router
+
+The **Liquidity Router** contract orchestrates cross-chain asset movements, covering swaps, bridging, and other execution steps behind the scenes.
+
+| **Chain** | **Chain ID** | **Router Address** |
+|-----------|--------------|-------------------|
+| Ethereum | 1 | 0xD318093C294991c7b29762283151983c05229263 |
+| Polygon | 137 | 0xD318093C294991c7b29762283151983c05229263 |
+| Arbitrum | 42161 | 0xD318093C294991c7b29762283151983c05229263 |
+| Base | 8453 | 0xD318093C294991c7b29762283151983c05229263 |
+| Optimism | 10 | 0xD318093C294991c7b29762283151983c05229263 |
+| BNB Smart Chain | 56 | 0xD318093C294991c7b29762283151983c05229263 |
+
+## Deposit Factory
+
+The **Deposit Factory** contract generates the **unique deposit addresses** used by Aarc. Each deposit address is single-use and routes funds to the **Liquidity Router** for final execution. This design removes the need for user token allowances, reducing security risks and simplifying the onboarding flow.
+
+| **Chain** | **Chain ID** | **Factory Address** |
+|-----------|--------------|---------------------|
+| Ethereum Mainnet | 1 | 0x9Fa4ae0F306B06766c08B695c66D50E46A001a9B |
+| Polygon | 137 | 0x9Fa4ae0F306B06766c08B695c66D50E46A001a9B |
+| Arbitrum | 42161 | 0x9Fa4ae0F306B06766c08B695c66D50E46A001a9B |
+| Base | 8453 | 0x9Fa4ae0F306B06766c08B695c66D50E46A001a9B |
+| Optimism | 10 | 0x9Fa4ae0F306B06766c08B695c66D50E46A001a9B |
+| BNB Smart Chain | 56 | 0x9Fa4ae0F306B06766c08B695c66D50E46A001a9B |
+
+**Note:** All listed contracts are verified, and you can explore them on chain-specific explorers (e.g., Etherscan, Polygonscan). If you need addresses for other testnets or recently added networks, please check our docs or reach out to our support.
+
+## Need Help?
+
+If you need help, visit our [Support page](/support).

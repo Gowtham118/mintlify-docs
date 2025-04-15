@@ -1,0 +1,43 @@
+---
+title: Transaction Lifecycle
+---
+
+Learn how Aarc processes each deposit, from the moment a user initiates it to the final on-chain result or refund.
+
+## 1. Initiating a Deposit
+
+A user or dApp begins by creating a **transaction request** on Aarc. This request includes:
+* **Desired Destination**: The DeFi app or contract where funds should end up (e.g., vault, lending pool)
+* **Target Token/Amount**: The exact token and amount expected on the destination chain
+
+Based on this information, Aarc generates a **unique, single-use deposit address** for the transaction. Users simply send their funds to this address, no token approvals or bridging steps needed.
+
+## 2. Sending Funds
+
+Once the user transfers funds to the deposit address:
+1. Aarc's system detects the incoming transaction on the **source chain**
+2. The deposit address routes the funds to router contracts for execution via relayer
+3. No separate approvals or manual bridging are required, **it's all handled automatically**
+
+If the initial bridging route encounters issues (like low liquidity), we automatically try alternative routes to ensure success.
+
+## 3. Execution & Monitoring
+
+Aarc aggregates routes across multiple swap, bridge, and solvers to:
+* **Bridge & Swap** the deposited assets to obtain the **exact** target token
+* **Deliver** the final token to the specified destination smart contract or wallet
+* **Manage** gas on the destination chain, eliminating the need for users to hold native gas tokens
+
+This process typically completes in **under 1 minute**. During network congestion or liquidity constraints, the system will automatically retry for up to **30 minutes**.
+
+## 4. Completion or Refund
+
+* **Successful Completion** - When executed successfully, funds arrive on the destination chain/contract in the exact amount specified, and any calldata is executed. There are no partial executions or shortfalls.
+* **Automatic Refund** - If Aarc cannot fulfill the transaction **within 30 minutes of retries**, we automatically issue a refund:
+   * **Where**: Refund type depends on the failure point. Early failures return the original asset on the source chain. Mid-process failures may refund in stablecoin or ETH on the chain where the failure occurred.
+   * **No Manual Intervention**: Refunds process automatically without user claims
+   * **Fees**: Already-incurred bridging or swap costs may not be reversible
+
+## Need Help?
+
+If you need help, visit our [Support page](/support).

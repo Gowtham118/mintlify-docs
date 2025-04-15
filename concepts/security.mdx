@@ -1,0 +1,41 @@
+---
+title: Security
+---
+
+Aarc employs a **multi-layered security framework** to protect user funds, maintain protocol integrity, and ensure reliable cross-chain transactions. This framework spans both on-chain contracts and off-chain components, ensuring deposits are safe, isolated, and automatically refunded if they cannot finalize.
+
+### On-Chain Security
+
+- **Independent Contract Audits -** Our core **Liquidity Router** contracts undergo external audits by reputable security firms (e.g., Halborn).
+    - **Audit Report**: [Halborn LRC Audit Report](https://docsend.com/v/dp5mv/aarc-liquidityrouters-halborn)
+- **Single-Use Deposit Addresses -** Each transaction uses a **unique deposit address** that's deployed and destroyed upon completion or refund. This isolates deposits and eliminates reuse vulnerabilities.
+- **EIP-712 Signature Verification -** All on-chain transactions must pass EIP-712 signature checks to prevent unauthorized modifications, replay attacks, or data tampering.
+
+### Authorization Security
+
+- **Whitelisted Relayers**: Only whitelisted **relayers** can call the Liquidity Router, preventing malicious actors from executing unauthorized transactions.
+- **No Token Approvals**: Users never grant token allowances, protecting their wallets from unauthorized transfers.
+- **Strict Forwarding Rules**: Deposit addresses can only forward funds to the **Liquidity Router** contract, preventing fund diversion.
+- **Time-Bound Finality**: Each transaction must finalize or trigger an **automatic refund** within 30 minutes, protecting assets from being stuck if bridging or swaps fail.
+- **Non-upgradable Contract**: Aarc's liquidity router contracts are non-upgradable to prevent malicious updates.
+- **Non-custodial**: The router contract never maintains custody of user funds, which significantly reduces potential attack vectors.
+
+### Isolation Security
+
+- **Contract-Based Isolation**: Each deposit address is a separate contract, preventing cross-transaction fund contamination and reducing attack surfaces.
+- **Off-Chain Security with Dedicated Infra**: Off-chain logic (the **Coprocessor Engine** and relayers) is managed centrally by Aarc, ensuring consistent execution and eliminating the need for dApp-side bridging code.
+
+### Fund Loss Prevention
+
+- **Automatic Refunds**: If a transaction cannot finalize as quoted within 30 minutes, due to network issues, liquidity shortfalls, or other errors, Aarc automatically returns funds to the designated address.
+    - **Note**: Gas and LP fees used in partial attempts are paid to external providers and aren't recoverable.
+
+## **Security Commitment**
+
+We conduct regular vulnerability assessments, partner with leading security auditors, and maintain open communication about risks and updates. Our engineering team implements advanced security practices to strengthen trust and reliability across the Aarc ecosystem.
+
+---
+
+### Need Help?
+
+If you need help, visit our [Support](introduction/support) page.
