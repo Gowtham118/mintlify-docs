@@ -1,0 +1,99 @@
+---
+title: Get Started
+---
+
+## Introduction
+
+### What is Aarc?
+
+Aarc's Intent Execution Protocol is a destination-first solution that enables atomic cross-chain transactions through a single API. It simplifies complex cross-chain operations by abstracting away the complexities of bridging, swapping, and executing transactions across different networks.
+
+### Why Use Aarc?
+
+<CardGroup cols={2}>
+  <Card title="Atomic Execution" icon="shield-check">
+    Transactions either complete entirely or fail completely, eliminating partial executions
+  </Card>
+  <Card title="Reduced Gas Costs" icon="bolt">
+    Optimized routing and execution paths minimize transaction fees
+  </Card>
+  <Card title="Simplified Workflows" icon="code">
+    Single API for handling deposits, swaps, and payments across chains
+  </Card>
+  <Card title="Reliable Execution" icon="clock">
+    Built-in retry mechanisms and transaction monitoring
+  </Card>
+</CardGroup>
+
+### Key Concepts
+
+<CardGroup cols={2}>
+  <Card title="Intents" icon="robot">
+    Desired transaction outcomes (e.g., "deposit 100 USDC to Polygon")
+  </Card>
+  <Card title="Deposit Addresses" icon="wallet">
+    Temporary addresses for funding intents
+  </Card>
+  <Card title="Orchestration Engine" icon="engine">
+    The system that computes and executes the best cross-chain routes
+  </Card>
+  <Card title="Execution Cloud" icon="cloud">
+    The infrastructure that ensures reliable transaction execution
+  </Card>
+</CardGroup>
+
+## Authentication
+
+### API Keys
+
+Generate your API key through the [Aarc Developer Dashboard](https://dashboard.aarc.xyz)
+
+## Quickstart
+
+### Simple Example
+
+Here's a basic example of depositing 10 USDC from Ethereum to a DeFi protocol on Polygon:
+
+<Steps>
+  <Step title="Generate Deposit Address">
+    ```bash
+    curl -X GET https://bridge-swap.aarc.xyz/v3/deposit-address \
+      -H "x-api-key: YOUR_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "destinationChainId": "137",
+        "destinationTokenAddress": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+        "toAmount": "10",
+        "destinationRecipient": "0xDeFiContract",
+        "transferType": "wallet",
+        "routeType": "value"
+      }'
+    ```
+  </Step>
+  <Step title="Schedule Transaction">
+    ```bash
+    curl -X POST https://bridge-swap.aarc.xyz/v3/schedule-transaction \
+      -H "x-api-key: YOUR_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "fromAddress": "0x...",
+        "toAddress": "0x...",
+        "token": "USDC",
+        "amount": "10",
+        "scheduleTime": "2024-03-20T10:00:00Z"
+      }'
+    ```
+  </Step>
+  <Step title="Check Status">
+    ```bash
+    curl -X GET https://bridge-swap.aarc.xyz/v3/request-status/{requestId} \
+      -H "x-api-key: YOUR_API_KEY"
+    ```
+  </Step>
+</Steps>
+
+### Verify Compatibility
+
+Before initiating transactions, check supported tokens and chains:
+- [`supported-chains`](./endpoints/supported-chains) - List of supported networks
+- [`supported-tokens`](./endpoints/supported-tokens) - List of supported tokens

@@ -1,0 +1,36 @@
+---
+title: Using Onramps and Exchanges
+---
+
+Aarc makes it possible to **fund on-chain actions** directly from **fiat onramps** or **centralized exchanges (CEXs)**—no extra bridging steps required. Using our **iframe widget**, users can pay with credit cards, Apple Pay, or withdraw from Binance/Coinbase in one click.
+
+### Supported Onramps & Exchanges
+
+- **Fiat Onramps**
+    - **Moonpay**: Aarc supports Moonpay to instantly convert fiat (credit/debit cards, bank transfers, Apple Pay) into crypto. Developers are not required to do any KYB, for integration with Aarc.
+    - **KYC Requirements**: End-users must complete the KYC process. Rejections typically occur due to incorrect personal details or regional restrictions.
+- **Exchange Withdrawals**
+    - **Binance & Coinbase**: Aarc enables direct withdrawals from top exchanges. Users can **one-click** withdraw their assets to a unique deposit address generated for your dApp or contract.
+    - **Standard Fees**: Exchanges may apply withdrawal fees or minimum limits. Aarc displays all costs upfront for transparency.
+- **No Additional Setup**
+    - Aarc handles all bridging, swaps, and gas coverage behind the scenes, eliminating the need for separate bridging integrations. Users simply select their onramp or CEX withdrawal, and **Aarc handles the rest**.
+
+### FAQs
+
+**What if my transaction doesn't arrive within 30 minutes?**
+
+If network congestion or liquidity issues cause delays, **Aarc automatically retries**. For transactions that remain incomplete after 30 minutes, the system issues a refund in either the original chain's currency or USDC or ETH, depending on where the transaction failed.
+
+**Why did my KYC fail on Moonpay?**
+
+KYC verification is handled entirely by the onramp provider. Rejections usually occur due to incorrect personal information, expired documents, or regional restrictions. For specific issues, contact the onramp's support team directly.
+
+**Are there extra fees for fiat or exchange deposits?**
+
+Aarc does **not** charge additional protocol fees. Users only pay **standard onramp or exchange fees** (such as Moonpay's processing fee or Binance's withdrawal fee). All fees are displayed clearly before confirmation.
+
+---
+
+### Need Help?
+
+If you need help, visit our [Support](introduction/support) page.

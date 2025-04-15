@@ -1564,7 +1564,6 @@
                         }
                     }
                 ],
-                "requestBody": null,
                 "responses": {
                     "200": {
                         "description": "Request status",
@@ -1827,7 +1826,6 @@
                         }
                     }
                 ],
-                "requestBody": null,
                 "responses": {
                     "200": {
                         "description": "Deposit address details",

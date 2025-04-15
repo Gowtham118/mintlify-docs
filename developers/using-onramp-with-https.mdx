@@ -1,0 +1,83 @@
+---
+hidden: true
+---
+
+Query Params
+
+| Params              | Type   | Description                                                    |
+| ------------------- | ------ | -------------------------------------------------------------- |
+| env                 | string | Execute request on either `staging or prod`                    |
+| mode                | string | For using contract interaction mode, value `checkout\|deposit` |
+| walletAddress       | string | Address of the destination wallet                              |
+| exchangeScreenTitle | string | title in header of widget                                      |
+| aarcApiKey          | string | Api key obtained from Aarc to make this request                |
+
+```typescript
+onrampWindow = window.open(`${onramp_base_url}?
+env=${env}
+&mode=${mode}
+&walletAddress=${walletAddress}
+&exchangeScreenTitle=${exchangeScreenTitle}
+&aarcApiKey=${aarc_api_key}
+`, '_blank')
+```
+
+### For Contract interaction mode
+
+| Params               | Type               | Description                                                           |
+| -------------------- | ------------------ | --------------------------------------------------------------------- |
+| env                  | string             | Execute request on either `staging or prod env.`                      |
+| mode                 | string             | For using contract interaction mode, value `checkout\|deposit`        |
+| walletAddress        | string             | Address of the destination wallet                                     |
+| smartContractAddress | string             | Address of the smart contract                                         |
+| aarcApiKey           | string             | Api key obtained from Aarc to make this request                       |
+| estimatedGasLimit    | number             | Gas limit for the transaction                                         |
+| sourceTokenData      | SourceTokenData    | JSON.stringify Token Data object containing the token code and amount |
+| cryptoCurrencyData   | CryptoCurrencyData | JSON.strinfigy Object containing details for onramp                   |
+| callData             | BytesLike          | Calldata for onramp transaction                                       |
+
+```
+SourceTokenData {
+  sourceTokenCode: string;
+  sourceTokenAmount: number;
+}
+
+CryptoCurrencyData {
+  cryptoCurrencyCode: string;
+  cryptoCurrencyName: string;
+  cryptoCurrencyImageURL: string;
+}
+```
+
+```typescript
+onrampWindow = window.open(`
+${onramp_base_url}?
+env=${env}
+&mode=${mode}
+&walletAddress=${walletAddress}
+&estimatedGasLimit=${estimatedGasLimit}
+&smartContractAddress=${smartContractAddress}
+&sourceTokenData=${JSON.stringify(sourceTokenData)}
+&calldata=${callData}
+&cryptoCurrencyData=${JSON.stringify(cryptoCurrencyData)}
+&aarcApiKey=${aarc_api_key}
+`, '_blank')
+```
+
+Create an event listner for listening to the onramp events
+
+```typescript
+window.addEventListener("message",
+            function (e: any) {
+                <handle onramp events..>
+            },
+            false);
+    }
+        , []);
+```
+
+### Event Types
+
+* ONRAMP\_WIDGET\_CLOSE
+* ONRAMP\_ORDER\_SUCCESSFUL
+* ONRAMP\_ORDER\_FAILED

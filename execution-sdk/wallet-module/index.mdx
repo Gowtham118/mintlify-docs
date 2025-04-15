@@ -1,0 +1,67 @@
+---
+description: The Aarc SDK seamlessly integrates with different smart wallets providers.
+hidden: true
+---
+
+# Wallet Module
+
+## Start with the Migrator Package
+
+1. Install the package and other dependencies.
+
+```bash
+npm i @aarc-xyz/wallets ethers@6.9.2
+```
+
+2. Import the package.
+
+```typescript
+const ethers = require("ethers");
+const { Wallets, WALLET_TYPE } = require("@aarc-xyz/wallets");
+
+```
+
+3. Get the API KEY
+
+> Learn how to get the Aarc API Key from [here](broken-reference).
+
+3. Initialise Aarc SDK
+
+```typescript
+let aarcSDK = new Wallets(
+    80001, // Chain id of the network
+    "YOUR_RPC_URL" // RPC URL of the network
+);
+```
+
+## Smart Wallet Providers
+
+Currently, Aarc SDK supports the following Smart Wallet Provider:
+
+* Safe
+* Biconomy
+* Alchemy
+* ZeroDev
+* Etherspot
+
+```typescript
+enum WALLET_TYPE {
+  BICONOMY,
+  SAFE,
+  ALCHEMY_SIMPLE_ACCOUNT,
+  ZERODEV_KERNEL,
+  ETHERSPOT
+}
+```
+
+With these Wallet Providers integrations, devs can deploy and query about the Smart Wallet directly using the `aarcSDK`
+
+_Now go ahead and bring better UX in web3!_
+
+***
+
+The following are the functions available for every supported Smart Wallet Providers:
+
+[deploy-your-smart-wallet](deploy-your-smart-wallet)
+
+[get-your-smart-wallet-addresses](get-your-smart-wallet-addresses)

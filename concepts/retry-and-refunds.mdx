@@ -1,0 +1,58 @@
+---
+title: Retrys and Refunds
+---
+
+Aarc's **Retry & Refund** system guarantees that every deposit either reaches its intended destination exactly or results in an **automatic refund**. This prevents users from losing funds due to partial executions, stuck transactions, or network issues.
+
+### Automatic Retries
+
+When a transaction encounters issues, such as insufficient liquidity or network congestion, Aarc automatically retries the **exact** intended execution steps at regular intervals for up to **30 minutes**:
+
+- **Retry Intervals -** Retries occur every 5 minutes, allowing time for liquidity or network conditions to improve.
+- **Static Call Data -** The core transaction data (desired asset, amount, contract interaction) remains unchanged. However, Aarc's **Coprocessor Engine** can adjust gas fees or switch bridging routes when needed.
+- **Higher Success Rates -** Through systematic retry attempts, most temporary issues (like brief liquidity gaps or congestion) can be resolved.
+
+If no retry succeeds within 30 minutes, Aarc automatically triggers a refund, without requiring user action.
+
+### Refund Mechanism
+
+When all attempts fail, the system **automatically refunds** the user:
+
+- **Where and How**
+    - If the deposit fails **before** bridging, users receive their **original token** on the **source chain**.
+    - If it fails **mid-route**, users receive a **stable token (USDC/USDT)** or **ETH** on the chain where the failure occurred.
+- **Non-Refundable Fees -** Gas and LP fees from partial execution cannot be reversed since third-party networks and liquidity providers have already consumed them.
+- **Designated Recipient**
+    - For **direct wallet deposits**, refunds go back to the sender's wallet.
+    - For **CEX or fiat-based** deposits, refunds go to the developer-specified fallback address (when direct CEX returns aren't possible).
+
+Every transaction either completes successfully on the destination chain or returns funds to users, completely eliminating stuck transactions.
+
+### Common Failure Scenarios
+
+- **Insufficient Liquidity**
+    
+    When DEXs or bridges temporarily lack sufficient liquidity for your swap/bridge.
+    
+- **Network Congestion**
+    
+    During severe network congestion or irregular block times, transactions may face delays. Aarc adjusts gas prices or waits for better network conditions. If completion remains impossible, the system ensures your refund.
+    
+- **Slippage or Pricing Issues**
+    
+    Transactions could revert in real-time if prices deviate significantly from the original quote.
+    
+- **Contract Incompatibility**
+    
+    When a target contract (such as a vault or staking contract) cannot accept the final call, leaves the transaction partially complete.
+    
+
+### Resolution Process
+
+If you notice a missing refund or incorrect transaction outcome, our support process is straightforward. First, gather your transaction ID/hash, chain information, and relevant logs. Then reach out through our support page, we'll respond within 24 hours to investigate. Our team will review the transaction logs and either confirm the final status or initiate a refund if possible.
+
+---
+
+### Need Help?
+
+If you need help, visit our [Support](introduction/support) page.

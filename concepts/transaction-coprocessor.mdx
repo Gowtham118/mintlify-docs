@@ -1,0 +1,34 @@
+---
+title: Transaction CoProcessor
+---
+
+The **Transaction Coprocessor** is Aarc's dedicated **off-chain engine** that supervises the entire lifecycle of a one-click deposit, from initial user intent to final asset delivery, or, if needed, an automatic refund. By monitoring cross-chain conditions and adjusting routes in real time, it ensures each deposit matches the user's specified intent.
+
+## Core Functions
+
+---
+
+### Transaction Monitoring
+
+The Coprocessor tracks each step of a deposit's flow, detecting completed bridging or swaps and identifying when subsequent steps are needed:
+
+- **Live Data Feeds -** It collects real-time information about liquidity, gas prices, and network congestion across supported chains.
+- **Dynamic Adjustments -** When the initial route faces slowdowns, congestion, or low liquidity, the Coprocessor recalculates and submits new bridging or swap transactions to maintain smooth execution.
+
+By coordinating cross-chain actions (bridging, contract interactions, and final settlement), the Coprocessor **orchestrates** all off-chain logic needed to fulfill deposits automatically.
+
+### Retries & Recovery Coordination
+
+If a deposit encounters a failed step (from liquidity issues, network problems, or other errors), the Coprocessor launches **automated retries**:
+
+- **Fresh Execution Quotes -** It finds new aggregator routes, bridging paths, or swap options to complete the transaction.
+- **Scheduled Intervals -** Retries occur at 5-minute intervals for up to 30 minutes to complete the deposit as intended.
+- **Failover to Refund -** If retries can't deliver the correct assets, the Coprocessor automatically refunds the user's wallet, preventing stuck or partial transactions.
+
+This recovery system ensures each transaction either completes as requested or returns funds automatically.
+
+---
+
+### Need Help?
+
+If you need help, visit our [Support](introduction/support) page.

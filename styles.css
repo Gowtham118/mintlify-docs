@@ -1,0 +1,8 @@
+#topbar-cta-button {
+    color: #003300 !important;
+}
+
+#topbar-cta-button span.z-10,
+#topbar-cta-button svg {
+    color: #003300 !important;
+}

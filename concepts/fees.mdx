@@ -1,0 +1,51 @@
+---
+title: Fees
+---
+
+Aarc is committed to **complete fee transparency**. We currently **do not charge any additional protocol or service fees** ,  users only incur the standard blockchain and liquidity provider (LP) costs outlined below.
+
+## Fee Components
+
+1. **Gas Fees**
+    - **Context**: Payment to blockchain validators for processing each transaction step.
+    - **Typical Range**: Fluctuates based on network congestion, transaction complexity, and current gas prices.
+    - **Implementation**: Aarc bundles bridging, swaps, and final calls into a batched transactions, reducing the total number of approvals and manual steps.
+2. **Liquidity Provider (LP) Fees**
+    - **Context**: Cost to DEXes, aggregators, or bridge providers facilitating asset swaps and transfers.
+    - **Typical Range**: Often **0.05%–0.3%** depending on the asset pair and selected route.
+    - **Implementation**: Deducted from the swapped or bridged amount. We always aim to minimize these costs.
+3. **Max Slippage**
+    - **Context**: This provides a buffer against price changes between quote generation and transaction confirmation.
+    - **Typical Range**: A typical slippage might be **0.2%**, balancing execution finality with capital efficiency.
+    - **Implementation**:
+        
+        ```
+        Max Slippage (%) = [(Quoted Amount_Out - Minimum Amount_Out) / Quoted Amount_Out] × 100 + 0.02%
+        ```
+        
+4. **Price Impact**
+    - **Context**: The effect of trade size on market price, particularly for large trades or lower-liquidity pairs.
+    - **Implementation**:
+        
+        ```
+        Price Impact (%) = [(Quoted Amount_In_USD - Quoted Amount_Out_USD) / Quoted Amount_In_USD] × 100
+        ```
+        
+    - **Note**: Aarc's aggregator logic seeks routes with minimal price impact, though market-driven changes cannot be completely eliminated.
+
+### Fee Transparency
+
+Before executing a deposit or other transactions, users can review fee details and **confirm** the transaction, ensuring there are **no hidden surprises**. **Aarc provides a clear breakdown** of:
+
+- Amount and Token to be sent
+- Amount and Token to be received
+- Estimated LP Fees
+- Estimated Gas Fees
+- Estimated Price Impact
+- Maximum Slippage
+
+---
+
+### Need Help?
+
+If you need help, visit our [Support](introduction/support) page.

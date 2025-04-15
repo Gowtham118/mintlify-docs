@@ -1,0 +1,230 @@
+{
+    "name": "Aarc Documentation",
+    "favicon": "./logo.png",
+    "logo": {
+        "light": "./logo.png",
+        "dark": "./logo.png"
+    },
+    "colors": {
+        "primary": "#A5E547",
+        "light": "#A5E547",
+        "dark": "#A5E547",
+        "anchors": {
+            "from": "#A5E547",
+            "to": "#EEFFB9"
+        }
+    },
+    "font": {
+        "family": "DM Sans"
+    },
+    "customCss": "./styles.css",
+    "topbarLinks": [
+        {
+            "name": "Build with Aarc",
+            "url": "https://rebrand.ly/form-build-with-aarc"
+        },
+        {
+            "name": "Try Demo",
+            "url": "https://buy.aarc.xyz/"
+        }
+    ],
+    "topbarCtaButton": {
+        "name": "Dashboard",
+        "url": "https://dashboard.aarc.xyz"
+    },
+    "anchors": [
+        {
+            "name": "Support",
+            "icon": "headset",
+            "url": "introduction/support"
+        }
+    ],
+    "tabs": [
+        {
+            "name": "API Reference",
+            "url": "execution-api"
+        },
+        {
+            "name": "SDK Reference",
+            "url": "execution-sdk"
+        },
+        {
+            "name": "UI Kits",
+            "url": "widget"
+        },
+        {
+            "name": "Partner Integrations",
+            "url": "partner-integrations"
+        }
+    ],
+    "navigation": [
+        {
+            "group": "Introduction",
+            "pages": [
+                "introduction/about-aarc",
+                "introduction/transaction-lifecycle",
+                "introduction/developer-dashboard",
+                "introduction/support"
+            ]
+        },
+        {
+            "group": "Use Cases",
+            "pages": [
+                "use-cases/defi-apps",
+                "use-cases/agents",
+                "use-cases/trading-bots",
+                "use-cases/token-issuers",
+                "use-cases/gaming-and-quests"
+            ]
+        },
+        {
+            "group": "Concepts",
+            "pages": [
+                "concepts/deposit-addresses",
+                "concepts/orchestration-engine",
+                "concepts/transaction-coprocessor",
+                "concepts/relayers",
+                "concepts/onchain-router-contracts",
+                "concepts/retry-and-refunds",
+                "concepts/fees",
+                "concepts/security",
+                "concepts/using-onramps-and-exchanges"
+            ]
+        },
+        {
+            "group": "Resources",
+            "pages": [
+                "resources/supported-networks",
+                "resources/contract-addresses",
+                "resources/uptime-status",
+                {
+                    "group": "Community",
+                    "pages": [
+                        "resources/community/x",
+                        "resources/community/telegram-builders",
+                        "resources/community/discord"
+                    ]
+                },
+                "resources/brand-assets"
+            ]
+        },
+        {
+            "group": "Execution API",
+            "pages": [
+                "execution-api/get-started",
+                {
+                    "group": "Guides",
+                    "pages": [
+                        "execution-api/guides/cross-chain-deposits",
+                        "execution-api/guides/cross-chain-nft-mint",
+                        "execution-api/guides/cross-chain-swaps"
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Endpoint Examples",
+            "pages": [
+                "execution-api/endpoints/deposit-address",
+                "execution-api/endpoints/schedule-transaction",
+                "execution-api/endpoints/request-status"
+            ]
+        },
+        {
+            "group": "Linktree for Checkouts",
+            "pages": [
+                "execution-api/link-tree-for-checkouts/get-started",
+                "execution-api/link-tree-for-checkouts/store-verified-link"
+            ]
+        },
+        {
+            "group": "Utility APIs",
+            "pages": [
+                "execution-api/utility-endpoints/supported-chains",
+                "execution-api/utility-endpoints/supported-tokens",
+                "execution-api/utility-endpoints/balances"
+            ]
+        },
+        {
+            "group": "Execution SDK",
+            "pages": [
+                "execution-sdk/get-started",
+                "execution-sdk/config",
+                {
+                    "group": "Guides",
+                    "pages": [
+                        "execution-sdk/guides/cross-chain-swap",
+                        "execution-sdk/guides/cross-chain-checkout"
+                    ]
+                },
+                {
+                    "group": "Core Methods",
+                    "pages": [
+                        "execution-sdk/core-methods/get-deposit-address",
+                        "execution-sdk/core-methods/check-transaction-status"
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Utility functions",
+            "pages": [
+                "execution-sdk/utility-functions/chain-balances",
+                "execution-sdk/utility-functions/multichain-balances",
+                "execution-sdk/utility-functions/supported-tokens",
+                "execution-sdk/utility-functions/supported-chains",
+                "execution-sdk/utility-functions/token-compatibility"
+            ]
+        },
+        {
+            "group": "iframe Widget (aka FDK)",
+            "pages": [
+                "widget/get-started",
+                "widget/config",
+                {
+                    "group": "Guides",
+                    "pages": [
+                        "widget/guides/buy-tokens",
+                        "widget/guides/cross-chain-deposits",
+                        "widget/guides/cross-chain-nft-mint"
+                    ]
+                },
+                {
+                    "group": "Customisation",
+                    "pages": [
+                        "widget/customisation/modal",
+                        "widget/customisation/styling",
+                        "widget/customisation/destination",
+                        "widget/customisation/module",
+                        "widget/customisation/event-handling"
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Linktree with Checkouts (URLs)",
+            "pages": [
+                "widget/linktree-width-checkouts/get-started",
+                "widget/linktree-width-checkouts/guide"
+            ]
+        },
+        {
+            "group": "Embedded Wallets",
+            "pages": [
+                {
+                    "group": "Dynamic",
+                    "pages": [
+                        "partner-integrations/embedded-wallets/dynamic/introduction",
+                        "partner-integrations/embedded-wallets/dynamic/quickstart"
+                    ]
+                }
+            ]
+        }
+    ],
+    "footerSocials": {
+        "github": "https://github.com/aarc-xyz",
+        "x": "https://x.com/0xAarc",
+        "telegram": "https://rebrand.ly/tg-builders-aarc",
+        "discord": "https://rebrand.ly/join-aarc-discord"
+    }
+}
