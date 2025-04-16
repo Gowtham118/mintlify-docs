@@ -15,7 +15,7 @@
         }
     },
     "font": {
-        "family": "DM Sans"
+        "family": "Inter"
     },
     "customCss": "./styles.css",
     "topbarLinks": [
